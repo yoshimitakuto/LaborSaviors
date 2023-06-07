@@ -9,6 +9,9 @@ class PostComment < ApplicationRecord
 
   # コメントのブックマーク機能
 　has_many :comment_likes, dependent: :destroy
+
+
+　has_one :commnet_reply
   # ========アソシエーション設定========
 
 

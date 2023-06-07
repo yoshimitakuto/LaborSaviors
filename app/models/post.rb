@@ -9,6 +9,9 @@ class Post < ApplicationRecord
 
   # 投稿のブックマーク機能
 　has_many :post_likes, dependent: :destroy
+
+  # カテゴリー機能
+　belongs_to :category
   # ========アソシエーション設定========
 
 
