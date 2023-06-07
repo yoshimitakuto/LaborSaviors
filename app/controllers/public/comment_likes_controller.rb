@@ -1,2 +1,2 @@
-class CommentLikesController < ApplicationController
+class Public::CommentLikesController < ApplicationController
 end

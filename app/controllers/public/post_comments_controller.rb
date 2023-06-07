@@ -1,2 +1,2 @@
-class PostCommentsController < ApplicationController
+class Public::PostCommentsController < ApplicationController
 end
