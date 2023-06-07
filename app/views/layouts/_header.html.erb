@@ -1,0 +1,123 @@
+<nav class='navbar navbar-expand-lg navbar-light bg-light pt-3 pb-3 text-center'>
+  <div class='collapse navbar-collapse'>
+
+    <!--ロゴ領域-->
+
+      <% if admin_signed_in? %>
+        <div class='navber navber-brand col-md-4'>
+          <%= link_to root_path do %>
+            <%= image_tag 'logo.jpg', alt: "ロゴ", size: '100x100' %>
+          <% end %>
+        </div>
+      <% else %>
+        <div class='row d-flex justify-content-around align-items-center col-md-4 ms-5'>
+          <div class='navbar navbar-brand'>
+            <%= link_to root_path do %>
+              <%= image_tag 'logo.jpg', alt: "ロゴ", size: '100x100' %>
+            <% end %>
+            <h5 class='mb-0'>管理者ログイン中</h5>
+          </div>
+        </div>
+      <% end %>
+
+
+    <!--リスト領域（ユーザーサインイン時・管理者ログイン時・それ以外）-->
+    <div class='col-md-8'>
+      <ul class="navbar-nav mx-auto justify-content-around">
+        <% if user_signed_in? %>
+          <li class='nav-item'>
+            <%= link_to users_path ,class: 'nav-link' do %>
+              <i class="fa-solid fa-people-group fa-bounce fa-lg"></i>
+              救世神一覧
+            <% end %>
+          </li>
+          <li class='nav-item dropdown'>
+            <%= link_to users_path ,class: 'nav-link dropdown-toggle' do %>
+              <i class="fa-solid fa-head-side-virus fa-beat-fade fa-lg"></i>
+              お悩み一覧
+            <% end %>
+            <ul class='dropdown-menu' aria-labelledby='navbarScrollingDropdown'>
+              <li><%= link_to "みんなのお悩み", posts_path, class: 'dropdown-item' %></li>
+              <li><%= link_to "あなたのお悩み", my_index_posts_path, class: 'dropdown-item' %></li>
+              <li><%= link_to "ブックマークしたお悩み", bookmark_index_posts_path, class: 'dropdown-item' %></li>
+            </ul>
+          </li>
+          <li class='nav-item dropdown'>
+            <%= link_to users_path ,class: 'nav-link dropdown-toggle' do %>
+              <i class="fa-solid fa-head-side-virus fa-beat-fade fa-lg"></i>
+              神がかりコメント一覧
+            <% end %>
+            <ul class='dropdown-menu' aria-labelledby='navbarScrollingDropdown'>
+              <li><%= link_to "いいねした神がかりコメント", posts_path, class: 'dropdown-item' %></li>
+              <li><%= link_to "あなたの神がかりコメント", my_index_posts_path, class: 'dropdown-item' %></li>
+            </ul>
+          </li>
+          <li class='nav-item'>
+            <%= link_to  destroy_user_session_path ,class: "nav-link" do %>
+              <i class="fa-solid fa-right-from-bracket fa-lg"></i>
+              ログアウト
+            <% end %>
+          </li>
+          <%= link_to users_mypage_path do %>
+             <%= image_tag current_user.get_profile_image(50,50), class: "header-image" %>
+          <% end %>
+          </li>
+        <% elsif admin_signed_in? %>
+          <li class='nav-item'>
+            <%= link_to "会員一覧", admin_users_path %>
+          </li>
+          <li class='nav-item'>
+            <%= link_to "投稿一覧", admin_posts_path %>
+          </li>
+          <li class='nav-item'>
+            <%= link_to "コメント一覧", admin_post_post_comments_path %>
+          </li>
+          <li class='nav-item'>
+            <%= link_to "カテゴリ一覧", admin_categories_path %>
+          </li>
+          <li class='nav-item'>
+            <%= link_to "ログアウト", destroy_admin_session_path %>
+          </li>
+        <% else %>
+          <li class='nav-item'>
+            <%= link_to about_path ,class: 'nav-link' do %>
+              <i class="fa-solid fa-book-journal-whills fa-lg"></i>
+              アバウト
+            <% end %>
+          </li>
+          <li class='nav-item'>
+            <%= link_to users_path ,class: 'nav-link' do %>
+              <i class="fa-solid fa-people-group fa-bounce fa-lg"></i>
+              救世神一覧
+            <% end %>
+          </li>
+          <li class='nav-item'>
+            <%= link_to posts_path ,class: 'nav-link' do %>
+              <i class="fa-solid fa-head-side-virus fa-beat-fade fa-lg"></i>
+              みんなのお悩み
+            <% end %>
+          </li>
+          <li class='nav-item'>
+            <%= link_to new_user_registration_path ,class: 'nav-link' do %>
+              <i class="fa-solid fa-user-plus fa-lg"></i>
+              新規登録
+            <% end %>
+          </li>
+          <li class='nav-item'>
+            <%= link_to  new_user_session_path ,class: 'nav-link' do %>
+              <i class="fa-solid fa-right-to-bracket fa-lg"></i>
+              ログイン
+            <% end %>
+          </li>
+          <li class='nav-item'>
+            <%= link_to new_user_session_path ,class: 'nav-link' do %>
+              <i class="fa-solid fa-face-smile fa-lg"></i>
+              ゲストログイン
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
+  </div>
+</nav>

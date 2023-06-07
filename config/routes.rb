@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
 
-  namespace :public do
-    get 'homes/top'
-    get 'homes/about'
-  end
+
 # =========deviceルーティング=========
 # ユーザー用
 devise_for :users,skip: [:passwords], controllers: {
@@ -28,14 +25,14 @@ scope module: :public do
 
   # posts, post_likes, post_comments,  comment_likes
   resources :posts do
-    member do
+    collection do
       get 'my_index'
       get 'user_index'
       get 'bookmark_index'
     end
     resource :post_likes, only:[:create, :destroy]
     resources :post_comments, except:[:new, :show] do
-      member do
+      collection do
         get 'my_index'
         get 'bookmark_index'
       end
