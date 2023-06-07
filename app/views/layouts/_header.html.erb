@@ -2,11 +2,24 @@
   <div class='collapse navbar-collapse'>
 
     <!--ロゴ領域-->
-    <div class='navber navber-brand col-md-4'>
-      <%= link_to root_path do %>
-        <%= image_tag 'logo.jpg', alt: "ロゴ", size: '100x100' %>
+
+      <% if admin_signed_in? %>
+        <div class='navber navber-brand col-md-4'>
+          <%= link_to root_path do %>
+            <%= image_tag 'logo.jpg', alt: "ロゴ", size: '100x100' %>
+          <% end %>
+        </div>
+      <% else %>
+        <div class='row d-flex justify-content-around align-items-center col-md-4 ms-5'>
+          <div class='navbar navbar-brand'>
+            <%= link_to root_path do %>
+              <%= image_tag 'logo.jpg', alt: "ロゴ", size: '100x100' %>
+            <% end %>
+            <h5 class='mb-0'>管理者ログイン中</h5>
+          </div>
+        </div>
       <% end %>
-    </div>
+
 
     <!--リスト領域（ユーザーサインイン時・管理者ログイン時・それ以外）-->
     <div class='col-md-8'>
