@@ -10,14 +10,14 @@ class PostComment < ApplicationRecord
   # コメントのブックマーク機能
   has_many :comment_likes, dependent: :destroy
 
-
+  # コメント返信間
   has_one :commnet_reply
   # ========アソシエーション設定========
 
 
 
   # ========バリデーション設定========
-  vaildates :comment, presence: true
+  validates :comment, presence: true
   # ========バリデーション設定========
 
 

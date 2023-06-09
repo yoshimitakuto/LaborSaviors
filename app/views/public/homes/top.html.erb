@@ -9,16 +9,24 @@
         <div class="col-md-6">検索窓</div>
       </div>
       <div class='row mt-5'>
-        新着お悩み一覧
-        <% @new_posts.each do |new_post| %>
-          <p>
-            <%= image_tag new_post.user.get_profile_image(20,20) %>
-            <% new_post.user.id == current_user.id ? "あなた" : new_post.user.nickname %>
-            <%= new_post.category_id.to_s %>
-            <%= new_post.mental_status %>
-            <%= new_post.is_resolution == false ? '救世する' : '解決済み' %>
-          </p>
-        <% end %>
+        <table class='table'>
+          <tbody>
+            <% @new_posts.each do |new_post| %>
+              <tr>
+                <td><%= image_tag new_post.user.get_profile_image(30,30) %></td>
+                <td><%= new_post.user == current_user ? 'あなた' : new_post.user.nickname %></td>
+                <td><%= new_post.category.name %></td>
+                <td><%= new_post.mental %></td>
+                <td>
+                  <!--解決ステータスが未解決かつ、ログイン中ユーザーでない場合は表示する-->
+                  <% if new_post.is_resolution == false %>
+                    <%= link_to "救世する", post_path(new_post), class: 'btn btn-info btn-sm'  if new_post.user != current_user %>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
       </div>
       <div class='row justify-content-center align-items-center mt-5'>
         どっちを選択する？

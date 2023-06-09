@@ -1,24 +1,37 @@
-<div class='container'>
+<div class='container mt-5'>
+
+  <!--ページタイトル-->
+  <div class='mx-auto mb-3 text-center'>
+    <h4><strong>あなたのお悩みをぶちまけましょう</strong></h4>
+  </div>
+
+  <!--投稿フォーム-->
   <%= form_with model: @post do |f| %>
-    <%= render "layouts/error_messages", model: @post %>
-    <div class='row'>
-      <%= f.label :category_id %>
-      <%= f.collection_select(:category_id, Category.all, :id, :name, include_blank: "選択して下さい")  %>
+    <div class='form_group mb-3 text-center'>
+      <label class='form-label'>「お悩みのカテゴリを選んでね」</label>
+      <div>
+        <%= f.hidden_field :is_resolution, value: false %>
+        <%= f.collection_select(:category_id, Category.all, :id, :name, include_blank: "選択して下さい") %>
+      </div>
     </div>
-    <div class='row'>
-      <%= f.label :mental_status %>
-      <%= f.select :mental_status, [
-        ["豆腐メンタルです。優しめにお願いします。", "豆腐メンタルです。優しめにお願いします。"],
-        ["こんにゃくメンタルです。柔軟にお願いします。", "こんにゃくメンタルです。柔軟にお願いします。"],
-        ["鋼メンタルです。強めでお願いします。", "鋼メンタルです。強めでお願いします。"]
-       ], include_blank: "選択して下さい" %>
+
+    <div class='form_group mb-3 text-center'>
+      <label class='form-label'>「欲しい回答の強度を選んでね」</label>
+      <div>
+        <%= f.select :mental_status, Post.mental_statuses_i18n.invert, {}, class: 'form-select' %>
+      </div>
     </div>
-    <div class='row'>
-      <%= f.text_field :content, class: 'form-control' %>
+
+    <div class='form_group mb-3'>
+      <p>「お悩み内容」</p>
+      <div>
+        <%= f.text_area :content, :size=>"10x20", placeholder: "安心して、どんな些細なことでも大丈夫だよ", required: true, class: 'form-control' %>
+      </div>
     </div>
-    <div class='row'>
-      <%= f.hidden_field :is_resolution, value: false %>
+
+    <div class='form_group mb-3 text-center'>
       <%= f.submit "救世神へ届け", class: 'btn btn-success' %>
     </div>
   <% end %>
+
 </div>

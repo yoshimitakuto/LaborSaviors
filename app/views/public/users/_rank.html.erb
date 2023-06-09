@@ -7,7 +7,7 @@
       <!--ランキング形式のため1位〜3位は冠アイコン付きの条件分岐-->
       <!--名前表示はログイン中ユーザーとそれ以外で表示名分岐-->
       <% if i == 1 %>
-        <%= link_to user_show_path(user.id) do %>
+        <%= link_to user_show_path(user.id), class: 'user-link' do %>
           <p>
             <%= image_tag 'Gold_icon.jpg', size: '50x50' %><%= i %>位
             <%= image_tag user.get_profile_image(20,20)%>
@@ -15,7 +15,7 @@
           </p>
         <% end %>
       <% elsif i == 2 %>
-        <%= link_to user_show_path(user.id) do %>
+        <%= link_to user_show_path(user.id), class: 'user-link' do %>
           <p>
             <%= image_tag 'Silver_icon.jpg', size: '40x40' %><%= i %>位
             <%= image_tag user.get_profile_image(20,20)%>
@@ -23,7 +23,7 @@
           </p>
         <% end %>
       <% elsif i == 3 %>
-        <%= link_to user_show_path(user.id) do %>
+        <%= link_to user_show_path(user.id), class: 'user-link' do %>
           <p>
             <%= image_tag 'Blonze_icon.jpg', size: '30x30' %><%= i %>位
             <%= image_tag user.get_profile_image(20,20)%>
@@ -31,7 +31,7 @@
           </p>
         <% end %>
       <% else %>
-        <%= link_to user_show_path(user.id) do %>
+        <%= link_to user_show_path(user.id), class: 'user-link' do %>
           <p>
             <%= i %>位
             <%= image_tag user.get_profile_image(20,20)%>

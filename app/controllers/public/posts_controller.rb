@@ -1,9 +1,14 @@
 class Public::PostsController < ApplicationController
+  before_action :find_id, only: [:show, :edit, :update]
+
   def index
-    @posts = Post.all
+    @posts = Post.all.page(params[:page]).per(8)
+    @false = Post.where(is_resolution: false)
+    @true = Post.where(is_resolution: true)
+    @categories = Category.all
   end
 
-  def my_index
+  def my_indexs
   end
 
   def user_index
@@ -34,10 +39,34 @@ class Public::PostsController < ApplicationController
   def edit
   end
 
+  def update
+    if @post.update(post_params)
+      flash[:notice] = "編集が完了しました"
+      redirect_to posts_path
+    else
+      flash[:notice] = "申し訳ございません。編集に失敗しました"
+      redirect_to request.referer
+    end
+  end
+
+  def destroy
+    if Post.find(params[:id]).destroy
+      flash[:notice] = "削除しました"
+      redirect_to posts_path
+    else
+      flash[:notice] = "削除に失敗しました"
+      render 'edit'
+    end
+  end
+
   private
 
   def post_params
     params.require(:post).permit(:category_id, :mental_status, :is_resolution, :content)
+  end
+
+  def find_id
+    @post = Post.find(params[:id])
   end
 
 end
