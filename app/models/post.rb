@@ -8,16 +8,17 @@ class Post < ApplicationRecord
   has_many :post_comments, dependent: :destroy
 
   # 投稿のブックマーク機能
-　has_many :post_likes, dependent: :destroy
+  has_many :post_likes, dependent: :destroy
 
   # カテゴリー機能
-　belongs_to :category
+  belongs_to :category
   # ========アソシエーション設定========
 
 
 
   # ========バリデーション設定========
-  vaildates :content, presence: true
+  validates :category_id, :content, :mental_status, presence: true
+  validates :is_resolution, inclusion: { in: [true, false] }
   # ========バリデーション設定========
 
 

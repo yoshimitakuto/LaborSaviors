@@ -2,7 +2,8 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+        :recoverable, :rememberable, :validatable
+        # authentication_keys: [:nickname]
 
 
   # ========アソシエーション設定========
@@ -19,7 +20,10 @@ class User < ApplicationRecord
   has_many :comment_likes, dependent: :destroy
   # ========アソシエーション設定========
 
-
+  # ========バリデーション設定========
+  validates :nickname, presence: true
+  validates :is_deleted, inclusion: { in: [true, false] }
+  # ========バリデーション設定========
 
   # ========プロフィール画像用設定========
   has_one_attached :profile_image
@@ -35,9 +39,9 @@ class User < ApplicationRecord
    # ========プロフィール画像用設定========
 
 
-
-  # ========バリデーション設定========
-  validates :nickname, presence: true
-  # ========バリデーション設定========
+  # def self.find_for_database_authentication(warden_conditions)
+  #   nickname = warden_conditions[:nickname].to_s.downcase.strip
+  #   find_by(nickname: nickname)
+  # end
 
 end

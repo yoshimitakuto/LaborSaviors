@@ -42,8 +42,8 @@ scope module: :public do
 
   # users
   get  '/users'  => 'users#index'
-  get  '/users/mypage' => 'users#mypage'
-  get  '/users/:id' => 'users#show'
+  get  '/users/mypage' => 'users#mypage',as: 'mypage'
+  get  '/users/:id' => 'users#show', as: 'user_show'
   get  '/users/information/edit' => 'users#edit'
   patch  '/users/information' => 'users#update'
   get  '/users/check' => 'users#check'

@@ -1,5 +1,6 @@
 class Public::UsersController < ApplicationController
   def index
+    @users = User.all
   end
 
   def mypage
@@ -12,5 +13,11 @@ class Public::UsersController < ApplicationController
   end
 
   def check
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:nickname, :profile_image)
   end
 end

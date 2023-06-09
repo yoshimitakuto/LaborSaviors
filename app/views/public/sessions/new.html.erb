@@ -1,9 +1,10 @@
 <h2>Log in</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<%= form_with model: @user, url: user_session_path do |f| %>
+
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.label :nickname %><br />
+    <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname" %>
   </div>
 
   <div class="field">
@@ -21,6 +22,7 @@
   <div class="actions">
     <%= f.submit "Log in" %>
   </div>
+
 <% end %>
 
 <%= render "public/shared/links" %>
