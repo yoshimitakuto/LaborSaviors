@@ -27,6 +27,13 @@
       </div>
     </div>
 
+    <div class='form_group mb-3 text-center'>
+      <label class='form-label'>「タグも編集できるよ！」</label>
+      <div>
+        <%= f.text_field :tag_list, value: @post.tag_list.join(','), class: 'form-control' %>
+      </div>
+    </div>
+
     <div class='form_group mb-3'>
       <p>「お悩み内容」</p>
       <div>

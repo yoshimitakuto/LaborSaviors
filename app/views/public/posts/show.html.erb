@@ -15,6 +15,10 @@
     <p>回答強度：<%= @post.mental %></p>
   </div>
 
+  <div class="mb-3 text-center">
+    <p><%= render 'public/posts/tag_list', tag_list: @post.tag_list %></p>
+  </div>
+
   <div class='row'>
     <div class="col-md-6 mx-auto">
       <p>「お悩み内容」</p>

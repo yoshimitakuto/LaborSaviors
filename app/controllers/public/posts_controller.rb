@@ -6,6 +6,11 @@ class Public::PostsController < ApplicationController
     @false = Post.where(is_resolution: false)
     @true = Post.where(is_resolution: true)
     @categories = Category.all
+
+    # タグリンク検索のための記述
+    if params[:tag_name]
+      @posts = Post.tagged_with("#{params[:tag_name]}").page(params[:page]).per(8)
+    end
   end
 
   def my_indexs
@@ -62,7 +67,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:category_id, :mental_status, :is_resolution, :content)
+    params.require(:post).permit(:category_id, :mental_status, :is_resolution, :content, :tag_list)
   end
 
   def find_id

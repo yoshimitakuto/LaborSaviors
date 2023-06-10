@@ -20,7 +20,6 @@
     </div>
   </div>
 
-
   <div class='row mx-auto mb-5 text-center'>
      <!--「is_resolution」のfalse/trueそれぞれの件数計測-->
     <div class='col'>救世済み<%= @true.count %>件：未救世<%= @false.count %>件</div>
@@ -30,10 +29,10 @@
   <!--投稿一覧-->
     <% @posts.each do |post| %>
       <%= link_to post_path(post), class: 'post-link ml-3' do %>
-        <div class='col text-center'>
+        <div class='col-md-3 text-center'>
           <div>
             <p>
-              <div class='image-box'>
+              <div class='post-link'>
                 <%= image_tag post.user.get_profile_image(100,100)%>
               </div>
             </p>
@@ -41,6 +40,7 @@
             <p>悩みのカテゴリーは<strong>「<%= post.category.name %>」</strong>です</p>
             <p>この投稿は<strong><%= post.resolution_status %></strong>です。</p>
             <p><strong><%= post.mental %></strong></p>
+            <p><%= render 'public/posts/tag_list', tag_list: post.tag_list %></p>
           </div>
         </div>
       <% end %>
@@ -54,4 +54,6 @@
 
 
 </div>
+
+<%=  %>
 

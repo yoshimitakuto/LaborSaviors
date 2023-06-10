@@ -1,5 +1,11 @@
 class Post < ApplicationRecord
 
+   # ========タグ設定========
+   acts_as_taggable_on :tags
+   # ========タグ設定========
+
+
+
   # ========アソシエーション設定========
   # ユーザー間
   belongs_to :user
