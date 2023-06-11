@@ -5,19 +5,19 @@ class PostComment < ApplicationRecord
   belongs_to :user
 
   # 投稿間
-　belongs_to :post
+  belongs_to :post
 
   # コメントのブックマーク機能
-　has_many :comment_likes, dependent: :destroy
+  has_many :comment_likes, dependent: :destroy
 
-
-　has_one :commnet_reply
+  # コメント返信間
+  has_one :commnet_reply
   # ========アソシエーション設定========
 
 
 
   # ========バリデーション設定========
-  vaildates :comment, presence: true
+  validates :comment, presence: true
   # ========バリデーション設定========
 
 

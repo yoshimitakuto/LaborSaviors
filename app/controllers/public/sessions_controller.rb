@@ -2,6 +2,7 @@
 
 class Public::SessionsController < Devise::SessionsController
   before_action :configure_sign_in_params,  if: :devise_controller?
+  before_action :user_state, only: [:create]
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -28,13 +29,27 @@ class Public::SessionsController < Devise::SessionsController
 
   protected
 
+  def configure_sign_in_params
+    devise_parameter_sanitizer.permit(:sign_in, keys: [:nickname])
+  end
+
+  # 退会していることを判断するためのメソッド
+  def user_state
+    # ユーザーの登録されたemailを取得
+    @user = User.find_by(nickname: params[:user][:nickname])
+    # アカウント取得失敗の場合はメソッド強制終了
+    return if !@user
+    # 取得したアカウントのパスワードとに入力されたパスワードの一致確認 && ユーザー
+    if @user.valid_password?(params[:user][:password]) && ( @user.is_deleted == true )
+      flash[:notice] = "退会済みです。再度ご登録してご利用ください。"
+      redirect_to new_user_registration_path
+    else
+      flash[:notice] = "項目を入力してください"
+    end
+  end
+
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
-
-  # サインイン時にニックネームの使用を許可
-  def configure_sign_in_params
-    devise_parameter_sanitizer.permit(:sign_in, keys: [:nickname])
-  end
 end

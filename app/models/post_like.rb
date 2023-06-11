@@ -5,7 +5,7 @@ class PostLike < ApplicationRecord
   belongs_to :user
 
   # 投稿間
-　belongs_to :post
+  belongs_to :post
   # ========アソシエーション設定========
 
 end

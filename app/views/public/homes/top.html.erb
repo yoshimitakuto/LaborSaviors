@@ -1,2 +1,41 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div class='container mt-5 mb-5'>
+  <div class='row'>
+    <div class='col-md-3'>
+      <%= render 'public/users/rank', users: @users %>
+    </div>
+    <div class="col-md-8 ml-5">
+      <div class="row">
+        <div class="col-md-6">皆が助けを求めているぞ！（新着お悩み）</div>
+        <div class="col-md-6">検索窓</div>
+      </div>
+      <div class='row mt-5'>
+        <table class='table'>
+          <tbody>
+            <% @new_posts.each do |new_post| %>
+              <tr>
+                <td><%= image_tag new_post.user.get_profile_image(30,30) %></td>
+                <td><%= new_post.user == current_user ? 'あなた' : new_post.user.nickname %></td>
+                <td><%= new_post.category.name %></td>
+                <td><%= new_post.mental %></td>
+                <td>
+                  <!--解決ステータスが未解決かつ、ログイン中ユーザーでない場合は表示する-->
+                  <% if new_post.is_resolution == false %>
+                    <%= link_to "救世する", post_path(new_post), class: 'btn btn-info btn-sm'  if new_post.user != current_user %>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div class='row justify-content-center align-items-center mt-5'>
+        どっちを選択する？
+      </div>
+      <div class='row'>
+        <div class='col-md-6 text-center'><%= link_to "悩みを聞いてもらう", new_post_path, class: 'btn btn-danger' %></div>
+        <div class='col-md-6 text-center'><%= link_to "救世する", posts_path, class: 'btn btn-info' %></div>
+      </div>
+    </div>
+  </div>
+</div>
+

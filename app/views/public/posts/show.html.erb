@@ -1,2 +1,41 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<div class="container mt-5">
+
+  <!--ページタイトル-->
+  <div class="mx-auto mb-3 text-center">
+    <!--解決ステータスにより表示を条件分岐-->
+    <h4><strong><%= @post.is_resolution == false ? "救世神求む！" : "解決しました！" %></strong></h4>
+  </div>
+
+  <!--投稿詳細表示フォーム-->
+  <div class="mb-3 text-center">
+    </p>お悩みカテゴリ：<%= @post.category.name %></p>
+  </div>
+
+  <div class="mb-3 text-center">
+    <p>回答強度：<%= @post.mental %></p>
+  </div>
+
+  <div class="mb-3 text-center">
+    <p><%= render 'public/posts/tag_list', tag_list: @post.tag_list %></p>
+  </div>
+
+  <div class='row'>
+    <div class="col-md-6 mx-auto">
+      <p>「お悩み内容」</p>
+      <div>
+        <%= @post.content %>
+      </div>
+    </div>
+  </div>
+
+  <!--ログインユーザーの場合で条件分岐-->
+  <% if @post.user == current_user %>
+    <div class='row'>
+      <div class='col-md-6 mx-auto mt-5 text-center'>
+        <%= link_to "編集", edit_post_path(@post.id), class: 'btn btn-info btn-sm mr-2' %>
+        <%= link_to "削除", post_path(@post.id), method: :delete, class: 'btn btn-danger btn-sm' %>
+      </div>
+    </div>
+  <% end %>
+
+</div>
