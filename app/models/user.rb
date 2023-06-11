@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
         :recoverable, :rememberable, :validatable
-        # authentication_keys: [:nickname]
+
 
 
   # ========アソシエーション設定========
@@ -17,13 +17,18 @@ class User < ApplicationRecord
   has_many :post_comments, dependent: :destroy
 
   # コメントブックマーク機能（ユーザー評価でも使用）
-  has_many :comment_likes, dependent: :destroy
+  # has_many :comment_likes, dependent: :destroy
   # ========アソシエーション設定========
 
+
+
   # ========バリデーション設定========
+  #一意性をアプリ側で持たせ、同時に同じ名前で新規登録された時に同じニックネームを登録させないようにするために、userモデル側でも一意性設定。
   validates :nickname, presence: true
   validates :is_deleted, inclusion: { in: [true, false] }
   # ========バリデーション設定========
+
+
 
   # ========プロフィール画像用設定========
   has_one_attached :profile_image
@@ -39,9 +44,21 @@ class User < ApplicationRecord
    # ========プロフィール画像用設定========
 
 
-  # def self.find_for_database_authentication(warden_conditions)
-  #   nickname = warden_conditions[:nickname].to_s.downcase.strip
-  #   find_by(nickname: nickname)
-  # end
+
+   # ========ゲストログイン設定========
+   def self.guest
+     find_or_create_by!(nickname: 'guestuser' ,email: 'guest@example.com') do |user|
+       user.password = SecureRandom.urlsafe_base64
+     end
+   end
+   # ========ゲストログイン設定========
+
+
+
+   # ========退会済みユーザーがログイン制御設定========
+   def active_for_authentication?
+     super && (is_deleted == false)
+   end
+   # ========退会済みユーザーがログイン制御設定========
 
 end

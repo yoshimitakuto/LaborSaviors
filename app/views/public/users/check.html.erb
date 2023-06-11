@@ -1,2 +1,13 @@
-<h1>Public::Users#check</h1>
-<p>Find me in app/views/public/users/check.html.erb</p>
+<div class='container'>
+  <div class='row'>
+    <div class='col mx-auto text-center'>
+      <p>
+        退会手続きを行うと、これまでの履歴が削除されます。<br>
+        再度サービスを利用される場合は新規登録を行なっていただく必要があります。<br>
+        本当に退会しますか？
+      </p>
+      <%= link_to "退会する", withdraw_path, method: :patch, class: 'btn btn-danger', data: { confirm: "本当に退会しますか？" } %>
+      <%= link_to "退会しない", mypage_path, class: 'btn btn-info' %>
+    </div>
+  </div>
+</div>

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Admin::SessionsController < Devise::SessionsController
-  # before_action :configure_sign_in_params,  if: :devise_controller?
+  before_action :configure_sign_in_params,  if: :devise_controller?
 
   # GET /resource/sign_in
   # def new
@@ -32,7 +32,7 @@ class Admin::SessionsController < Devise::SessionsController
 
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_in_params
-  #   devise_parameter_sanitizer.permit(:sign_in, keys: [:email])
-  # end
+  def configure_sign_in_params
+    devise_parameter_sanitizer.permit(:sign_in, keys: [:email])
+  end
 end

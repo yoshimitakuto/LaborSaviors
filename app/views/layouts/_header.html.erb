@@ -66,7 +66,7 @@
               ログアウト
             <% end %>
           </li>
-          <%= link_to mypage_path do %>
+          <%= link_to user_show_path(current_user.id) do %>
              <%= image_tag current_user.get_profile_image(50,50), class: "header-image" %>
           <% end %>
           </li>
@@ -80,13 +80,13 @@
             <%= link_to "投稿一覧", admin_posts_path %>
           </li>
           <li class='nav-item'>
-            <%= link_to "コメント一覧", admin_post_post_comments_path %>
+            <%= link_to "コメント一覧", admin_post_comments_path %>
           </li>
           <li class='nav-item'>
             <%= link_to "カテゴリ一覧", admin_categories_path %>
           </li>
           <li class='nav-item'>
-            <%= link_to "ログアウト", destroy_admin_session_path %>
+            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
           </li>
 
          <!--ログアウト時-->
@@ -116,13 +116,13 @@
             <% end %>
           </li>
           <li class='nav-item'>
-            <%= link_to  new_user_session_path ,class: 'nav-link' do %>
+            <%= link_to new_user_session_path, class: 'nav-link' do %>
               <i class="fa-solid fa-right-to-bracket fa-lg"></i>
               ログイン
             <% end %>
           </li>
           <li class='nav-item'>
-            <%= link_to new_user_session_path ,class: 'nav-link' do %>
+            <%= link_to users_guest_sign_in_path,method: :post, class: 'nav-link' do %>
               <i class="fa-solid fa-face-smile fa-lg"></i>
               ゲストログイン
             <% end %>

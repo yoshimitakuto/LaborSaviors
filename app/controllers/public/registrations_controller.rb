@@ -5,9 +5,9 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    super
+  end
 
   # POST /resource
   # def create
@@ -46,7 +46,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
   # サインアップ時のニックネーム使用を許可
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:email])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :profile_image])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
