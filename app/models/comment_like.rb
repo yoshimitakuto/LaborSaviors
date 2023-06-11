@@ -5,7 +5,7 @@ class CommentLike < ApplicationRecord
   # belongs_to :user
 
   # コメント間
-　belongs_to :post_comment
+  belongs_to :post_comment
   # ========アソシエーション設定========
 
 end
