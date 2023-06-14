@@ -6,7 +6,7 @@ class Public::PostCommentsController < ApplicationController
     @post_comment = current_user.post_comments.new(post_comment_params)
     @post_comment.post_id = @post.id
     @post_comment.save
-    redirect_to request.referer
+    # 非同期通信のためリダイレクト先の指定なし
   end
 
   def edit
@@ -29,8 +29,8 @@ class Public::PostCommentsController < ApplicationController
   def destroy
     PostComment.find(params[:id]).destroy
     flash[:notice] = 'コメントを削除しました'
-    redirect_to request.referer
     @post = Post.find(params[:post_id])
+    # 非同期通信のためリダイレクト先の指定なし
   end
 
   private

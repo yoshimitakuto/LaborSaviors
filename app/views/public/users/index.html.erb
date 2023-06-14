@@ -1,2 +1,24 @@
-<h1>Public::Users#index</h1>
-<p>Find me in app/views/public/users/index.html.erb</p>
+<div class="container mt-5">
+
+  <!--ページタイトル-->
+  <div class="mx-auto mb-3 text-center">
+    <h4><strong>救世神一覧</strong></h4>
+  </div>
+
+  <!--一覧表示-->
+  <div class="mb-3">
+    <% @users.each do |user| %>
+      <div class='row p-3 mt-3'>
+        <div class='col-md-4 text-center bg-dark p-3'>
+          <%= link_to user_show_path(user.id) do %>
+            <%= image_tag user.get_profile_image(200,200) %>
+          <% end %>
+        </div>
+        <div class='col-md-8 bg-light p-3'>
+          <div class='row mb-2'>ニックネーム：<strong><%= user.nickname %></strong></div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+</div>

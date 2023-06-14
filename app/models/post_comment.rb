@@ -11,7 +11,7 @@ class PostComment < ApplicationRecord
   has_many :comment_likes, dependent: :destroy
 
   # コメント返信間
-  has_one :commnet_reply
+  has_many :comment_replies
   # ========アソシエーション設定========
 
 

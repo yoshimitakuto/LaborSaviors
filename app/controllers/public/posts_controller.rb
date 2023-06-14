@@ -2,9 +2,14 @@ class Public::PostsController < ApplicationController
   before_action :find_id, only: [:show, :edit, :update]
 
   def index
-    @posts = Post.all.page(params[:page]).per(8)
+     # ransackでの検索機能
+    @q = Post.ransack(params[:q])
+    @posts = @q.result.page(params[:page]).per(8)
+
+    # 「is_resoulution」のステータスを簡単に記述するための記述
     @false = Post.where(is_resolution: false)
     @true = Post.where(is_resolution: true)
+
     @categories = Category.all
 
     # タグリンク検索のための記述
@@ -14,12 +19,6 @@ class Public::PostsController < ApplicationController
   end
 
   def my_indexs
-  end
-
-  def user_index
-  end
-
-  def bookmark_index
   end
 
   def new

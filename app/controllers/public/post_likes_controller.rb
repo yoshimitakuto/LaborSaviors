@@ -4,13 +4,13 @@ class Public::PostLikesController < ApplicationController
   def create
     @post_like = current_user.post_likes.new(post_id: @post.id)
     @post_like.save
-    redirect_to request.referer
+    # 非同期通信のためリダイレクト先の指定なし
   end
 
   def destroy
     @post_like = current_user.post_likes.find_by(post_id: @post.id)
     @post_like.destroy
-    redirect_to request.referer
+    # 非同期通信のためリダイレクト先の指定なし
   end
 
   private

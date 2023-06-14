@@ -1,0 +1,29 @@
+<div class="container mt-5">
+
+  <!--ページタイトル-->
+  <div class="mx-auto mb-3 text-center">
+    <h4><strong>いいねしたお悩み投稿一覧</strong></h4>
+  </div>
+
+  <!--一覧表示-->
+  <div class="mb-3">
+    <% @post_likes_posts.each do |post_like| %>
+      <div class='row p-3 mt-3'>
+        <div class='col-md-4 text-center bg-dark p-3'>
+          <%= link_to user_show_path(post_like.user.id) do %>
+            <%= image_tag post_like.user.get_profile_image(200,200) %>
+          <% end %>
+        </div>
+        <div class='col-md-8 bg-light p-3'>
+          <div class='row mb-2'>ニックネーム：<strong><%= post_like.user.nickname %></strong></div>
+          <div class='row mb-3'>この投稿は<strong><%= post_like.resolution_status %></strong>です。</div>
+          <div class='row'>お悩み内容</div>
+          <div class='row p-3 bg-white mb-4'><%= post_like.content %></div>
+          <div class='row'>お悩み投稿日：「<%= post_like.created_at.strftime('%Y/%m/%d') %>」</div>
+          <div class='row'><%= link_to "詳細",post_path(post_like), class: 'btn btn-info btn-sm' %></div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+</div>

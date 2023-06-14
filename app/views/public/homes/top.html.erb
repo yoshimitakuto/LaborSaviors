@@ -6,7 +6,9 @@
     <div class="col-md-8 ml-5">
       <div class="row">
         <div class="col-md-6">皆が助けを求めているぞ！（新着お悩み）</div>
-        <div class="col-md-6">検索窓</div>
+        <div class="col-md-6">
+          <%= render 'public/searches/serach_post', q: @q, url: root_path %>
+        </div>
       </div>
       <div class='row mt-5'>
         <table class='table'>

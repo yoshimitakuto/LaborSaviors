@@ -30,28 +30,24 @@ scope module: :public do
 
   # posts, post_likes, post_comments,  comment_likes
   resources :posts do
-    collection do
-      get 'my_index'
-      get 'user_index'
-      get 'bookmark_index'
-    end
     resource :post_likes, only:[:create, :destroy]
     resources :post_comments, except:[:new, :show] do
-      collection do
-        get 'my_index'
-        get 'bookmark_index'
-      end
       resource :comment_likes, only:[:create, :destroy]
+      resources :comment_replies, only:[:create, :destroy]
     end
   end
 
   # users
   get  '/users'  => 'users#index'
-  get  '/users/mypage' => 'users#mypage',as: 'mypage'
+  get '/users/:id/my_posts' => 'users#my_posts', as: 'user_my_posts'
+  get '/users/:id/post_likes' => 'users#post_likes', as: 'user_post_likes'
+  get '/users/:id/my_post_comments' => 'users#my_post_comments', as: 'user_my_post_comments'
+  get '/users/:id/comment_likes' => 'users#comment_likes', as: 'user_comment_likes'
+  get  '/users/mypage' => 'users#mypage', as: 'mypage'
   get  '/users/:id' => 'users#show', as: 'user_show'
   get  '/users/information/edit' => 'users#edit'
   patch  '/users/information' => 'users#update'
-  get  '/users/:id/check' => 'users#check',as: 'check'
+  get  '/users/:id/check' => 'users#check', as: 'check'
   patch  '/users/:id/withdraw' => 'users#withdraw', as: 'withdraw'
 end
 

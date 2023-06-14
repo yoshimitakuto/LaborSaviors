@@ -45,8 +45,8 @@
             </a>
             <ul class="dropdown-menu">
               <li><%= link_to "みんなのお悩み", posts_path, class: 'dropdown-item' %></li>
-              <li><%= link_to "あなたのお悩み", my_index_posts_path, class: 'dropdown-item' %></li>
-              <li><%= link_to "ブックマークしたお悩み", bookmark_index_posts_path, class: 'dropdown-item' %></li>
+              <li><%= link_to "あなたのお悩み", user_my_posts_path(current_user), class: 'dropdown-item' %></li>
+              <li><%= link_to "ブックマークしたお悩み", user_post_likes_path(current_user), class: 'dropdown-item' %></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
@@ -56,8 +56,8 @@
               神がかりコメント一覧<span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-              <li><%= link_to "いいねした神がかりコメント", posts_path, class: 'dropdown-item' %></li>
-              <li><%= link_to "あなたの神がかりコメント", my_index_posts_path, class: 'dropdown-item' %></li>
+              <li><%= link_to "いいねした神がかりコメント", user_comment_likes_path(current_user), class: 'dropdown-item' %></li>
+              <li><%= link_to "あなたの神がかりコメント", user_my_post_comments_path(current_user), class: 'dropdown-item' %></li>
             </ul>
           </li>
           <li class='nav-item'>

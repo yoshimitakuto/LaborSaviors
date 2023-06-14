@@ -57,4 +57,10 @@ class Post < ApplicationRecord
   end
 
 
+  # ransackable_attributesメソッドで検索可能な属性のリストを定義（検索項目追加する場合はリストに追記）
+  def self.ransackable_attributes(auth_object = nil)
+    ["category_id", "content", "created_at", "id", "is_resolution", "mental_status", "updated_at", "user_id"]
+  end
+
+
 end
