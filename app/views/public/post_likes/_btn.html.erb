@@ -1,0 +1,13 @@
+<% if post.post_likes_by?(current_user) %>
+  <p>
+    <%= link_to post_post_likes_path(post), method: :delete, remote: true do %>
+      <i class="fa-solid fa-thumbs-up"></i><%= post.post_likes.count %>いいね
+    <% end %>
+  </p>
+<% else %>
+  <p>
+    <%= link_to post_post_likes_path(post), method: :post, remote: true do %>
+      <i class="fa-regular fa-thumbs-up"></i><%= post.post_likes.count %>いいね
+    <% end %>
+  </p>
+<% end %>

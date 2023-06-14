@@ -1,0 +1,1 @@
+$("#comment_like_btn_<%= @post_comment.id %>").html("<%= j(render 'public/comment_likes/btn', post: @post_comment.post, post_comment: @post_comment) %>");

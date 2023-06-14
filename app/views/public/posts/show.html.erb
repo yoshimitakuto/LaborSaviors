@@ -28,6 +28,14 @@
     </div>
   </div>
 
+  <!--ブックマーク機能-->
+  <div class='row'>
+    <!--以下非同期処理実装済み（public/post_likesディレクトリ内に各種ファイル格納）-->
+    <div class='col-md-6 mx-auto post_like_btn'>
+      <%= render 'public/post_likes/btn', post: @post %>
+    </div>
+  </div>
+
   <!--ログインユーザーの場合で条件分岐-->
   <% if @post.user == current_user %>
     <div class='row'>
@@ -37,5 +45,18 @@
       </div>
     </div>
   <% end %>
+
+  <!--コメント投稿フォーム-->
+  <div class='row'>
+    <!--以下非同期処理実装済み（public/post_commentsディレクトリ内に各種ファイル格納）-->
+    <div class='col-md-6 mx-auto mt-5 text-center', id='comment_area'>
+      <p class='comment_counts'>コメント件数<%= @post.post_comments.count %></p>
+      <!--投稿者本人がコメントできないように条件分岐でコメント入力フォーム非表示-->
+      <%= render 'public/post_comments/form', post: @post, post_comment: @post_comment if @post.user != current_user %>
+    </div>
+    <div class='col-md-6 mx-auto mt-5 text-center', id='comment_index'>
+      <%= render 'public/post_comments/index', post: @post %>
+    </div>
+  </div>
 
 </div>

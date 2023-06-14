@@ -1,0 +1,4 @@
+<%= form_with model: [post, post_comment], local: false do |f| %>
+  <%= f.text_area :comment, rows: '5', placeholder: "こちらから救世コメントを投稿しよう！" %>
+  <%= f.submit "救世する", class: 'btn btn-info' %>
+<% end %>
