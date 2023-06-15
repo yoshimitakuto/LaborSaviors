@@ -1,49 +1,51 @@
 <div class='container mt-5'>
 
   <!--ページタイトル-->
-  <div class="mx-auto mb-3 text-center">
+  <div class="mx-auto mb-5 text-center">
     <h4><strong>新規会員登録</strong></h4>
   </div>
 
   <!--新規登録入力フォーム-->
   <div class='row mx-auto'>
-    <div class='col-md-8 mx-auto'>
+    <div class='col-md-8 mx-auto text-center'>
       <%= form_with model: @user, url: user_registration_path do |f| %>
         <%= render "public/shared/error_messages", resource: @user %>
 
-        <div class="form-field">
-          <label>ニックネーム</label><br>
-          <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname", required: true %>
+        <div class='row form-field mb-3'>
+          <div class='col'><label>ニックネーム</label></div>
+          <div class='col'><%= f.text_field :nickname, autofocus: true, autocomplete: "nickname", required: true %></div>
         </div>
 
-        <div class="form-field">
-          <label>プロフィール画像</label><br>
-          <%= f.file_field :profile_image, id: 'input-file', autocomplete: "profile_image" %>
+        <div class='row form-field mb-3'>
+          <div class='col'><label>メールアドレス</label></div>
+          <div class='col'><%= f.email_field :email, autocomplete: "email", required: true %></div>
         </div>
 
-        <div class="form-field">
-          <label>メールアドレス</label><br>
-          <%= f.email_field :email, autocomplete: "email", required: true %>
+        <div class='row form-field mb-3'>
+          <div class='col'><label>パスワード（６文字以上)</label></div>
+          <div class='col'> <%= f.password_field :password, autocomplete: "new-password", required: true %></div>
         </div>
 
-        <div class="form-field">
-          <label>パスワード（６文字以上)</label><br>
-          <%= f.password_field :password, autocomplete: "new-password", required: true %>
+        <div class='row form-field mb-5'>
+          <div class='col'><label>パスワード（確認用）</label></div>
+          <div class='col'><%= f.password_field :password_confirmation, autocomplete: "new-password", required: true%></div>
         </div>
 
-        <div class="form-field">
-          <label>パスワード（確認用）</label><br>
-          <%= f.password_field :password_confirmation, autocomplete: "new-password", required: true%>
+        <div class='row form-field mb-3'>
+          <div class='col'>
+            <label>プロフィール画像（任意）</label><br>
+            <%= f.file_field :profile_image, id: 'input-file', autocomplete: "profile_image" %>
+          </div>
         </div>
 
         <div class="actions text-center mt-5">
-          <%= f.submit "新規登録", class: 'btn btn-info' %>
+          <%= f.submit "登録", class: 'btn btn-info' %>
         </div>
+
       <% end %>
 
       <div class=" text-center mt-5">
-        <h4>既に登録済みの方</h4>
-        <h6><%= link_to "こちら", new_session_path(resource_name), class: "login-link" %>からログインしてください。</h6>
+        <h6>すでに登録済みの方は<%= link_to "こちら", new_session_path(resource_name), class: "login-link" %></h6>
       </div>
 
     </div>

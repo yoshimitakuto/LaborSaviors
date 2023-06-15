@@ -16,10 +16,14 @@
 
   <!--コメントに対する返信及び評価（raty.js）機能-->
   <div>
-    <!--お悩み投稿者のみがコメント返信できるように条件分岐-->
-    <%= render 'public/comment_replies/form', post: post_comment.post,  post_comment: post_comment, comment_reply: post_comment.comment_replies if post_comment.post.user == current_user %>
+    <!--お悩み投稿者のみが「コメント返信とユーザーの評価」を「1度」だけできるよう条件分岐-->
+    <!--左にfalseになる条件式を書いた方が結果的に右の処理をせずに済むため以下のように記述-->
+    <% if post_comment.post.user == current_user && post_comment.comment_replies.blank? %>
+      <%= render 'public/comment_replies/form', post: post_comment.post,  post_comment: post_comment, comment_reply: post_comment.comment_replies %>
+    <% end %>
   </div>
   <div>
-    <%= render 'public/comment_replies/index', comment_reply: post_comment.comment_replies %>
+    <!--後々評価者を投稿者のみでなく皆ができる仕様にする可能性を考慮し、複数形で記述-->
+    <%= render 'public/comment_replies/index', comment_replies: post_comment.comment_replies %>
   </div>
 <% end %>

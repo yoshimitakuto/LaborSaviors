@@ -31,6 +31,21 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+
+    # 投稿に対していいねを獲得した総数
+    @user_posts = @user.posts
+    @post_likes_count = 0
+    @user_posts.each do |post|
+      @post_likes_count += post.post_likes.count
+    end
+
+    # コメントに対していいねを獲得した総数
+    @user_post_comments = @user.post_comments
+    @comment_likes_count = 0
+    @user_post_comments.each do |post_comment|
+      @comment_likes_count += post_comment.comment_likes.count
+    end
+
   end
 
   def edit

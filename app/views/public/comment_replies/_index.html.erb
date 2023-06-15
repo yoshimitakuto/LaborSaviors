@@ -1,13 +1,17 @@
-<% comment_reply.each do |comment_reply| %>
+<% comment_replies.each do |comment_reply| %>
   <%= link_to user_show_path(comment_reply.user.id) do %>
     <p><%= image_tag comment_reply.user.get_profile_image(100,100) %></p>
   <% end %>
   <%= comment_reply.user.nickname %>
   <%= comment_reply.reply_comment %>
+
+  <!--最終的にユーザーのランキングを付ける際に使用する評価値-->
+  <%= comment_reply.post_comment.evaluation %>
+
   <%= comment_reply.created_at.strftime('%Y/%m/%d') %>
 
-  <% if comment_reply.user == current_user %>
-    <%#= link_to "編集する", edit_post_post_comment_path(post_comment.post, post_comment), class: 'btn btn-primary' %>
+
+　<% if comment_reply.user == current_user %>
     <%= link_to "削除する", post_post_comment_comment_reply_path(comment_reply.post_comment.post, comment_reply.post_comment, comment_reply), method: :delete, remote: true, class: 'btn btn-danger' %>
   <% end %>
 

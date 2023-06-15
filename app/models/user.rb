@@ -15,7 +15,8 @@ class User < ApplicationRecord
 
   # コメント機能
   has_many :post_comments, dependent: :destroy
-  has_many :comment_replies, dependent: :destroy
+
+  has_many :comment_replies
 
   # コメントブックマーク機能（ユーザー評価でも使用）
   has_many :comment_likes, dependent: :destroy

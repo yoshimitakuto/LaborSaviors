@@ -3,9 +3,9 @@ class Public::PostCommentsController < ApplicationController
 
   def create
     @post = Post.find(params[:post_id])
-    @post_comment = current_user.post_comments.new(post_comment_params)
-    @post_comment.post_id = @post.id
-    @post_comment.save
+    post_comment = current_user.post_comments.new(post_comment_params)
+    post_comment.post_id = @post.id
+    post_comment.save
     # 非同期通信のためリダイレクト先の指定なし
   end
 
@@ -36,7 +36,7 @@ class Public::PostCommentsController < ApplicationController
   private
 
   def post_comment_params
-    params.require(:post_comment).permit(:comment)
+    params.require(:post_comment).permit(:comment, :evaluation)
   end
 
   def find_post_id

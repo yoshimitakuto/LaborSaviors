@@ -16,9 +16,10 @@
   </div>
 
   <div class="mb-3 text-center">
-    <span><%= @user.posts.count %>件</span>
-    <span>「後ほど救世数表示」件</span>
-    <span>「後ほどいいね数表示」件</span>
+    <span>お悩み投稿数：<%= @user.posts.count %>件</span>
+    <span>救世コメント数：<%= @user.post_comments.count %>件</span>
+    <span>お悩み投稿へのいいね獲得数：<%= @post_likes_count %>件</span>
+    <span>救世コメントへのいいね獲得数：<%= @comment_likes_count %>件</span>
   </div>
 
   <div class='row'>
