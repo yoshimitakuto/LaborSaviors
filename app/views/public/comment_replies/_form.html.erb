@@ -2,20 +2,7 @@
   <%= f.text_area :reply_comment, rows: '5', placeholder: "こちらから救世コメントを投稿しよう！" %>
 
   <!--nameを用いてデータ送信の記述を見やすくするための記述-->
-  <script src="raty.js"></script>
-  <div id='evaluation'></div>
     <%= f.number_field :evaluation, name: 'evaluation' %>
-
-  <script>
-    new Raty(document.querySelector('evaluation')
-      size     : 36,
-      starOff:  '<%= asset_path('star-off.png') %>',
-      starOn : '<%= asset_path('star-on.png') %>',
-      starHalf: '<%= asset_path('star-half.png') %>',
-      half: false,
-      scoreName: 'post_comment[evaluation]'
-    );
-  </script>
 
   <%= f.submit "この救世神を評価する", class: 'btn btn-info' %>
 <% end %>
