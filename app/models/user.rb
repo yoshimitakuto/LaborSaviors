@@ -63,4 +63,11 @@ class User < ApplicationRecord
    end
    # ========退会済みユーザーがログイン制御設定========
 
+   def top_rated(limit = 10)
+     joins(:post_comments)
+      .group(:id)
+      .order('AVG(post_comments.evaluation) DESC')
+      .limit(limit)
+   end
+
 end

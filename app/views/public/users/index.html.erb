@@ -5,6 +5,8 @@
     <h4><strong>救世神一覧</strong></h4>
   </div>
 
+  <%= @users_evaluation_count %>
+
   <!--一覧表示-->
   <div class="mb-3">
     <% @users.each do |user| %>
@@ -16,6 +18,8 @@
         </div>
         <div class='col-md-8 bg-light p-3'>
           <div class='row mb-2'>ニックネーム：<strong><%= user.nickname %></strong></div>
+          <div class='row mb-2'>
+            評価値（平均）：<strong><%= user.post_comments.average(:evaluation) || 0 %></strong></div>
         </div>
       </div>
     <% end %>
