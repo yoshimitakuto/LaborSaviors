@@ -1,2 +1,37 @@
-<h1>Public::Users#edit</h1>
-<p>Find me in app/views/public/users/edit.html.erb</p>
+<div class='container mt-5'>
+
+  <!--ページタイトル-->
+  <div class="mx-auto mb-5 text-center">
+    <h4><strong>会員情報編集</strong></h4>
+  </div>
+
+  <!--ログイン情報入力フォーム（名前・パスワードのみ）-->
+  <div class='row mx-auto'>
+    <div class='col-md-8 mx-auto text-center'>
+      <%= form_with model: @user, url: information_path(@user.id), method: :patch do |f| %>
+
+        <div class='row form-field mb-5'>
+          <div class='col'><label>ニックネーム</label></div>
+          <div class='col'><%= f.text_field :nickname, autofocus: true, required: true %></div>
+        </div>
+
+        <div class='row form-field mb-3'>
+          <div class='col'>
+            <label>プロフィール画像（任意）</label><br>
+            <%= f.file_field :profile_image %>
+          </div>
+        </div>
+
+        <div class="actions text-center mt-5">
+          <%= f.submit "編集完了", class: 'btn btn-info' %>
+        </div>
+      <% end %>
+
+      <div class=" text-center mt-5">
+        <h6><%= link_to "詳細画面へ戻る", user_show_path(@user.id) %></h6>
+      </div>
+
+
+    </div>
+  </div>
+</div>

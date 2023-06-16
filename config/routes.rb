@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 # =========deviceルーティング=========
 # ユーザー用
 devise_for :users,skip: [:passwords], controllers: {
-  registrations: "public/registrations",
+  registrations: 'public/registrations',
   sessions: 'public/sessions'
 }
 
@@ -15,7 +15,7 @@ end
 
 # 管理者用
 devise_for :admin, skip: [:registrations, :passwords] , controllers: {
-  sessions: "admin/sessions"
+  sessions: 'admin/sessions'
 }
 # =========deviceルーティング=========
 
@@ -38,17 +38,16 @@ scope module: :public do
   end
 
   # users
-  get  '/users'  => 'users#index'
+  get '/users'  => 'users#index'
   get '/users/:id/my_posts' => 'users#my_posts', as: 'user_my_posts'
   get '/users/:id/post_likes' => 'users#post_likes', as: 'user_post_likes'
   get '/users/:id/my_post_comments' => 'users#my_post_comments', as: 'user_my_post_comments'
   get '/users/:id/comment_likes' => 'users#comment_likes', as: 'user_comment_likes'
-  get  '/users/mypage' => 'users#mypage', as: 'mypage'
-  get  '/users/:id' => 'users#show', as: 'user_show'
-  get  '/users/information/edit' => 'users#edit'
-  patch  '/users/information' => 'users#update'
-  get  '/users/:id/check' => 'users#check', as: 'check'
-  patch  '/users/:id/withdraw' => 'users#withdraw', as: 'withdraw'
+  get '/users/:id' => 'users#show', as: 'user_show'
+  get '/users/:id/information' => 'users#edit', as: 'information'
+  patch '/users/:id/information' => 'users#update'
+  get '/users/:id/check' => 'users#check', as: 'check'
+  patch '/users/:id/withdraw' => 'users#withdraw', as: 'withdraw'
 end
 
 
@@ -56,7 +55,7 @@ end
 # 管理者側
 namespace :admin do
   # homes
-  get "/" => "homes#top"
+  get '/' => 'homes#top'
   # posts, post_comments
   resources :posts, only: [:index,:show,:destroy]
   resources :post_comments,only: [:index,:show,:destroy]

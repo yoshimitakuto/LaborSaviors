@@ -1,46 +1,51 @@
-<div class='card'>
+<div class='card' style='width: 20rem;'>
   <div class='card-header text-center'>救世神ランキング</div>
   <div class="card-body text-center">
-
-    <% users.each.with_index(1) do |user, i| %>
-
-      <!--ランキング形式のため1位〜3位は冠アイコン付きの条件分岐-->
-      <!--名前表示はログイン中ユーザーとそれ以外で表示名分岐-->
-      <% if i == 1 %>
-        <%= link_to user_show_path(user.id), class: 'user-link' do %>
-          <p>
-            <%= image_tag 'Gold_icon.jpg', size: '50x50' %><%= i %>位
-            <%= image_tag user.get_profile_image(20,20)%>
-            <%= user == current_user ? 'あなた' : user.nickname %>
-          </p>
-        <% end %>
-      <% elsif i == 2 %>
-        <%= link_to user_show_path(user.id), class: 'user-link' do %>
-          <p>
-            <%= image_tag 'Silver_icon.jpg', size: '40x40' %><%= i %>位
-            <%= image_tag user.get_profile_image(20,20)%>
-            <%= user == current_user ? 'あなた' : user.nickname %>
-          </p>
-        <% end %>
-      <% elsif i == 3 %>
-        <%= link_to user_show_path(user.id), class: 'user-link' do %>
-          <p>
-            <%= image_tag 'Blonze_icon.jpg', size: '30x30' %><%= i %>位
-            <%= image_tag user.get_profile_image(20,20)%>
-            <%= user == current_user ? 'あなた' : user.nickname %>
-          </p>
-        <% end %>
-      <% else %>
-        <%= link_to user_show_path(user.id), class: 'user-link' do %>
-          <p>
-            <%= i %>位
-            <%= image_tag user.get_profile_image(20,20)%>
-            <%= user == current_user ? 'あなた' : user.nickname %>
-          </p>
-        <% end %>
+    <table class='table'>
+      <thead>
+        <tr>
+          <th>順位</th>
+          <th>ユーザー名</th>
+          <th>評価値</th>
+        </tr>
+      </thead>
+      <% rank.each.with_index(1) do |rank, i| %>
+      <tbody>
+        <tr>
+          <!--ランキング形式のため1位〜3位は冠アイコン付きの条件分岐-->
+          <!--ニックネーム表示はログイン中ユーザーとそれ以外で表示名分岐-->
+          <% if i == 1 %>
+            <td><%= image_tag 'Gold_icon.jpg', size: '30x30' %><%= i %>位</td>
+            <td>
+              <%= link_to user_show_path(rank), class: 'user-link' do %>
+                <%= image_tag rank.get_profile_image(20,20)%><%= rank == current_user ? 'あなた' : rank.nickname %>
+              <% end %>
+            </td>
+          <% elsif i == 2 %>
+            <td><%= image_tag 'Silver_icon.jpg', size: '30x30' %><%= i %>位</td>
+            <td>
+              <%= link_to user_show_path(rank), class: 'user-link' do %>
+                <%= image_tag rank.get_profile_image(20,20)%><%= rank == current_user ? 'あなた' : rank.nickname %>
+              <% end %>
+            </td>
+          <% elsif i == 3 %>
+            <td><%= image_tag 'Blonze_icon.jpg', size: '30x30' %><%= i %>位</td>
+            <td>
+              <%= link_to user_show_path(rank), class: 'user-link' do %>
+                <%= image_tag rank.get_profile_image(20,20)%><%= rank == current_user ? 'あなた' : rank.nickname %>
+              <% end %>
+            </td>
+          <% else %>
+            <td><%= i %>位</td>
+            <td>
+              <%= link_to user_show_path(rank), class: 'user-link' do %>
+                <%= image_tag rank.get_profile_image(20,20)%><%= rank == current_user ? 'あなた' : rank.nickname %>
+              <% end %>
+            </td>
+          <% end %>
+        </tr>
+      </tbody>
       <% end %>
-
-    <% end %>
-
+    </table>
   </div>
 </div>

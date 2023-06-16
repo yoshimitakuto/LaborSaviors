@@ -16,6 +16,8 @@
         </div>
         <div class='col-md-8 bg-light p-3'>
           <div class='row mb-2'>ニックネーム：<strong><%= user.nickname %></strong></div>
+          <div class='row mb-2'>
+            評価値（平均）：<strong><%= user.post_comments.average(:evaluation) || 0 %></strong></div>
         </div>
       </div>
     <% end %>

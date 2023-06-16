@@ -16,9 +16,10 @@
   </div>
 
   <div class="mb-3 text-center">
-    <span><%= @user.posts.count %>件</span>
-    <span>「後ほど救世数表示」件</span>
-    <span>「後ほどいいね数表示」件</span>
+    <span>お悩み投稿数：<%= @user.posts.count %>件</span>
+    <span>救世コメント数：<%= @user.post_comments.count %>件</span>
+    <span>お悩み投稿へのいいね獲得数：<%= @post_likes_count %>件</span>
+    <span>救世コメントへのいいね獲得数：<%= @comment_likes_count %>件</span>
   </div>
 
   <div class='row'>
@@ -34,7 +35,7 @@
   <% if @user == current_user %>
     <div class='row'>
       <div class='col-md-6 mx-auto mt-5 text-center'>
-        <%= link_to "情報編集", users_information_edit_path, class: 'btn btn-info btn-sm mr-2' %>
+        <%= link_to "情報編集", information_path(@user.id), class: 'btn btn-info btn-sm mr-2' %>
         <%= link_to "退会画面へ",  check_path(@user.id), class: 'btn btn-danger btn-sm' %>
       </div>
     </div>
