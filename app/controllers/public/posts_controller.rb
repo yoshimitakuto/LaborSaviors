@@ -50,7 +50,7 @@ class Public::PostsController < ApplicationController
       redirect_to posts_path
     else
       flash[:notice] = "申し訳ございません。編集に失敗しました"
-      redirect_to request.referer
+      render :edit
     end
   end
 
@@ -60,7 +60,7 @@ class Public::PostsController < ApplicationController
       redirect_to posts_path
     else
       flash[:notice] = "削除に失敗しました"
-      render 'edit'
+      render :edit
     end
   end
 

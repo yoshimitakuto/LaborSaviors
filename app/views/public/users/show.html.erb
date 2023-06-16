@@ -35,7 +35,7 @@
   <% if @user == current_user %>
     <div class='row'>
       <div class='col-md-6 mx-auto mt-5 text-center'>
-        <%= link_to "情報編集", users_information_edit_path, class: 'btn btn-info btn-sm mr-2' %>
+        <%= link_to "情報編集", information_path(@user.id), class: 'btn btn-info btn-sm mr-2' %>
         <%= link_to "退会画面へ",  check_path(@user.id), class: 'btn btn-danger btn-sm' %>
       </div>
     </div>
