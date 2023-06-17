@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
 # =========deviceルーティング=========
 # ユーザー用
 devise_for :users,skip: [:passwords], controllers: {
@@ -36,6 +35,9 @@ scope module: :public do
       resources :comment_replies, only:[:create, :destroy]
     end
   end
+
+  # notification
+  resources :notifications, only: [:index, :destroy]
 
   # users
   get '/users'  => 'users#index'

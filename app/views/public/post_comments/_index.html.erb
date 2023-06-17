@@ -1,29 +1,32 @@
 <% post.post_comments.each do |post_comment| %>
-  <p><%= image_tag post_comment.user.get_profile_image(100,100) %></p>
-  <%= post_comment.user.nickname %>
-  <%= post_comment.comment %>
-  <%= post_comment.created_at.strftime('%Y/%m/%d') %>
+  <div id='comment'>
+    <p><%= image_tag post_comment.user.get_profile_image(100,100) %></p>
+    <%= post_comment.user.nickname %>
+    <%= post_comment.comment %>
+    <%= post_comment.created_at.strftime('%Y/%m/%d') %>
 
-  <!--コメントに対するいいね機能-->
-  <div id='comment_like_btn_<%= post_comment.id %>'>
-    <%= render 'public/comment_likes/btn', post: post_comment.post , post_comment: post_comment %>
-  </div>
+    <!--コメントに対するいいね機能-->
+    <div id='comment_like_btn_<%= post_comment.id %>'>
+      <%= render 'public/comment_likes/btn', post: post_comment.post , post_comment: post_comment %>
+    </div>
 
-  <% if post_comment.user == current_user %>
-    <%= link_to "編集する", edit_post_post_comment_path(post_comment.post, post_comment), class: 'btn btn-primary' %>
-    <%= link_to "削除する", post_post_comment_path(post_comment.post, post_comment), method: :delete, remote: true, class: 'btn btn-danger' %>
-  <% end %>
-
-  <!--コメントに対する返信及び評価（raty.js）機能-->
-  <div>
-    <!--お悩み投稿者のみが「コメント返信とユーザーの評価」を「1度」だけできるよう条件分岐-->
-    <!--左にfalseになる条件式を書いた方が結果的に右の処理をせずに済むため以下のように記述-->
-    <% if post_comment.post.user == current_user && post_comment.comment_replies.blank? %>
-      <%= render 'public/comment_replies/form', post: post_comment.post,  post_comment: post_comment, comment_reply: post_comment.comment_replies %>
+    <% if post_comment.user == current_user %>
+      <%= link_to "編集する", edit_post_post_comment_path(post_comment.post, post_comment), class: 'btn btn-primary' %>
+      <%= link_to "削除する", post_post_comment_path(post_comment.post, post_comment), method: :delete, remote: true, class: 'btn btn-danger' %>
     <% end %>
+
+    <!--コメントに対する返信及び評価（raty.js）機能-->
+    <div>
+      <!--お悩み投稿者のみが「コメント返信とユーザーの評価」を「1度」だけできるよう条件分岐-->
+      <!--左にfalseになる条件式を書いた方が結果的に右の処理をせずに済むため以下のように記述-->
+      <% if post_comment.post.user == current_user && post_comment.comment_replies.blank? %>
+        <%= render 'public/comment_replies/form', post: post_comment.post,  post_comment: post_comment, comment_reply: post_comment.comment_replies %>
+      <% end %>
+    </div>
+    <div>
+      <!--後々評価者を投稿者のみでなく皆ができる仕様にする可能性を考慮し、複数形で記述-->
+      <%= render 'public/comment_replies/index', comment_replies: post_comment.comment_replies %>
+    </div>
   </div>
-  <div>
-    <!--後々評価者を投稿者のみでなく皆ができる仕様にする可能性を考慮し、複数形で記述-->
-    <%= render 'public/comment_replies/index', comment_replies: post_comment.comment_replies %>
-  </div>
+
 <% end %>

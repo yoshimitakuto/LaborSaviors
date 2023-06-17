@@ -26,6 +26,16 @@
         <!--ログイン時-->
         <% if user_signed_in? %>
           <li class='nav-item'>
+            <%= link_to notifications_path, class: 'nav-link' do %>
+              <% if current_user.notifications.where(checked: false).exists? %>
+                <i class="fa-solid fa-bell fa-shake fa-lg" style="color: #f0dc00;"></i>
+              <% else %>
+                <i class="fa-regular fa-bell fa-lg"></i>
+              <% end %>
+             通知
+            <% end %>
+          </li>
+          <li class='nav-item'>
             <%= link_to about_path ,class: 'nav-link' do %>
               <i class="fa-solid fa-book-journal-whills fa-lg"></i>
               About
@@ -74,19 +84,34 @@
         <!--管理者ログイン時-->
         <% elsif admin_signed_in? %>
           <li class='nav-item'>
-            <%= link_to "会員一覧", admin_users_path %>
+            <%= link_to  admin_users_path, class: 'nav-link' do %>
+              <i class="fa-solid fa-people-group fa-lg"></i>
+              会員一覧
+            <% end %>
           </li>
           <li class='nav-item'>
-            <%= link_to "投稿一覧", admin_posts_path %>
+            <%= link_to admin_posts_path, class: 'nav-link' do %>
+              <i class="fa-solid fa-head-side-virus fa-lg"></i>
+              投稿一覧
+            <% end %>
           </li>
           <li class='nav-item'>
-            <%= link_to "コメント一覧", admin_post_comments_path %>
+            <%= link_to admin_post_comments_path, class: 'nav-link' do %>
+              <i class="fa-solid fa-comments fa-lg"></i>
+              コメント一覧
+            <% end %>
           </li>
           <li class='nav-item'>
-            <%= link_to "カテゴリ一覧", admin_categories_path %>
+            <%= link_to admin_categories_path, class: 'nav-link' do %>
+              <i class="fa-regular fa-rectangle-list fa-lg"></i>
+              カテゴリ一覧
+            <% end %>
           </li>
           <li class='nav-item'>
-            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+            <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link' do %>
+              <i class="fa-solid fa-right-from-bracket fa-lg"></i>
+              ログアウト
+            <% end %>
           </li>
 
          <!--ログアウト時-->

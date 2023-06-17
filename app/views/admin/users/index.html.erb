@@ -1,2 +1,34 @@
-<h1>Admin::Users#index</h1>
-<p>Find me in app/views/admin/users/index.html.erb</p>
+<div class="container mt-5">
+
+  <!--ページタイトル-->
+  <div class="mx-auto mb-3 text-center">
+    <h4><strong>会員一覧</strong></h4>
+  </div>
+
+  <!--一覧表示-->
+  <table class='table table-bordered border-dark table-hover align-middle'>
+    <thead>
+      <tr align='center'>
+        <th>プロフィール画像</th>
+        <th>ニックネーム</th>
+        <th>メールアドレス</th>
+        <th>会員ステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+      <tr align='center'>
+        <td>
+          <%= link_to admin_user_path(user.id) do %>
+            <%= image_tag user.get_profile_image(50,50) %>
+          <% end %>
+        </td>
+        <td><%= user.nickname %></td>
+        <td><%= user.email %></td>
+        <td><%= user.deleted_status %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>

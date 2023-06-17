@@ -1,5 +1,5 @@
 <%= form_with model: comment_reply, url: post_post_comment_comment_replies_path(post, post_comment), method: :post do |f| %>
-  <%= f.text_area :reply_comment, rows: '5', placeholder: "こちらから救世コメントを投稿しよう！" %>
+  <%= f.text_area :reply_comment, rows: '5', placeholder: "救世神へ感謝の言葉を！" %>
 
   <!--nameを用いてデータ送信の記述を見やすくするための記述-->
     <%= f.number_field :evaluation, name: 'evaluation' %>

@@ -22,7 +22,7 @@ class Admin::SessionsController < Devise::SessionsController
 
   # ログイン後はトップ画面へ遷移
   def after_sign_in_path_for(resource)
-    admin_path
+    admin_user_path
   end
 
   # サインアウト後はログイン画面へ遷移
