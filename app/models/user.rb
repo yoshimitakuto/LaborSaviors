@@ -16,10 +16,14 @@ class User < ApplicationRecord
   # コメント機能
   has_many :post_comments, dependent: :destroy
 
+  # コメント返信機能
   has_many :comment_replies
 
   # コメントブックマーク機能（ユーザー評価でも使用）
   has_many :comment_likes, dependent: :destroy
+
+  # 通知機能
+  has_many :notifications, dependent: :destroy
   # ========アソシエーション設定========
 
 
@@ -62,5 +66,15 @@ class User < ApplicationRecord
      super && (is_deleted == false)
    end
    # ========退会済みユーザーがログイン制御設定========
+
+
+   # is_deleted日本語化
+   def deleted_status
+     if is_deleted == false
+       "会員"
+     else
+       "退会済み"
+     end
+   end
 
 end

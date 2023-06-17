@@ -37,7 +37,6 @@ class Public::UsersController < ApplicationController
     @user_post_comments.each do |post_comment|
       @comment_likes_count += post_comment.comment_likes.count
     end
-
   end
 
   def edit

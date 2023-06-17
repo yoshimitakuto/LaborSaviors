@@ -18,6 +18,9 @@ class Post < ApplicationRecord
 
   # カテゴリー機能
   belongs_to :category
+
+  # 関連するNotificationインスタンスも一緒に削除するため記述
+  has_one :notification, as: :subject, dependent: :destroy
   # ========アソシエーション設定========
 
 
