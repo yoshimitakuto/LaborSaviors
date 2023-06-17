@@ -1,14 +1,19 @@
 <div class="container mt-5">
 
   <!--ページタイトル-->
-  <div class="mx-auto mb-3 text-center">
+  <div class="mx-auto mb-5 text-center">
     <h4><strong>会員一覧</strong></h4>
+  </div>
+
+  <div class="mx-auto mb-5 text-center">
+    <p>会員総数：<%= @users.count %>件</p>
   </div>
 
   <!--一覧表示-->
   <table class='table table-bordered border-dark table-hover align-middle'>
     <thead>
       <tr align='center'>
+        <th>会員ID</th>
         <th>プロフィール画像</th>
         <th>ニックネーム</th>
         <th>メールアドレス</th>
@@ -18,6 +23,7 @@
     <tbody>
       <% @users.each do |user| %>
       <tr align='center'>
+        <td><%= user.id %></td>
         <td>
           <%= link_to admin_user_path(user.id) do %>
             <%= image_tag user.get_profile_image(50,50) %>

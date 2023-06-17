@@ -1,2 +1,48 @@
-<h1>Admin::Users#show</h1>
-<p>Find me in app/views/admin/users/show.html.erb</p>
+<div class='container mt-5'>
+
+  <!--ページタイトル-->
+  <div class='row justify-content-center mb-5'>
+    <h4><strong><%= @user.nickname %>さんの詳細（編集画面）</strong></h4>
+  </div>
+
+  <!--一覧表示-->
+  <div class="mb-3">
+    <div class='row justify-content-center mb-5'>
+      <div class='col-md-5 mx-auto'>
+
+        <div class='mb-5 text-center'>
+          <%= image_tag @user.get_profile_image(200,200) %>
+        </div>
+
+        <div class='row form-field mb-5'>
+          <div class='col'><label>ニックネーム：</label></div>
+          <div class='col'><%= @user.nickname %></div>
+        </div>
+
+        <div class='row form-field mb-5'>
+          <div class='col'><label>メールアドレス：</label></div>
+          <div class='col'><%= @user.email %></div>
+        </div>
+
+        <%= form_with model: @user, url: admin_user_path(@user), method: :patch do |f| %>
+          <div class='row form-field mb-5'>
+            <div class='col'><label>会員ステータス：</label></div>
+            <div class='col'>
+              <div>
+                <%= f.radio_button :is_deleted, :false,class: 'form-check-input' %>
+                <%= f.label :is_deleted, "有効",class: 'form-check-label' %>
+              </div>
+              <div>
+                <%= f.radio_button :is_deleted, :true,class: 'form-check-input' %>
+                <%= f.label :is_deleted, "退会",class: 'form-check-label' %>
+              </div>
+            </div>
+          </div>
+          <div class='text-center'>
+            <%= f.submit "更新", class: 'btn btn-info' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

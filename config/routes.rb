@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'comment_replies/index'
+  end
 # =========deviceルーティング=========
 # ユーザー用
 devise_for :users,skip: [:passwords], controllers: {
@@ -56,15 +59,16 @@ end
 
 # 管理者側
 namespace :admin do
-  # homes
-  get '/' => 'homes#top'
-  # posts, post_comments
-  resources :posts, only: [:index,:show,:destroy]
-  resources :post_comments,only: [:index,:show,:destroy]
+  # posts,
+  resources :posts, only: [:index, :destroy]
+  # post_comments
+  resources :post_comments, only: [:index, :destroy]
+  # comment_replies
+  resources :comment_replies, only: [:index, :destroy]
   # categories
-  resources :categories,except: [:new,:show]
+  resources :categories, except: [:new, :show]
   # users
-  resources :users,only: [:index,:show,:edit,:update]
+  resources :users, only: [:index, :show, :update]
 end
 # =========一般ルーティング=========
 
