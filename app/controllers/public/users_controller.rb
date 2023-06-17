@@ -37,6 +37,14 @@ class Public::UsersController < ApplicationController
     @user_post_comments.each do |post_comment|
       @comment_likes_count += post_comment.comment_likes.count
     end
+
+    # chartkickで現在から1週間前の記録を表示
+    post_data = @user.posts.group_by_day(:created_at, range: 1.week.ago.midnight..Time.now.end_of_day).count
+    post_comment_data = @user.post_comments.group_by_day(:created_at, range: 1.week.ago.midnight..Time.now.end_of_day).count
+    comment_reply_data = @user.comment_replies.group_by_day(:created_at, range: 1.week.ago.midnight..Time.now.end_of_day).count
+    @chart = [ { name: "お悩み投稿数", data: post_data }, { name: "コメント数", data: post_comment_data }, { name: "コメント返信数", data: comment_reply_data }, ]
+    @post_count = @user.posts.count
+    @comment_reply_count = @user.comment_replies.count
   end
 
   def edit

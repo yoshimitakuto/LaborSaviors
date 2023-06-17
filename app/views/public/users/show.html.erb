@@ -1,7 +1,7 @@
 <div class="container mt-5">
 
   <!--ページタイトル-->
-  <div class="mx-auto mb-3 text-center">
+  <div class="mx-auto mb-5 text-center">
     <!--ユーザーのにより表示を条件分岐-->
     <h4><strong><%= @user == current_user ? "マイページ" : "#{@user.nickname}の詳細ページ" %></strong></h4>
   </div>
@@ -15,20 +15,29 @@
     <p>救世レベル：「後ほど表示」</p>
   </div>
 
-  <div class="mb-3 text-center">
-    <span>お悩み投稿数：<%= @user.posts.count %>件</span>
-    <span>救世コメント数：<%= @user.post_comments.count %>件</span>
+  <div class="mb-5 text-center">
+    <span>お悩み投稿数：<%= @post_count %>件</span>
+    <span>救世コメント数：<%= @comment_reply_count %>件</span>
     <span>お悩み投稿へのいいね獲得数：<%= @post_likes_count %>件</span>
     <span>救世コメントへのいいね獲得数：<%= @comment_likes_count %>件</span>
   </div>
 
-  <div class='row'>
-    <div class="col-md-6 mx-auto">
-      <p>「後ほどchart.jsでグラフ表示」</p>
+  <!--chartkick表示-->
+  <div class='row text-center'>
+    <div class="col-md-6">
       <div>
-        「グラフ」
+        <h6>【1週間の推移】</h6>
       </div>
+      <%= line_chart @chart, id: 'chart', xtitle: "日付", ytitle: "数", colors: ["#b00", "blue", "#666"] %>
     </div>
+    <div class="col-md-6">
+      <div>
+        <h6>【総合比率】</h6>
+      </div>
+      <div>
+        <%= pie_chart [['救世', @comment_reply_count],['お悩み', @post_count]], id: 'pie_chart', colors: ["#b00", "#666"], donut: true %>
+      </div>
+   </div>
   </div>
 
   <!--ログインユーザーの場合で条件分岐-->

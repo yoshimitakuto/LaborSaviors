@@ -65,5 +65,4 @@ class Post < ApplicationRecord
     ["category_id", "content", "created_at", "id", "is_resolution", "mental_status", "updated_at", "user_id"]
   end
 
-
 end
