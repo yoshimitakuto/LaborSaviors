@@ -8,7 +8,7 @@
             <%= link_to root_path do %>
               <%= image_tag 'logo.jpg', alt: "ロゴ", size: '100x100' %>
             <% end %>
-            <h5 class='mb-0'>管理者ログイン中</h5>
+            <h5 class='mt-2'>【管理者ログイン中】</h5>
           </div>
         </div>
       <% else %>
@@ -95,11 +95,16 @@
               投稿一覧
             <% end %>
           </li>
-          <li class='nav-item'>
-            <%= link_to admin_post_comments_path, class: 'nav-link' do %>
-              <i class="fa-solid fa-comments fa-lg"></i>
-              コメント一覧
-            <% end %>
+          <li class="nav-item dropdown">
+            <!--プルダウンを反映させるために以下「a」で記述-->
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              <i class="fa-solid fa-head-side-virus fa-lg"></i>
+              コメント関連 <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "投稿へのコメント一覧", admin_post_comments_path, class: 'dropdown-item' %></li>
+              <li><%= link_to "コメントへの返信コメント", admin_comment_replies_path, class: 'dropdown-item' %></li>
+            </ul>
           </li>
           <li class='nav-item'>
             <%= link_to admin_categories_path, class: 'nav-link' do %>
