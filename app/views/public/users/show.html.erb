@@ -3,12 +3,12 @@
   <!--ページタイトル-->
   <div class="mx-auto mb-5 text-center">
     <!--ユーザーのにより表示を条件分岐-->
-    <h4><strong><%= @user == current_user ? "マイページ" : "#{@user.nickname}の詳細ページ" %></strong></h4>
+    <h4><strong><%= @user == current_user ? "マイページ(#{@user.nickname})" : "#{@user.nickname}さんの詳細ページ" %></strong></h4>
   </div>
 
   <!--投稿詳細表示フォーム-->
-  <div class="mb-3 text-center">
-    </p><%= image_tag @user.get_profile_image(100,100) %>：<%= @user.nickname %></p>
+  <div class="mb-5 text-center">
+    </p><%= image_tag @user.get_profile_image(150,150), class: 'profile_image' %></p>
   </div>
 
   <div class="mb-3 text-center">
@@ -16,26 +16,48 @@
   </div>
 
   <div class="mb-5 text-center">
-    <span>お悩み投稿数：<%= @post_count %>件</span>
-    <span>救世コメント数：<%= @comment_reply_count %>件</span>
-    <span>お悩み投稿へのいいね獲得数：<%= @post_likes_count %>件</span>
-    <span>救世コメントへのいいね獲得数：<%= @comment_likes_count %>件</span>
+    <table class='table table-bordered'>
+      <thead>
+        <tr>
+          <th>お悩み投稿</th>
+          <th>救世コメント</th>
+          <th>返信コメント</th>
+          <th>お悩み共感</th>
+          <th>救世コメント高評価</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @post_count %>件</td>
+          <td><%= @post_comment_count %>件</td>
+          <td><%= @comment_reply_count %>件</td>
+          <td><%= @post_likes_count %>件</td>
+          <td><%= @comment_likes_count %>件</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
   <!--chartkick表示-->
-  <div class='row text-center'>
+  <div class='row text-center mb-5'>
     <div class="col-md-6">
-      <div>
+      <div class='mb-3'>
         <h6>【1週間の推移】</h6>
       </div>
-      <%= line_chart @chart, id: 'chart', xtitle: "日付", ytitle: "数", colors: ["#b00", "blue", "#666"] %>
+      <div>
+        <%= line_chart @chart, id: 'chart', xtitle: "日付", ytitle: "数", colors: ["#b00", "blue", "#666"] %>
+      </div>
     </div>
     <div class="col-md-6">
-      <div>
+      <div class='mb-3'>
         <h6>【総合比率】</h6>
       </div>
       <div>
-        <%= pie_chart [['救世', @comment_reply_count],['お悩み', @post_count]], id: 'pie_chart', colors: ["#b00", "#666"], donut: true %>
+        <% if @post_count > 0 || @post_comment_count > 0 %>
+          <%= pie_chart [['救世', @post_comment_count],['お悩み', @post_count]], id: 'pie_chart', colors: ["#666", "#b00"], donut: true, library: {emptyText: "No data"}  %>
+        <% else %>
+          総計データがありません
+        <% end %>
       </div>
    </div>
   </div>
@@ -43,7 +65,7 @@
   <!--ログインユーザーの場合で条件分岐-->
   <% if @user == current_user %>
     <div class='row'>
-      <div class='col-md-6 mx-auto mt-5 text-center'>
+      <div class='col-md-6 mx-auto mb-5 text-center'>
         <%= link_to "情報編集", information_path(@user.id), class: 'btn btn-info btn-sm mr-2' %>
         <%= link_to "退会画面へ",  check_path(@user.id), class: 'btn btn-danger btn-sm' %>
       </div>

@@ -20,8 +20,8 @@
    box-sizing: border-box;
  }
 
- .header-image {
-   border-radius: 50px;
+ .profile_image {
+   border-radius: 50%;
  }
 
  main {

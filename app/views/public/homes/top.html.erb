@@ -15,7 +15,7 @@
           <tbody>
             <% @new_posts.each do |new_post| %>
               <tr>
-                <td><%= image_tag new_post.user.get_profile_image(30,30) %></td>
+                <td><%= image_tag new_post.user.get_profile_image(30,30), class: 'profile_image' %></td>
                 <td><%= new_post.user == current_user ? 'あなた' : new_post.user.nickname %></td>
                 <td><%= new_post.category.name %></td>
                 <td><%= new_post.mental %></td>

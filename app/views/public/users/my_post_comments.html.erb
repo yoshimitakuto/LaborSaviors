@@ -25,7 +25,7 @@
       </div>
       <div class='row'>
         <%= link_to user_show_path(current_user) do %>
-          <%= image_tag post_comment.user.get_profile_image(100,100) %>
+          <%= image_tag post_comment.user.get_profile_image(100,100), class: 'profile_image' %>
         <% end %>
         <div class='col'>この投稿に対するあなたコメント内容</div>
         <%= post_comment.comment %>

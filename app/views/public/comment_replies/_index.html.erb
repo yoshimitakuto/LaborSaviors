@@ -1,7 +1,7 @@
 <% comment_replies.each do |comment_reply| %>
   <div class='reply_comment'>
     <%= link_to user_show_path(comment_reply.user.id) do %>
-      <div><%= image_tag comment_reply.user.get_profile_image(100,100) %></div>
+      <div><%= image_tag comment_reply.user.get_profile_image(50,50), class: 'profile_image' %></div>
     <% end %>
     <%= comment_reply.user.nickname %>
     <%= comment_reply.reply_comment %>

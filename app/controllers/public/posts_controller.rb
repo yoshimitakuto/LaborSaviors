@@ -18,9 +18,6 @@ class Public::PostsController < ApplicationController
     end
   end
 
-  def my_indexs
-  end
-
   def new
     @post = Post.new
   end

@@ -71,13 +71,13 @@
             </ul>
           </li>
           <li class='nav-item'>
-            <%= link_to  destroy_user_session_path, method: :delete, class: "nav-link" do %>
+            <%= link_to  destroy_user_session_path, method: :delete, class: 'nav-link' do %>
               <i class="fa-solid fa-right-from-bracket fa-lg"></i>
               ログアウト
             <% end %>
           </li>
           <%= link_to user_show_path(current_user.id) do %>
-             <%= image_tag current_user.get_profile_image(50,50), class: "header-image" %>
+             <%= image_tag current_user.get_profile_image(50,50), class: 'profile_image' %>
           <% end %>
           </li>
 
