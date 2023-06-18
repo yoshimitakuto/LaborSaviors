@@ -1,5 +1,6 @@
 class Public::PostsController < ApplicationController
   before_action :find_id, only: [:show, :edit, :update]
+  before_action :authentication_user!, except: [:index, :show]
 
   def index
      # ransackでの検索機能
