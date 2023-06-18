@@ -7,6 +7,19 @@
     </p>
     <%= post_comment.user.nickname %>
     <%= post_comment.comment %>
+
+    <!--スコア表示-->
+    <div id='comment_star_<%= post_comment.id %>'></div>
+    <script>
+      raty(document.getElementById('comment_star_<%= post_comment.id %>'), {
+          size     : 36,
+          starOff:  '<%= asset_path('star-off.png') %>',
+          starOn : '<%= asset_path('star-on.png') %>',
+          score: '<%= post_comment.evaluation %>',
+          readOnly: true,
+      });
+    </script>
+
     <!--lメソッドの方がstrftimeメソッドよりDRYコードに適しているため-->
     <%= l post_comment.created_at %>
 
@@ -14,7 +27,6 @@
     <div id='comment_like_btn_<%= post_comment.id %>'>
       <%= render 'public/comment_likes/btn', post: post_comment.post , post_comment: post_comment %>
     </div>
-
     <% if post_comment.user == current_user %>
       <%= link_to "編集する", edit_post_post_comment_path(post_comment.post, post_comment), class: 'btn btn-primary' %>
       <%= link_to "削除する", post_post_comment_path(post_comment.post, post_comment), method: :delete, remote: true, class: 'btn btn-danger' %>

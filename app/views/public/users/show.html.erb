@@ -12,7 +12,8 @@
   </div>
 
   <div class="mb-3 text-center">
-    <p>救世レベル：「後ほど表示」</p>
+    <h5>レベル<strong>「<%= @user.level %>」</strong></h5>
+    <p>レベル<%= @user.level + 1 %>に到達するためには、残り<strong><%= link_to "#{(@user.level - 2 ) * 2 + 3 - @post_comment_count}", posts_path %></strong> 件の救世コメントが必要です。</p>
   </div>
 
   <div class="mb-5 text-center">
