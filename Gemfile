@@ -63,6 +63,9 @@ gem 'acts-as-taggable-on', '~>9.0'
 
 gem "chartkick"
 
+# group_by_day メソッドを使用する
+gem "groupdate"
+
 gem 'kaminari','~> 1.2.1'
 
 gem 'image_processing', '~>1.2'
@@ -70,5 +73,7 @@ gem 'image_processing', '~>1.2'
 gem 'enum_help'
 
 gem 'rails-i18n'
+
+gem 'devise-i18n'
 
 gem 'jquery-rails'

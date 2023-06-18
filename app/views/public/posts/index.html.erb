@@ -51,7 +51,7 @@
           <div>
             <p>
               <div class='post-link'>
-                <%= image_tag post.user.get_profile_image(100,100)%>
+                <%= image_tag post.user.get_profile_image(100,100), class: 'profile_image' %>
               </div>
             </p>
             <p><strong><%= post.user.nickname %></strong>と申します。</p>

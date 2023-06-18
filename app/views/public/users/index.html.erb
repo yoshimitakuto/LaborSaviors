@@ -11,7 +11,7 @@
       <div class='row p-3 mt-3'>
         <div class='col-md-4 text-center bg-dark p-3'>
           <%= link_to user_show_path(user.id) do %>
-            <%= image_tag user.get_profile_image(200,200) %>
+            <%= image_tag user.get_profile_image(200,200), class: 'profile_image' %>
           <% end %>
         </div>
         <div class='col-md-8 bg-light p-3'>

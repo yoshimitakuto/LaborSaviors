@@ -18,30 +18,34 @@
             <td><%= image_tag 'Gold_icon.jpg', size: '30x30' %><%= i %>位</td>
             <td>
               <%= link_to user_show_path(rank), class: 'user-link' do %>
-                <%= image_tag rank.get_profile_image(20,20)%><%= rank == current_user ? 'あなた' : rank.nickname %>
+                <%= image_tag rank.get_profile_image(20,20), class: 'profile_image' %> <%= rank == current_user ? 'あなた' : rank.nickname %>
               <% end %>
             </td>
+            <td><%= rank.post_comments.average(:evaluation) || 0 %></td>
           <% elsif i == 2 %>
             <td><%= image_tag 'Silver_icon.jpg', size: '30x30' %><%= i %>位</td>
             <td>
               <%= link_to user_show_path(rank), class: 'user-link' do %>
-                <%= image_tag rank.get_profile_image(20,20)%><%= rank == current_user ? 'あなた' : rank.nickname %>
+                <%= image_tag rank.get_profile_image(20,20), class: 'profile_image' %> <%= rank == current_user ? 'あなた' : rank.nickname %>
               <% end %>
             </td>
+            <td><%= rank.post_comments.average(:evaluation) || 0 %></td>
           <% elsif i == 3 %>
             <td><%= image_tag 'Blonze_icon.jpg', size: '30x30' %><%= i %>位</td>
             <td>
               <%= link_to user_show_path(rank), class: 'user-link' do %>
-                <%= image_tag rank.get_profile_image(20,20)%><%= rank == current_user ? 'あなた' : rank.nickname %>
+                <%= image_tag rank.get_profile_image(20,20), class: 'profile_image' %> <%= rank == current_user ? 'あなた' : rank.nickname %>
               <% end %>
             </td>
+            <td><%= rank.post_comments.average(:evaluation) || 0 %></td>
           <% else %>
             <td><%= i %>位</td>
             <td>
               <%= link_to user_show_path(rank), class: 'user-link' do %>
-                <%= image_tag rank.get_profile_image(20,20)%><%= rank == current_user ? 'あなた' : rank.nickname %>
+                <%= image_tag rank.get_profile_image(20,20), class: 'profile_image' %> <%= rank == current_user ? 'あなた' : rank.nickname %>
               <% end %>
             </td>
+            <td><%= rank.post_comments.average(:evaluation) || 0 %></td>
           <% end %>
         </tr>
       </tbody>

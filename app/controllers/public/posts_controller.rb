@@ -1,5 +1,6 @@
 class Public::PostsController < ApplicationController
   before_action :find_id, only: [:show, :edit, :update]
+  before_action :authentication_user!, except: [:index, :show]
 
   def index
      # ransackでの検索機能
@@ -16,9 +17,6 @@ class Public::PostsController < ApplicationController
     if params[:tag_name]
       @posts = Post.tagged_with("#{params[:tag_name]}").page(params[:page]).per(8)
     end
-  end
-
-  def my_indexs
   end
 
   def new

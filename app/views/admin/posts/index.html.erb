@@ -24,7 +24,7 @@
       <tr>
         <td align='center'>
           <%= link_to admin_user_path(post.user.id) do %>
-            <%= image_tag post.user.get_profile_image(50,50) %>
+            <%= image_tag post.user.get_profile_image(50,50), class: 'profile_image' %>
           <% end %>
         </td>
         <td align='center'><%= post.user.nickname %></td>
