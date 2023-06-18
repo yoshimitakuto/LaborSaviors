@@ -5,11 +5,8 @@
     <% end %>
     <%= comment_reply.user.nickname %>
     <%= comment_reply.reply_comment %>
-    <!--最終的にユーザーのランキングを付ける際に使用する評価値-->
-    <%= comment_reply.post_comment.evaluation %>
     <!--lメソッドの方がstrftimeメソッドよりDRYコードに適しているため-->
     <%= l comment_reply.created_at %>
-
   　<% if comment_reply.user == current_user %>
       <%= link_to "削除する", post_post_comment_comment_reply_path(comment_reply.post_comment.post, comment_reply.post_comment, comment_reply), method: :delete, remote: true, class: 'btn btn-danger' %>
     <% end %>

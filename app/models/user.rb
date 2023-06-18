@@ -77,4 +77,27 @@ class User < ApplicationRecord
      end
    end
 
+
+  # レベルアップのための確認メソッド（レベル表示は「user.level」）
+   def check_level_up
+     # ユーザーのコメント数を取得
+     comment_count = post_comments.count
+
+     # コメント数でレベルアップ条件を定義
+      level_conditions = []
+      # 闘値計算「例：(level(10) - 2 ) * 2 + 1 = comment_count_threshold(17)」
+      (2..100).each do |level|
+        comment_count_threshold = (level - 2) * 2 + 1
+        condition = { level: level, comment_count: comment_count_threshold }
+        level_conditions << condition
+      end
+
+      # レベルアップ条件をチェックし、条件を満たした場合はユーザーレベルを更新
+      level_conditions.each do |condition|
+        if comment_count >= condition[:comment_count] && level < condition[:level]
+          update(level: condition[:level])
+        end
+      end
+   end
+
 end

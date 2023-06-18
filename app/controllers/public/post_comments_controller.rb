@@ -6,6 +6,8 @@ class Public::PostCommentsController < ApplicationController
     post_comment = current_user.post_comments.new(post_comment_params)
     post_comment.post_id = @post.id
     post_comment.save
+    # userモデルに記述のあるレベルアップメソッドを利用
+    current_user.check_level_up
     # 非同期通信のためリダイレクト先の指定なし
   end
 

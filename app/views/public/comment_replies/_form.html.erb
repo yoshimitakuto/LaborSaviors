@@ -1,8 +1,18 @@
 <%= form_with model: comment_reply, url: post_post_comment_comment_replies_path(post, post_comment), method: :post do |f| %>
   <%= f.text_area :reply_comment, rows: '5', placeholder: "救世神へ感謝の言葉を！" %>
 
-  <!--nameを用いてデータ送信の記述を見やすくするための記述-->
-    <%= f.number_field :evaluation, name: 'evaluation' %>
+    <!--post_commentのevaluationカラムへ評価データを送信-->
+    <!--最終的にユーザーのランキングを付ける際に使用する評価値-->
+    <div id='raty_comment_<%= post_comment.id %>'></div>
+    <script>
+      raty(document.getElementById('raty_comment_<%= post_comment.id %>'), {
+          size: 36,
+          starOff:  '<%= asset_path('star-off.png') %>',
+          starOn: '<%= asset_path('star-on.png') %>',
+          scoreName: 'evaluation',
+          half: false
+      });
+    </script>
 
   <%= f.submit "この救世神を評価する", class: 'btn btn-info' %>
 <% end %>

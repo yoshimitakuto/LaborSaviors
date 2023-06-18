@@ -10,7 +10,7 @@ class Notification < ApplicationRecord
 
 
 
-  # enum設定（Notificationインスタンスの状態を判断するため）
+  # enum設定（Notificationインスタンスの状態を判断し、renderしている箇所でビューの表示を変えるため）
   enum action_type: { commented_to_own_post: 0, liked_to_own_post: 1, commented_to_own_post_comment: 2, liked_to_own_post_comment: 3 }
 
 

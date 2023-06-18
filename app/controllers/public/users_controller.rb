@@ -74,7 +74,7 @@ class Public::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:nickname, :profile_image)
+    params.require(:user).permit(:nickname, :profile_image, :is_deleted, :level)
   end
 
   def find_id
