@@ -22,6 +22,20 @@
           </div>
         </div>
 
+        <div class='row justify-content-center mb-5'>
+          <!--画像プレビュー表示-->
+          <img id='preview', class='preview_image'>
+          <script>
+            $('#user_profile_image').on('change', function (e) {
+                let reader = new FileReader();
+                reader.onload = function (e) {
+                    $("#preview").attr('src', e.target.result);
+                }
+                reader.readAsDataURL(e.target.files[0]);
+            });
+          </script>
+        </div>
+
         <div class="actions text-center mt-5">
           <%= f.submit "編集完了", class: 'btn btn-info' %>
         </div>

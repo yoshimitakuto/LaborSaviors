@@ -31,11 +31,25 @@
           <div class='col'><%= f.password_field :password_confirmation, autocomplete: "new-password", required: true%></div>
         </div>
 
-        <div class='row form-field mb-3'>
-          <div class='col'>
+        <div class='row form-field justify-content-center mb-3'>
+          <div class='col mb-3'>
             <label>プロフィール画像（任意）</label><br>
             <%= f.file_field :profile_image, id: 'input-file', autocomplete: "profile_image" %>
           </div>
+        </div>
+
+        <div class='row justify-content-center mb-5'>
+          <!--画像プレビュー表示-->
+          <img id='preview', class='preview_image'>
+          <script>
+            $('#input-file').on('change', function (e) {
+              let reader = new FileReader();
+              reader.onload = function (e) {
+                $('#preview').attr('src', e.target.result);
+              }
+              reader.readAsDataURL(e.target.files[0]);
+            });
+          </script>
         </div>
 
         <div class="actions text-center mt-5">
