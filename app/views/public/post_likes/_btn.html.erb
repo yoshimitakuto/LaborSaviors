@@ -1,0 +1,19 @@
+<!--ログイン中のユーザーのみがアクションできるように制限-->
+<% if user_signed_in? %>
+  <% if post.post_likes_by?(current_user) %>
+    <p>
+      <%= link_to post_post_likes_path(post), method: :delete, remote: true do %>
+        共感 <i class="fa-solid fa-thumbs-up"></i><%= post.post_likes.count %>
+      <% end %>
+    </p>
+  <% else %>
+    <p>
+      <%= link_to post_post_likes_path(post), method: :post, remote: true do %>
+        共感 <i class="fa-regular fa-thumbs-up"></i><%= post.post_likes.count %>
+      <% end %>
+    </p>
+  <% end %>
+<% else %>
+  <%= link_to "ログイン後に共感できます", new_user_session_path %>
+  共感 <i class="fa-regular fa-thumbs-up"></i><%= post.post_likes.count %>
+<% end %>

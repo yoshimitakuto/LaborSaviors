@@ -1,0 +1,14 @@
+ja:
+ enums:
+  post:
+   is_resolution:
+
+   mental_status:
+    tofu_mental: "豆腐メンタルです。優しめにお願いします。"
+    konnyaku_mental: "こんにゃくメンタルです。柔軟にお願いします。"
+    hagane_mental: "鋼メンタルです。強めでお願いします。"
+
+ time:
+   formats:
+     default: "%Y/%m/%d  %H:%M"
+     short: "%m/%d  %H:%M"

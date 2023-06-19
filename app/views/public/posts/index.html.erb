@@ -1,0 +1,77 @@
+<div class='container mt-5'>
+
+  <!--ページタイトル-->
+  <div class='row mx-auto mb-5 text-center'>
+    <p class='col balloon-area'>未救世の人たちはあなたの救世を待っています</p>
+    <h4 class='col'><strong>みんなの悩み</strong></h4>
+    <div class='col'>
+      <div class='card'>
+        <div class='card-header text-center'>
+          求める回答強度
+        </div>
+        <div class='card-body'>
+          <% @categories.each do |category| %>
+            <p>
+              <%= link_to "#{category.name}" %>
+            </p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <%= render 'public/searches/serach_post', q: @q, url: posts_path %>
+    <%= search_form_for @q do |f| %>
+      <%= f.label :is_resolution, "解決ステータス" %>
+      <%= f.radio_button :is_resolution_eq, false %>未解決
+      <%= f.radio_button :is_resolution_eq, true %>解決済み
+      <%= f.submit "検索", class: 'btn btn-primary' %>
+    <% end %>
+    <%= search_form_for @q do |f| %>
+      <%= f.label :mental_status, "メンタルステータス" %>
+      <%= f.radio_button :mental_status_eq, 0 %>豆腐メンタル
+      <%= f.radio_button :mental_status_eq, 1 %>こんにゃくメンタル
+      <%= f.radio_button :mental_status_eq, 2 %>鋼メンタル
+      <%= f.submit "検索", class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+
+
+  <div class='row mx-auto mb-5 text-center'>
+     <!--「is_resolution」のfalse/trueそれぞれの件数計測-->
+    <div class='col'>救世済み<%= @true.count %>件：未救世<%= @false.count %>件</div>
+  </div>
+
+  <div class='row'>
+  <!--投稿一覧-->
+    <% @posts.each do |post| %>
+      <%= link_to post_path(post), class: 'post-link ml-3' do %>
+        <div class='col-md-3 text-center'>
+          <div>
+            <p>
+              <div class='post-link'>
+                <%= image_tag post.user.get_profile_image(100,100), class: 'profile_image' %>
+              </div>
+            </p>
+            <p><strong><%= post.user.nickname %></strong>と申します。</p>
+            <p>悩みのカテゴリーは<strong>「<%= post.category.name %>」</strong>です</p>
+            <p>この投稿は<strong><%= post.resolution_status %></strong>です。</p>
+            <p><strong><%= post.mental %></strong>(救世コメント数：<%= post.post_comments.count %>)</p>
+            <p><%= render 'public/posts/tag_list', tag_list: post.tag_list %></p>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class='mx-auto mb-5 text-center'>
+    <%= paginate @posts %>
+  </div>
+
+
+
+</div>
+
+<%=  %>
+

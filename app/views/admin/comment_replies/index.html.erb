@@ -1,0 +1,48 @@
+<div class="container mt-5">
+
+  <!--ページタイトル-->
+  <div class="mx-auto mb-5 text-center">
+    <h4><strong>コメントへの返信一覧</strong></h4>
+  </div>
+
+  <div class="mx-auto mb-5 text-center">
+    <p>コメント総数：<%= @comment_replies.count %>件</p>
+  </div>
+
+  <!--一覧表示-->
+  <table class='table table-bordered border-dark table-hover align-middle'>
+    <thead>
+      <tr align='center'>
+        <th>プロフィール画像</th>
+        <th>ニックネーム</th>
+        <th>返信コメント内容</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @comment_replies.each do |comment_reply| %>
+      <tr>
+        <td align='center'>
+          <%= link_to admin_user_path(comment_reply.user.id) do %>
+            <%= image_tag comment_reply.user.get_profile_image(50,50), class: 'profile_image' %>
+          <% end %>
+        </td>
+        <td align='center'><%= comment_reply.user.nickname %></td>
+        <td>
+          <div class='mb-3'>評価値：<%= comment_reply.post_comment.evaluation %></div>
+          <div>
+            <div>【返信コメント内容】</div>
+            <div><%= comment_reply.reply_comment %></div>
+          </div>
+        </td>
+        <td>
+          <%= link_to admin_comment_reply_path(comment_reply), method: :delete do %>
+            <i class="fa-solid fa-trash-can fa-lg" style="color: #f90101;"></i>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>

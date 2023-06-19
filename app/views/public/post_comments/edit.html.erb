@@ -1,0 +1,18 @@
+<div class="container mt-5">
+
+  <!--ページタイトル-->
+  <div class="mx-auto mb-3 text-center">
+    <!--解決ステータスにより表示を条件分岐-->
+    <h4><strong>コメント編集</strong></h4>
+  </div>
+
+  <!--コメント編集フォーム-->
+  <div class="mb-3 text-center">
+    <%= form_with model: [@post, @post_comment], url: post_post_comment_path(@post, @post_comment), method: :patch do |f| %>
+      <p>救世コメント</p>
+      <%= f.text_area :comment %>
+      <%= f.submit "変更", class: 'btn btn-success' %>
+    <% end %>
+  </div>
+
+</div>

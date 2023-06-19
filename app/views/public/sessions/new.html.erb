@@ -1,0 +1,34 @@
+<div class='container mt-5'>
+
+  <!--ページタイトル-->
+  <div class="mx-auto mb-5 text-center">
+    <h4><strong>ログイン</strong></h4>
+  </div>
+
+  <!--ログイン情報入力フォーム（名前・パスワードのみ）-->
+  <div class='row mx-auto'>
+    <div class='col-md-8 mx-auto text-center'>
+      <%= form_with model: @user, url: user_session_path do |f| %>
+
+        <div class='row form-field mb-3'>
+          <div class='col'><label>ニックネーム</label></div>
+          <div class='col'><%= f.text_field :nickname, autofocus: true, autocomplete: "nickname", required: true %></div>
+        </div>
+
+        <div class='row form-field mb-3'>
+          <div class='col'><label>パスワード</label></div>
+          <div class='col'><%= f.password_field :password, autocomplete: "new-password", required: true %></div>
+        </div>
+
+        <div class="actions text-center mt-5">
+          <%= f.submit "ログイン", class: 'btn btn-info' %>
+        </div>
+      <% end %>
+
+      <div class="text-center mt-5">
+         <h6>会員登録がお済みでない方は<%= link_to "こちら", new_registration_path(resource_name) , class: "login-link" %></h6>
+      </div>
+
+    </div>
+  </div>
+</div>

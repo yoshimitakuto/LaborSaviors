@@ -1,0 +1,28 @@
+  <!--ページタイトル-->
+  <div class="mx-auto mb-5 mt-5 text-center">
+    <h4><strong>管理者ログイン</strong></h4>
+  </div>
+
+  <!--ログイン情報入力フォーム（email・パスワードのみ）-->
+  <div class='row mx-auto'>
+    <div class='col-md-8 mx-auto text-center'>
+      <%= form_with model: @admin, url: admin_session_path do |f| %>
+
+        <div class='row form-field mb-3'>
+          <div class='col'><label>メールアドレス</label></div>
+          <div class='col'><%= f.email_field :email, autofocus: true, autocomplete: "email", required: true %></div>
+        </div>
+
+        <div class='row form-field mb-3'>
+          <div class='col'><label>パスワード</label></div>
+          <div class='col'><%= f.password_field :password, autocomplete: "current-password", required: true %></div>
+        </div>
+
+        <div class="actions text-center mt-5">
+          <%= f.submit "ログイン", class: 'btn btn-info' %>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>

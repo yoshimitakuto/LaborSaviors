@@ -1,0 +1,29 @@
+<div class="container mt-5">
+
+  <!--ページタイトル-->
+  <div class="mx-auto mb-3 text-center">
+    <h4><strong>いいねした神がかりコメント一覧</strong></h4>
+  </div>
+
+  <!--一覧表示-->
+  <div class="mb-3">
+    <% @comment_likes_comments.each do |comment_like| %>
+      <div class='row p-3 mt-3'>
+        <div class='col-md-4 text-center bg-dark p-3'>
+          <%= link_to user_show_path(comment_like.user.id) do %>
+            <%= image_tag comment_like.user.get_profile_image(200,200), class: 'profile_image' %>
+          <% end %>
+        </div>
+        <div class='col-md-8 bg-light p-3'>
+          <div class='row mb-2'>救世神名：<strong><%= comment_like.user.nickname %></strong></div>
+          <div class='row'>コメント内容</div>
+          <div class='row p-3 bg-white mb-4'><%= comment_like.comment %></div>
+          <div class='row'>いいねした日：「<%= comment_like.created_at.strftime('%Y/%m/%d') %>」</div>
+          <div class='row mb-3'>いいね総数：「<strong><%= comment_like.comment_likes.count %></strong>」</div>
+          <div class='row'><%= link_to "お悩み内容の詳細はこちら",post_path(comment_like.post), class: 'btn btn-info btn-sm' %></div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+</div>

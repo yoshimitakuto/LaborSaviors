@@ -5,12 +5,25 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <!--Fontawesomeをバージョン6系で導入-->
+    <script src="https://kit.fontawesome.com/bda6a2c1b1.js" crossorigin="anonymous"></script>
+    <!--cssファイルは、app/assets 配下のファイルを参照-->
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <%= render 'layouts/header' %>
+    </header>
+
+    <main>
+      <%= flash[:notice] %>
+      <%= yield %>
+    </main>
+
+    <footer>
+      <%= render 'layouts/footer' %>
+    </footer>
   </body>
 </html>

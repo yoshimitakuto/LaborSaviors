@@ -1,0 +1,40 @@
+<div class="container mt-5">
+
+  <!--ページタイトル-->
+  <div class="mx-auto mb-5 text-center">
+    <h4><strong>会員一覧</strong></h4>
+  </div>
+
+  <div class="mx-auto mb-5 text-center">
+    <p>会員総数：<%= @users.count %>件</p>
+  </div>
+
+  <!--一覧表示-->
+  <table class='table table-bordered border-dark table-hover align-middle'>
+    <thead>
+      <tr align='center'>
+        <th>会員ID</th>
+        <th>プロフィール画像</th>
+        <th>ニックネーム</th>
+        <th>メールアドレス</th>
+        <th>会員ステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+      <tr align='center'>
+        <td><%= user.id %></td>
+        <td>
+          <%= link_to admin_user_path(user.id) do %>
+            <%= image_tag user.get_profile_image(50,50), class: 'profile_image' %>
+          <% end %>
+        </td>
+        <td><%= user.nickname %></td>
+        <td><%= user.email %></td>
+        <td><%= user.deleted_status %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>
