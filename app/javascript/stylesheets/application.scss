@@ -1,11 +1,16 @@
 @use '~bootstrap/scss/bootstrap';
 
 
-
 * {
    margin : 0;
    padding : 0;
    box-sizing: border-box;
+ }
+
+ body {
+   background: #00d2ff;
+   background: -webkit-linear-gradient(to right, #928DAB, #00d2ff);
+   background: linear-gradient(to right, #928DAB, #00d2ff);
  }
 
  .profile_image {
@@ -28,3 +33,37 @@
    background-size: cover;
    background-position: center;
  }
+
+ .post-link {
+  text-decoration: none;
+  color: black;
+  background-color: lightgray;
+  border-radius: 50px;
+  transition:transform 0.3s;
+}
+
+.post-link:hover {
+  text-decoration: none;
+  color: black;
+  background-color: gray;
+  transform:scale(1.1);
+}
+
+.page-title {
+  color: white;
+}
+
+a {
+  text-decoration: none;
+}
+
+.header {
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(6px);
+}
+
+.footer {
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(6px);
+  color: white;
+}

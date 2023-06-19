@@ -2,31 +2,29 @@
 
   <!--ページタイトル-->
   <div class="mx-auto mb-5 text-center">
-    <h4><strong>ログイン</strong></h4>
+    <h2 class='page-title'><strong>Login</strong></h2>
   </div>
 
   <!--ログイン情報入力フォーム（名前・パスワードのみ）-->
   <div class='row mx-auto'>
-    <div class='col-md-8 mx-auto text-center'>
+    <div class='col-md-4 mx-auto text-center'>
       <%= form_with model: @user, url: user_session_path do |f| %>
 
-        <div class='row form-field mb-3'>
-          <div class='col'><label>ニックネーム</label></div>
-          <div class='col'><%= f.text_field :nickname, autofocus: true, autocomplete: "nickname", required: true %></div>
+        <div class='row form-field mb-3 was-validated'>
+          <div class='col'><%= f.text_field :nickname, autofocus: true, autocomplete: "nickname", class: 'form-control', placeholder: "nickname", required: true %></div>
         </div>
 
-        <div class='row form-field mb-3'>
-          <div class='col'><label>パスワード</label></div>
-          <div class='col'><%= f.password_field :password, autocomplete: "new-password", required: true %></div>
+        <div class='row form-field mb-3 was-validated'>
+          <div class='col'><%= f.password_field :password, autocomplete: "new-password", class: 'form-control', placeholder: "password", required: true %></div>
         </div>
 
-        <div class="actions text-center mt-5">
-          <%= f.submit "ログイン", class: 'btn btn-info' %>
+        <div class="actions text-center">
+          <%= f.submit "ログイン", class: 'form-control btn btn-info' %>
         </div>
       <% end %>
 
       <div class="text-center mt-5">
-         <h6>会員登録がお済みでない方は<%= link_to "こちら", new_registration_path(resource_name) , class: "login-link" %></h6>
+         <h5><%= link_to "Signup", new_registration_path(resource_name) %> 👋</h5>
       </div>
 
     </div>

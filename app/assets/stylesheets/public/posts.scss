@@ -1,18 +1,3 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-.post-link {
-  text-decoration: none;
-  color: black;
-  background-color: lightgray;
-  border-radius: 50px;
-  transition:transform 0.3s;
-}
-
-.post-link:hover {
-  text-decoration: none;
-  color: black;
-  background-color: gray;
-  transform:scale(1.1);
-}
-

@@ -2,7 +2,7 @@
 
   <!--ページタイトル-->
   <div class="mx-auto mb-5 text-center">
-    <h4><strong>新規会員登録</strong></h4>
+    <h2 class='page-title'><strong>Signup</strong></h2>
   </div>
 
   <!--新規登録入力フォーム-->
@@ -11,24 +11,24 @@
       <%= form_with model: @user, url: user_registration_path do |f| %>
         <%= render "public/shared/error_messages", resource: @user %>
 
-        <div class='row form-field mb-3'>
+        <div class='row form-field mb-3 was-validated'>
           <div class='col'><label>ニックネーム</label></div>
-          <div class='col'><%= f.text_field :nickname, autofocus: true, autocomplete: "nickname", required: true %></div>
+          <div class='col'><%= f.text_field :nickname, autofocus: true, autocomplete: "nickname", class: 'form-control', placeholder: "nickname", required: true %></div>
         </div>
 
-        <div class='row form-field mb-3'>
+        <div class='row form-field mb-3 was-validated'>
           <div class='col'><label>メールアドレス</label></div>
-          <div class='col'><%= f.email_field :email, autocomplete: "email", required: true %></div>
+          <div class='col'><%= f.email_field :email, autocomplete: "email", class: 'form-control', placeholder: "xxx@xxx.xxx", required: true %></div>
         </div>
 
-        <div class='row form-field mb-3'>
+        <div class='row form-field mb-3 was-validated'>
           <div class='col'><label>パスワード（６文字以上)</label></div>
-          <div class='col'> <%= f.password_field :password, autocomplete: "new-password", required: true %></div>
+          <div class='col'> <%= f.password_field :password, autocomplete: "new-password", class: 'form-control', placeholder: "xxxxxxxx", required: true %></div>
         </div>
 
-        <div class='row form-field mb-5'>
+        <div class='row form-field mb-5 was-validated'>
           <div class='col'><label>パスワード（確認用）</label></div>
-          <div class='col'><%= f.password_field :password_confirmation, autocomplete: "new-password", required: true%></div>
+          <div class='col'><%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control', placeholder: "xxxxxxxx", required: true%></div>
         </div>
 
         <div class='row form-field justify-content-center mb-3'>
@@ -52,14 +52,14 @@
           </script>
         </div>
 
-        <div class="actions text-center mt-5">
-          <%= f.submit "登録", class: 'btn btn-info' %>
+        <div class="actions text-center mt-5 col-4 mx-auto">
+          <%= f.submit "登録", class: 'form-control btn btn-info' %>
         </div>
 
       <% end %>
 
       <div class=" text-center mt-5">
-        <h6>すでに登録済みの方は<%= link_to "こちら", new_session_path(resource_name), class: "login-link" %></h6>
+        <h5><%= link_to "Login", new_session_path(resource_name) %> 👋</h5>
       </div>
 
     </div>

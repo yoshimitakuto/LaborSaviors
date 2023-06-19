@@ -12,7 +12,7 @@
         <div class='card-body'>
           <% @categories.each do |category| %>
             <p>
-              <%= link_to "#{category.name}" %>
+              <%= link_to "#{category.name}", class: 'body-link' %>
             </p>
           <% end %>
         </div>
@@ -21,20 +21,23 @@
   </div>
 
   <div>
-    <%= render 'public/searches/serach_post', q: @q, url: posts_path %>
-    <%= search_form_for @q do |f| %>
-      <%= f.label :is_resolution, "解決ステータス" %>
-      <%= f.radio_button :is_resolution_eq, false %>未解決
-      <%= f.radio_button :is_resolution_eq, true %>解決済み
-      <%= f.submit "検索", class: 'btn btn-primary' %>
-    <% end %>
-    <%= search_form_for @q do |f| %>
-      <%= f.label :mental_status, "メンタルステータス" %>
-      <%= f.radio_button :mental_status_eq, 0 %>豆腐メンタル
-      <%= f.radio_button :mental_status_eq, 1 %>こんにゃくメンタル
-      <%= f.radio_button :mental_status_eq, 2 %>鋼メンタル
-      <%= f.submit "検索", class: 'btn btn-primary' %>
-    <% end %>
+    <h5>何をお探しですか？</h5>
+    <div class='search-field'>
+      <%= render 'public/searches/serach_post', q: @q, url: posts_path %>
+      <%= search_form_for @q do |f| %>
+        <%= f.label :is_resolution, "解決ステータス" %>
+        <%= f.radio_button :is_resolution_eq, false %>未解決
+        <%= f.radio_button :is_resolution_eq, true %>解決済み
+        <%= f.submit "検索", class: 'btn btn-primary' %>
+      <% end %>
+      <%= search_form_for @q do |f| %>
+        <%= f.label :mental_status, "メンタルステータス" %>
+        <%= f.radio_button :mental_status_eq, 0 %>豆腐メンタル
+        <%= f.radio_button :mental_status_eq, 1 %>こんにゃくメンタル
+        <%= f.radio_button :mental_status_eq, 2 %>鋼メンタル
+        <%= f.submit "検索", class: 'btn btn-primary' %>
+      <% end %>
+    </div>
   </div>
 
 
