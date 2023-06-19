@@ -24,6 +24,12 @@
    border-radius: 50%;
  }
 
+ .preview_image {
+   border-radius: 50%;
+   width: 40%;
+   height: 40%;
+ }
+
  main {
    min-height: 100vh;
  }

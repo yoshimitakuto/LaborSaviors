@@ -13,7 +13,16 @@
 
   <div class="mb-3 text-center">
     <h5>レベル<strong>「<%= @user.level %>」</strong></h5>
-    <p>レベル<%= @user.level + 1 %>に到達するためには、残り<strong><%= link_to "#{(@user.level - 2 ) * 2 + 3 - @post_comment_count}", posts_path %></strong> 件の救世コメントが必要です。</p>
+    <p>レベル<%= @user.level + 1 %>に到達するためには、残り
+    <!--level1の状態だと0が表示されるため条件分岐で解消-->
+    <strong>
+      <% if @user.level == 1 %>
+        <%= link_to "1", posts_path %>
+      <% else %>
+       <%= link_to "#{(@user.level - 2 ) * 2 + 3 - @post_comment_count}", posts_path %>
+      <% end %>
+    </strong>
+    件の救世コメントが必要です。</p>
   </div>
 
   <div class="mb-5 text-center">
