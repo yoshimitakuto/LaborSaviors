@@ -110,8 +110,8 @@ ActiveRecord::Schema.define(version: 2023_06_18_040557) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "category_id", null: false
+    t.integer "user_id"
+    t.integer "category_id"
     t.integer "mental_status", default: 1, null: false
     t.boolean "is_resolution", default: false, null: false
     t.text "content", null: false
