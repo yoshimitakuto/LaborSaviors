@@ -11,7 +11,7 @@
       <label class='form-label'>「お悩みのカテゴリを選んでね」</label>
       <div>
         <%= f.hidden_field :is_resolution, value: false %>
-        <%= f.collection_select(:category_id, Category.all, :id, :name, include_blank: "選択して下さい") %>
+        <%= f.collection_select(:category_id, Category.all, :id, :name, include_blank: "カテゴリ選択") %>
       </div>
     </div>
 
@@ -23,16 +23,16 @@
     </div>
 
     <div class='form_group mb-3 text-center'>
-      <label class='form-label'>「タグを追加できます！」</label>
+      <label class='form-label'>「タグを追加できます！(複数OK)」</label>
       <div>
-        <%= f.text_field :tag_list, value: @post.tag_list.join(','), class: 'form-control' %>
+        <%= f.text_field :tag_list, value: @post.tag_list.join(','), class: 'form-control', placeholder: "残業,プライベート,やりがい" %>
       </div>
     </div>
 
     <div class='form_group mb-3'>
       <p>「お悩み内容」</p>
       <div>
-        <%= f.text_area :content, :size=>"10x20", placeholder: "安心して、どんな些細なことでも大丈夫だよ", required: true, class: 'form-control' %>
+        <%= f.text_area :content, :size=>"10x20", placeholder: "どんな些細なことでも気軽に投稿しましょう。️️", required: true, class: 'form-control' %>
       </div>
     </div>
 

@@ -11,6 +11,8 @@
    background: #00d2ff;
    background: -webkit-linear-gradient(to right, #928DAB, #00d2ff);
    background: linear-gradient(to right, #928DAB, #00d2ff);
+   text-decoration: none;
+   color : white;
  }
 
  .profile_image {
@@ -35,11 +37,12 @@
  }
 
  .post-link {
-  text-decoration: none;
-  color: black;
-  background-color: lightgray;
-  border-radius: 50px;
-  transition:transform 0.3s;
+   text-decoration: none;
+   color: black;
+   border-radius: 50px;
+   transition:transform 0.3s;
+   background-color: rgba(255, 255, 255, 0.3);
+   backdrop-filter: blur(6px);
 }
 
 .post-link:hover {
