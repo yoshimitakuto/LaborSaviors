@@ -91,6 +91,10 @@ GEM
       warden (~> 1.2.3)
     devise-i18n (1.11.0)
       devise (>= 4.9.0)
+    dotenv (2.8.1)
+    dotenv-rails (2.8.1)
+      dotenv (= 2.8.1)
+      railties (>= 3.2)
     enum_help (0.0.19)
       activesupport (>= 3.0.0)
     erubi (1.12.0)
@@ -141,6 +145,7 @@ GEM
     mini_mime (1.1.2)
     minitest (5.18.0)
     msgpack (1.7.1)
+    mysql2 (0.5.5)
     net-imap (0.3.4)
       date
       net-protocol
@@ -155,8 +160,7 @@ GEM
       racc (~> 1.4)
     orm_adapter (0.5.0)
     public_suffix (5.0.1)
-    puma (5.6.5)
-      nio4r (~> 2.0)
+    puma (3.12.6)
     racc (1.6.2)
     rack (2.2.7)
     rack-mini-profiler (2.3.4)
@@ -278,6 +282,7 @@ DEPENDENCIES
   chartkick
   devise
   devise-i18n
+  dotenv-rails
   enum_help
   groupdate
   image_processing (~> 1.2)
@@ -285,7 +290,11 @@ DEPENDENCIES
   jquery-rails
   kaminari (~> 1.2.1)
   listen (~> 3.3)
-  puma (~> 5.0)
+  mysql2
+  net-imap
+  net-pop
+  net-smtp
+  puma (~> 3.11)
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.7, >= 6.1.7.3)
   rails-i18n
