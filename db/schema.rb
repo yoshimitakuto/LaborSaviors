@@ -180,5 +180,4 @@ ActiveRecord::Schema.define(version: 2023_06_18_040557) do
   add_foreign_key "post_likes", "users"
   add_foreign_key "posts", "categories"
   add_foreign_key "posts", "users"
-  add_foreign_key "taggings", "tags"
 end
