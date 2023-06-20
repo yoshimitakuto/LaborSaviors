@@ -8,9 +8,9 @@
               <%= image_tag post.user.get_profile_image(100,100), class: 'profile_image' %>
             </div>
           </p>
-          <p><strong><%= post.user.nickname %></strong>と申します。</p>
+          <p><strong><%= post.user.nickname %></strong></p>
           <p>カテゴリー<strong>「<%= post.category.name %>」</strong></p>
-          <p>この投稿は<strong><%= post.resolution_status %></strong>です。</p>
+          <p><strong><%= post.resolution_status %></strong>の悩みです。</p>
           <p><strong><%= post.mental %></strong>(救世コメント数：<%= post.post_comments.count %>)</p>
           <p><%= render 'public/posts/tag_list', tag_list: post.tag_list %></p>
         </div>

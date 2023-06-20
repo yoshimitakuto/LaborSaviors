@@ -91,3 +91,17 @@ a {
 .pagination>li>a:hover {
   border-radius: 15px;
 }
+
+.introduction-text {
+  display: none;
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(6px);
+  border-radius: 50%;
+  padding: 30px;
+}
+
+#back {
+ position: fixed;
+ right: 20px;
+ bottom: 20px;
+}

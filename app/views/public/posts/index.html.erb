@@ -2,7 +2,13 @@
 
   <!--ページタイトル-->
   <div class='row mx-auto mb-5 text-center'>
-    <p class='col balloon-area'>未救世の人たちはあなたの救世を待っています</p>
+    <div class='col introduction-title'>
+      <i class="fa-solid fa-circle-question fa-2xl"></i>
+      <div class='introduction-text mt-3 px-3'>
+        ① お悩み投稿をクリック</br>
+        ② 救世コメントを書き込む
+      </div>
+    </div>
     <h4 class='col'><strong>みんなの悩み</strong></h4>
     <div class='col'>
       <%= render 'link_categories', categories: @categories %>
@@ -18,7 +24,7 @@
   </div>
 
   <div class='row justify-content-center mb-5'>
-    全<%= @posts.count %>件
+    全<%= @posts.total_count %>件
   </div>
 
   <div class='row justify-content-center mb-5'>
@@ -65,3 +71,12 @@
 
 </div>
 
+
+<script>
+  $('.introduction-title').on('click', function(){
+    $('.introduction-text').slideDown();
+  });
+  $('.introduction-title').mouseout(function(){
+    $('.introduction-text').slideUp();
+  });
+</script>

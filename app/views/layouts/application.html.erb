@@ -19,6 +19,11 @@
     <main>
       <%= flash[:notice] %>
       <%= yield %>
+      <span id='back'>
+        <%= link_to '#' do %>
+         <i class="fa-solid fa-circle-up fa-lg" style="color: #ffffff;"></i>
+        <% end %>
+      </span>
     </main>
 
     <footer>
@@ -26,3 +31,14 @@
     </footer>
   </body>
 </html>
+
+<script>
+  $(function(){
+    $('#back a').on('click', function(event){
+      $('body, html').animate({
+        scrollTop:0
+      }, 800);
+      event.preeventDefault();
+    })
+  })
+</script>
