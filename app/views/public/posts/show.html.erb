@@ -51,7 +51,7 @@
     <div class='col-md-6 mx-auto mt-5 text-center', id='comment_area'>
       <p class='comment_counts'>コメント件数<%= @post.post_comments.count %></p>
       <!--投稿者本人がコメントできないように条件分岐でコメント入力フォーム非表示-->
-      <%= render 'public/post_comments/form', post: @post, post_comment: @post_comment if @post.user != current_user %>
+      <%= render 'public/post_comments/form', post: @post, post_comment: @post_comment if @post.user != current_user && @post.is_resolution == false %>
     </div>
     <div class='col-md-6 mx-auto mt-5 text-center', id='comment_index'>
       <%= render 'public/post_comments/index', post: @post %>

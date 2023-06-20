@@ -8,7 +8,16 @@ ja:
     konnyaku_mental: "こんにゃくメンタルです。柔軟にお願いします。"
     hagane_mental: "鋼メンタルです。強めでお願いします。"
 
+ views:
+    pagination:
+      first: <i class="fas fa-angle-double-left"></i>
+      last: <i class="fas fa-angle-double-right"></i>
+      previous: <i class="fas fa-angle-left"></i>
+      next: <i class="fas fa-angle-right"></i>
+      truncate: "..."
+
  time:
    formats:
      default: "%Y/%m/%d  %H:%M"
      short: "%m/%d  %H:%M"
+

@@ -48,6 +48,7 @@
 
 .post-link:hover {
   text-decoration: none;
+  border: none;
   color: black;
   background-color: gray;
   transform:scale(1.1);
@@ -75,4 +76,18 @@ a {
 .category-lists {
   background-color: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(6px);
+}
+
+.pagination>li>a {
+  border: none;
+  color: #696969;
+}
+
+.pagination>.active>a {
+  background: #93c9ff;
+  border-radius: 15px;
+}
+
+.pagination>li>a:hover {
+  border-radius: 15px;
 }

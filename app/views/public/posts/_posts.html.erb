@@ -1,5 +1,5 @@
 <% posts.each do |post| %>
-  <div class='col-md-3 ml-3 text-center post-link'>
+  <div class='col-md-3 ml-3 mb-3 text-center post-link'>
     <%= link_to post_path(post), class: 'text-dark' do %>
       <div>
         <div>
@@ -9,7 +9,7 @@
             </div>
           </p>
           <p><strong><%= post.user.nickname %></strong>と申します。</p>
-          <p>悩みのカテゴリーは<strong>「<%= post.category.name %>」</strong>です</p>
+          <p>カテゴリー<strong>「<%= post.category.name %>」</strong></p>
           <p>この投稿は<strong><%= post.resolution_status %></strong>です。</p>
           <p><strong><%= post.mental %></strong>(救世コメント数：<%= post.post_comments.count %>)</p>
           <p><%= render 'public/posts/tag_list', tag_list: post.tag_list %></p>

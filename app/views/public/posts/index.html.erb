@@ -18,13 +18,17 @@
   </div>
 
   <div class='row justify-content-center mb-5'>
+    全<%= @posts.count %>件
+  </div>
+
+  <div class='row justify-content-center mb-5'>
     <div class='col-md-4 text-center'>
       <%= search_form_for @q do |f| %>
         <%= f.label :is_resolution, "解決ステータス" %>
         <div class='mb-2'>
           <!--「is_resolution」のfalse/trueそれぞれの件数計測-->
-          <%= f.radio_button :is_resolution_eq, false %> 未解決(<%= @true.count %>件)
-          <%= f.radio_button :is_resolution_eq, true %> 解決済み(<%= @false.count %>件)
+          <%= f.radio_button :is_resolution_eq, false %> 未解決(<%= @false.count %>件)
+          <%= f.radio_button :is_resolution_eq, true %> 解決済み(<%= @true.count %>件)
         </div>
         <div>
           <%= f.button type: 'submit', class: 'btn btn-primary' do %>
@@ -50,12 +54,12 @@
     </div>
   </div>
 
-  <div class='row'>
+  <div class='row justify-content-center mb-5'>
   <!--投稿一覧-->
     <%= render 'posts', posts: @posts %>
   </div>
 
-  <div class='mx-auto mb-5 text-center'>
+  <div class='row justify-content-center mb-5'>
     <%= paginate @posts %>
   </div>
 
