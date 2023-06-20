@@ -30,8 +30,9 @@ scope module: :public do
   root to: 'homes#top'
   get '/about' => 'homes#about'
 
-  # posts, post_likes, post_comments,  comment_likes
+  # posts, category, post_likes, post_comments, comment_likes
   resources :posts do
+    get 'category_search', on: :member
     resource :post_likes, only:[:create, :destroy]
     resources :post_comments, except:[:new, :show] do
       resource :comment_likes, only:[:create, :destroy]

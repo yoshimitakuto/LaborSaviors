@@ -2,7 +2,7 @@ class Category < ApplicationRecord
 
   # ========アソシエーション設定========
   # 投稿間
-  has_many :posts
+  has_many :posts, dependent: :destroy
   # ========アソシエーション設定========
 
 

@@ -1,0 +1,16 @@
+<div class="container mt-5">
+  <div class="row justify-content-center mb-5">
+    <div class="col-md-9">
+      <h4 class="text-center"><%= @category.name %></h4>
+      <div class="text-center mb-3"><strong><%= @posts.count %>件</strong></div>
+    </div>
+  </div>
+  <div class='row justify-content-center mb-5'>
+    <div class="col-md-3">
+      <%= render 'link_categories', categories: @categories %>
+    </div>
+  </div>
+  <div class='row mb-5'>
+    <%= render 'posts', posts: @posts %>
+  </div>
+</div>

@@ -35,6 +35,12 @@ class Public::PostsController < ApplicationController
     end
   end
 
+  def category_search
+    @categories = Category.all
+    @category = Category.find(params[:id])
+    @posts = @category.posts.order(created_at: :DESC)
+  end
+
   def show
     @post_comment = PostComment.new
   end

@@ -1,6 +1,7 @@
 @use '~bootstrap/scss/bootstrap';
 
 
+
 * {
    margin : 0;
    padding : 0;
@@ -69,4 +70,9 @@ a {
   background-color: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(6px);
   color: white;
+}
+
+.category-lists {
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(6px);
 }
