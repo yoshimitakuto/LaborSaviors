@@ -96,7 +96,7 @@ a {
   display: none;
   background-color: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(6px);
-  border-radius: 50%;
+  border-radius: 20%;
   padding: 30px;
 }
 
@@ -104,4 +104,8 @@ a {
  position: fixed;
  right: 20px;
  bottom: 20px;
+}
+
+.category-search {
+  display: none;
 }
