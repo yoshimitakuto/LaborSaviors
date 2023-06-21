@@ -37,6 +37,14 @@
    background-position: center;
  }
 
+ .link {
+   color: white;
+ }
+
+ .link:hover {
+   text-decoration: none;
+ }
+
  .post-link {
    text-decoration: none;
    color: black;
@@ -118,4 +126,11 @@ a {
   color: white;
   background-color: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(6px);
+}
+
+.content-area {
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(6px);
+  padding: 20px;
+  border-radius: 10px;
 }

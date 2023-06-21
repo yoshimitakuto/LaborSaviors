@@ -2,18 +2,18 @@
 <% if user_signed_in? %>
   <% if post.post_likes_by?(current_user) %>
     <p>
-      <%= link_to post_post_likes_path(post), method: :delete, remote: true do %>
+      <%= link_to post_post_likes_path(post), method: :delete, class: 'link', remote: true do %>
         共感 <i class="fa-solid fa-thumbs-up"></i><%= post.post_likes.count %>
       <% end %>
     </p>
   <% else %>
     <p>
-      <%= link_to post_post_likes_path(post), method: :post, remote: true do %>
+      <%= link_to post_post_likes_path(post), method: :post, class: 'link', remote: true do %>
         共感 <i class="fa-regular fa-thumbs-up"></i><%= post.post_likes.count %>
       <% end %>
     </p>
   <% end %>
 <% else %>
-  <%= link_to "ログイン後に共感できます", new_user_session_path %>
+  <%= link_to "ログイン後に共感できます", new_user_session_path, class: 'link' %>
   共感 <i class="fa-regular fa-thumbs-up"></i><%= post.post_likes.count %>
 <% end %>

@@ -1,9 +1,20 @@
 <div class="container mt-5">
 
   <!--ページタイトル-->
-  <div class="mx-auto mb-3 text-center">
+  <div class="row justify-content-center text-center mb-3">
     <!--解決ステータスにより表示を条件分岐-->
     <h4><strong><%= @post.is_resolution == false ? "救世神求む！" : "解決しました！" %></strong></h4>
+  </div>
+
+  <div class='row justify-content-center m-5'>
+    <%= link_to user_show_path(@post.user) do %>
+      <%= image_tag @post.user.get_profile_image(50,50), class: 'profile_image mr-2' %>
+    <% end %>
+    <%= @post.user.nickname %>
+  </div>
+
+  <div class='row justify-content-center m-5'>
+    PV数：<%= @post.view_counts.count %>
   </div>
 
   <!--投稿詳細表示フォーム-->
@@ -16,19 +27,19 @@
   </div>
 
   <div class="mb-3 text-center">
-    <p><%= render 'public/posts/tag_list', tag_list: @post.tag_list %></p>
+    <i class="fa-solid fa-tags"></i><%= render 'public/posts/tag_list', tag_list: @post.tag_list %>
   </div>
 
-  <div class='row'>
-    <div class="col-md-6 mx-auto">
+  <div class='row justify-content-center mb-3'>
+    <div class="col-md-10 mx-auto">
       <p>「お悩み内容」</p>
-      <div>
+      <div class='content-area'>
         <%= @post.content %>
       </div>
     </div>
   </div>
 
-  <div class='row'>
+  <div class='row justify-content-center text-center'>
     <!--以下非同期処理実装済み（public/post_likesディレクトリ内に各種ファイル格納）-->
     <div class='col-md-6 mx-auto post_like_btn'>
       <%= render 'public/post_likes/btn', post: @post %>
@@ -45,17 +56,19 @@
     </div>
   <% end %>
 
-  <!--コメント投稿フォーム-->
-  <div class='row'>
+    <!--コメント投稿フォーム-->
     <!--以下非同期処理実装済み（public/post_commentsディレクトリ内に各種ファイル格納）-->
-    <div class='col-md-6 mx-auto mt-5 text-center', id='comment_area'>
-      <p class='comment_counts'>コメント件数<%= @post.post_comments.count %></p>
+    <div class='row justify-content-center mt-5 text-center', id='comment_area'>
+      <p class='comment_counts'>救世コメント数<%= @post.post_comments.count %></p>
+    </div>
+
+    <div class='row justify-content-center'>
       <!--投稿者本人がコメントできないように条件分岐でコメント入力フォーム非表示-->
       <%= render 'public/post_comments/form', post: @post, post_comment: @post_comment if @post.user != current_user && @post.is_resolution == false %>
     </div>
+
     <div class='col-md-6 mx-auto mt-5 text-center', id='comment_index'>
       <%= render 'public/post_comments/index', post: @post %>
     </div>
-  </div>
 
 </div>

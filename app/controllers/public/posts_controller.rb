@@ -16,7 +16,7 @@ class Public::PostsController < ApplicationController
 
     # タグリンク検索のための記述
     if params[:tag_name]
-      @posts = Post.tagged_with("#{params[:tag_name]}").page(params[:page]).per(8)
+      @posts = Post.tagged_with("#{params[:tag_name]}").page(params[:page]).per(6)
     end
   end
 
@@ -39,11 +39,14 @@ class Public::PostsController < ApplicationController
   def category_search
     @categories = Category.all
     @category = Category.find(params[:id])
-    @posts = @category.posts.page(params[:page]).per(8).order(created_at: :DESC)
+    @posts = @category.posts.page(params[:page]).per(6).order(created_at: :DESC)
   end
 
   def show
     @post_comment = PostComment.new
+    unless ViewCount.find_by(user_id: current_user.id, post_id: @post.id)
+      current_user.view_counts.create(post_id: @post.id)
+    end
   end
 
   def edit

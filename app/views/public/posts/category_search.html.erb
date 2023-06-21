@@ -10,8 +10,11 @@
       <%= render 'link_categories', categories: @categories %>
     </div>
   </div>
-  <div class='row mb-5'>
+  <div class='row justify-content-center mb-5'>
     <%= render 'posts', posts: @posts %>
+  </div>
+  <div class='row mb-5'>
+    <%= link_to "一覧へ戻る", posts_path, class: 'link' %>
   </div>
   <div class='row mb-5'>
     <%= paginate @posts %>

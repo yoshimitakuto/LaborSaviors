@@ -1,8 +1,12 @@
 <!--ログイン中のユーザーのみがアクションできるように制限-->
 <% if user_signed_in? %>
   <%= form_with model: [post, post_comment], local: false do |f| %>
-    <%= f.text_area :comment, rows: '5', placeholder: "こちらから救世コメントを投稿しよう！" %>
-    <%= f.submit "救世する", class: 'btn btn-info' %>
+    <div>
+      <%= f.text_area :comment, :size=>"100x20", placeholder: "こちらから救世コメントを投稿しよう！" %>
+    </div>
+    <div class='text-center'>
+      <%= f.submit "救世する", class: 'btn btn-info' %>
+    </div>
   <% end %>
 <% else %>
   <%= link_to "ログイン後にコメントできます", new_user_session_path %>

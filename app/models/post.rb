@@ -21,6 +21,9 @@ class Post < ApplicationRecord
 
   # 関連するNotificationインスタンスも一緒に削除するため記述
   has_one :notification, as: :subject, dependent: :destroy
+
+  # 通知機能
+  has_many :view_counts, dependent: :destroy
   # ========アソシエーション設定========
 
 

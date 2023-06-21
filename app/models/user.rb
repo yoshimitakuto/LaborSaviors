@@ -24,6 +24,9 @@ class User < ApplicationRecord
 
   # 通知機能
   has_many :notifications, dependent: :destroy
+
+  # 通知機能
+  has_many :view_counts, dependent: :destroy
   # ========アソシエーション設定========
 
 
