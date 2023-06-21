@@ -1,8 +1,12 @@
 <div class='container mt-5'>
 
   <!--ページタイトル-->
-  <div class='row justify-content-center text-center mb-5'>
-    <div class='col introduction-title'>
+  <div class='row justify-content-center mb-5'>
+    <h4><strong>みんなの悩み</strong></h4>
+  </div>
+
+  <div class='row justify-content-center mb-5'>
+    <div class='col-md-6 text-center introduction-title'>
       <i class="fa-solid fa-circle-question fa-2xl"></i>
       <div class='introduction-text mt-3 px-3'>
         ① 他の人のお悩みをクリック</br>
@@ -12,30 +16,22 @@
         ※ コメントをするたびにレベルが上がります。
       </div>
     </div>
-    <h4 class='col'><strong>みんなの悩み</strong></h4>
-    <div class='col category-area'>カテゴリー検索はこちら
-      <div class='category-search'>
-        <%= render 'link_categories', categories: @categories %>
-      </div>
-    </div>
   </div>
 
-  <div class='row justify-content-center mb-5'>
-    <div class='col-md-4'>
-      <div>
-        <%= render 'public/searches/serach_post', q: @q, url: posts_path %>
-      </div>
+  <div class='row justify-content-center mt-5 mb-3'>
+    <div class='col-md-5'>
+      <%= render 'public/searches/serach_post', q: @q, url: posts_path %>
     </div>
+    <div class='col-md-2 ml-3 btn btn-info btn-other other-search-title'>他の検索を試す</div>
   </div>
 
-  <div class='row justify-content-center mb-5'>
+  <div class='row justify-content-center mb-3'>
     全<%= @posts.total_count %>件
   </div>
 
-  <div class='row justify-content-center mb-5'>
-    <div class='col-md-4 text-center'>
+  <div class='row justify-content-center mb-3'>
+    <div class='col-md-4 text-center other-search-body'>
       <%= search_form_for @q do |f| %>
-        <%= f.label :is_resolution, "解決ステータス" %>
         <div class='mb-2'>
           <!--「is_resolution」のfalse/trueそれぞれの件数計測-->
           <%= f.radio_button :is_resolution_eq, false %> 未解決(<%= @false.count %>件)
@@ -48,9 +44,8 @@
         </div>
       <% end %>
     </div>
-    <div class='col-md-5 text-center'>
+    <div class='col-md-5 text-center other-search-body'>
       <%= search_form_for @q do |f| %>
-        <%= f.label :mental_status, "メンタルステータス" %>
         <div class='mb-2'>
           <%= f.radio_button :mental_status_eq, 0 %> 豆腐メンタル
           <%= f.radio_button :mental_status_eq, 1 %> こんにゃくメンタル
@@ -63,6 +58,10 @@
         </div>
       <% end %>
     </div>
+  </div>
+
+  <div class='row justify-content-center mb-5'>
+    <%= render 'link_categories', categories: @categories %>
   </div>
 
   <div class='row justify-content-center mb-5'>
@@ -85,8 +84,8 @@
   })
 
   $(function(){
-    $('.category-area').on('click', function(){
-      $('.category-search').slideToggle();
+    $('.other-search-title').on('click', function(){
+      $('.other-search-body').slideToggle();
     });
   })
 </script>
