@@ -22,7 +22,10 @@ module LaborSaviors
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
     #
-    # config.time_zone = "Central Time (US & Canada)"
+    config.time_zone = "Tokyo"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # groupdateはsqliteをサポートしていなかったため以下の記述でエラーを回避
+    Groupdate.time_zone = "UTC"
   end
 end

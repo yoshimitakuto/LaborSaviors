@@ -1,57 +1,59 @@
 @use '~bootstrap/scss/bootstrap';
 
-
+%background_color {
+   background-color: rgba(255, 255, 255, 0.3);
+   backdrop-filter: blur(6px);
+}
 
 * {
    margin : 0;
    padding : 0;
    box-sizing: border-box;
- }
+}
 
- body {
-   background: #00d2ff;
-   background: -webkit-linear-gradient(to right, #928DAB, #00d2ff);
-   background: linear-gradient(to right, #928DAB, #00d2ff);
-   text-decoration: none;
-   color : white;
- }
+body {
+  background: #00d2ff;
+  background: -webkit-linear-gradient(to right, #928DAB, #00d2ff);
+  background: linear-gradient(to right, #928DAB, #00d2ff);
+  text-decoration: none;
+  color : white;
+}
 
- .profile_image {
-   border-radius: 50%;
- }
+.profile_image {
+  border-radius: 50%;
+}
 
- .preview_image {
-   border-radius: 50%;
-   width: 40%;
-   height: 40%;
- }
+.preview_image {
+  border-radius: 50%;
+  width: 40%;
+  height: 40%;
+}
 
- main {
-   min-height: 100vh;
- }
+main {
+  min-height: 100vh;
+}
 
- .backimage {
-   background-image: url("../images/logo.jpg");
-   height: 800px;
-   background-size: cover;
-   background-position: center;
- }
+.backimage {
+  background-image: url("../images/logo.jpg");
+  height: 800px;
+  background-size: cover;
+  background-position: center;
+}
 
- .link {
-   color: white;
- }
+.link {
+  color: white;
+}
 
- .link:hover {
-   text-decoration: none;
- }
+.link:hover {
+  text-decoration: none;
+}
 
- .post-link {
-   text-decoration: none;
-   color: black;
-   border-radius: 50px;
-   transition:transform 0.3s;
-   background-color: rgba(255, 255, 255, 0.3);
-   backdrop-filter: blur(6px);
+.post-link {
+  text-decoration: none;
+  color: black;
+  border-radius: 50px;
+  transition:transform 0.3s;
+  @extend %background_color;
 }
 
 .post-link:hover {
@@ -66,24 +68,17 @@
   color: white;
 }
 
-a {
-  text-decoration: none;
-}
-
 .header {
-  background-color: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(6px);
+  @extend %background_color;
 }
 
 .footer {
-  background-color: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(6px);
+  @extend %background_color;
   color: white;
 }
 
 .category-lists {
-  background-color: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(6px);
+  @extend %background_color;
 }
 
 .pagination>li>a {
@@ -102,16 +97,15 @@ a {
 
 .introduction-text {
   display: none;
-  background-color: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(6px);
+  @extend %background_color;
   border-radius: 50%;
   padding: 30px;
 }
 
 #back {
- position: fixed;
- right: 20px;
- bottom: 20px;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
 }
 
 .category-body {
@@ -124,13 +118,27 @@ a {
 
 .btn-other {
   color: white;
-  background-color: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(6px);
+  @extend %background_color;
 }
 
 .content-area {
-  background-color: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(6px);
+  @extend %background_color;
   padding: 20px;
   border-radius: 10px;
+  position: relative;
+}
+
+.selects {
+  position: absolute;
+  right: 2%;
+  bottom: 5%;
+}
+
+.ranking-card {
+  @extend %background_color;
+  width: 20rem;
+}
+
+.post_body {
+  @extend %background_color;
 }

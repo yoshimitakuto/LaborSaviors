@@ -1,14 +1,25 @@
 <% comment_replies.each do |comment_reply| %>
   <div class='reply_comment'>
-    <%= link_to user_show_path(comment_reply.user.id) do %>
-      <div><%= image_tag comment_reply.user.get_profile_image(50,50), class: 'profile_image' %></div>
-    <% end %>
-    <%= comment_reply.user.nickname %>
-    <%= comment_reply.reply_comment %>
-    <!--lメソッドの方がstrftimeメソッドよりDRYコードに適しているため-->
-    <%= l comment_reply.created_at %>
-  　<% if comment_reply.user == current_user %>
-      <%= link_to "削除する", post_post_comment_comment_reply_path(comment_reply.post_comment.post, comment_reply.post_comment, comment_reply), method: :delete, remote: true, class: 'btn btn-danger' %>
-    <% end %>
+    <div>
+      <%= link_to user_show_path(comment_reply.user.id) do %>
+        <%= image_tag comment_reply.user.get_profile_image(50,50), class: 'profile_image mb-2' %>
+      <% end %>
+      <%= comment_reply.user.nickname %>
+    </div>
+
+    <div class='content-area mb-2'>
+      <%= comment_reply.reply_comment %>
+    </div>
+
+    <div>
+      <!--lメソッドの方がstrftimeメソッドよりDRYコードに適しているため-->
+      <%= l comment_reply.created_at %>
+    　<% if comment_reply.user == current_user %>
+        <%= link_to post_post_comment_comment_reply_path(comment_reply.post_comment.post, comment_reply.post_comment, comment_reply), method: :delete, remote: true, class: 'btn btn-danger btn-sm' do %>
+          <i class="fa-solid fa-trash-can"></i>
+        <% end %>
+      <% end %>
+    </div>
+
   </div>
 <% end %>

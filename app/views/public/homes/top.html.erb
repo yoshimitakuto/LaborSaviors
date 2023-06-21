@@ -1,28 +1,36 @@
 <div class='container mt-5 mb-5'>
-  <div class='row'>
-    <div class='col-md-3'>
+  <div class='row justify-content-center mb-5'>
+
+    <div class='col'>
       <%= render 'public/users/rank', rank: @rank %>
     </div>
-    <div class="col-md-8 ml-5">
-      <div class="row">
-        <div class="col-md-6">皆が助けを求めているぞ！（新着お悩み）</div>
-        <div class="col-md-6">
+
+    <div class="col-md-8 mr-3">
+      <div class="row justify-content-end">
+        <div class="col-md-5">
           <%= render 'public/searches/serach_post', q: @q, url: root_path %>
         </div>
       </div>
       <div class='row mt-5'>
+        <h4 class="col-md-6">新着のお悩み（5件表示）</h4>
         <table class='table'>
           <tbody>
             <% @new_posts.each do |new_post| %>
               <tr>
-                <td><%= image_tag new_post.user.get_profile_image(30,30), class: 'profile_image' %></td>
-                <td><%= new_post.user == current_user ? 'あなた' : new_post.user.nickname %></td>
-                <td><%= new_post.category.name %></td>
-                <td><%= new_post.mental %></td>
+                <td>
+                  <div>
+                    <%= image_tag new_post.user.get_profile_image(30,30), class: 'profile_image' %>
+                    <%= new_post.user == current_user ? '自分' : new_post.user.nickname %>
+                  </div>
+                </td>
+                <td><%= new_post.resolution_status %></td>
+                <td><%= new_post.content.truncate(25) %></td>
                 <td>
                   <!--解決ステータスが未解決かつ、ログイン中ユーザーでない場合は表示する-->
-                  <% if new_post.is_resolution == false %>
-                    <%= link_to "救世する", post_path(new_post), class: 'btn btn-info btn-sm'  if new_post.user != current_user %>
+                  <% if new_post.user != current_user && new_post.is_resolution == false %>
+                    <%= link_to "救世", post_path(new_post), class: 'btn btn-info btn-sm' %>
+                  <% else %>
+                    <%= link_to "詳細", post_path(new_post), class: 'btn btn-secondary btn-sm' %>
                   <% end %>
                 </td>
               </tr>
@@ -30,14 +38,14 @@
           </tbody>
         </table>
       </div>
-      <div class='row justify-content-center align-items-center mt-5'>
-        どっちを選択する？
-      </div>
-      <div class='row'>
-        <div class='col-md-6 text-center'><%= link_to "悩みを聞いてもらう", new_post_path, class: 'btn btn-danger' %></div>
-        <div class='col-md-6 text-center'><%= link_to "救世する", posts_path, class: 'btn btn-info' %></div>
-      </div>
     </div>
+
   </div>
+
+  <div class='row justify-content-center mb-5'>
+    <div class='col-md-4 text-center'><%= link_to "悩みを聞いてもらう", new_post_path, class: 'btn btn-danger' %></div>
+    <div class='col-md-4 text-center'><%= link_to "救世する", posts_path, class: 'btn btn-info' %></div>
+  </div>
+
 </div>
 

@@ -7,12 +7,12 @@ class Public::UsersController < ApplicationController
 
   def post_likes
     post_likes = PostLike.where(user_id: @user.id).pluck(:post_id)
-    @post_likes_posts = Post.find(post_likes)
+    @post_likes_posts = Post.where(id: post_likes).page(params[:page]).per(8)
   end
 
   def comment_likes
     comment_likes = CommentLike.where(user_id: @user.id).pluck(:post_comment_id)
-    @comment_likes_comments = PostComment.find(comment_likes)
+    @comment_likes_comments = PostComment.where(id: comment_likes).page(params[:page]).per(8)
   end
 
   def my_posts

@@ -2,9 +2,9 @@
 <% if user_signed_in? %>
   <%= form_with model: [post, post_comment], local: false do |f| %>
     <div>
-      <%= f.text_area :comment, :size=>"100x20", placeholder: "こちらから救世コメントを投稿しよう！" %>
+      <%= f.text_area :comment, :size =>"100x15", placeholder: "こちらから救世コメントを投稿しよう！", class: 'form-control' %>
     </div>
-    <div class='text-center'>
+    <div class='text-center mt-3'>
       <%= f.submit "救世する", class: 'btn btn-info' %>
     </div>
   <% end %>
