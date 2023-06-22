@@ -18,7 +18,7 @@
       <%= link_to "みんなのお悩みを見に行く", posts_path, class: 'btn btn-info' %>
     </div>
   <% else %>
-    <div class="mb-3">
+    <div class="mb-5">
       <% @post_likes_posts.each do |post_like| %>
         <div class='row justify-content-center p-3 mt-3'>
           <div class='col-md-4 text-center bg-dark p-3'>
@@ -38,7 +38,7 @@
     </div>
   <% end %>
 
-  <div class='row justify-content-center'>
+  <div class='row justify-content-center mb-5'>
     <%= paginate @post_likes_posts %>
   </div>
 

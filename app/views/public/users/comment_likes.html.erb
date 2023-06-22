@@ -18,12 +18,12 @@
       <%= link_to "みんなのお悩みから救世コメントを見に行く", posts_path, class: 'btn btn-info' %>
     </div>
   <% else %>
-    <div class="mb-3">
+    <div class="mb-5">
         <% @comment_likes_comments.each do |comment_like| %>
           <div class='row justify-content-center p-3 mt-3'>
             <div class='col-md-4 text-center bg-dark p-3'>
               <%= link_to user_show_path(comment_like.user.id) do %>
-                <%= image_tag comment_like.user.get_profile_image(200,200), class: 'profile_image post-link' %>
+                <%= image_tag comment_like.user.get_profile_image(200,200), class: 'profile_image' %>
               <% end %>
             </div>
             <div class='col-md-6 p-3 post-body'>
@@ -38,7 +38,7 @@
       </div>
   <% end %>
 
- <div class='row justify-content-center'>
+ <div class='row justify-content-center mb-5'>
    <%= paginate @comment_likes_comments %>
  </div>
 

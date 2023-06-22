@@ -3,7 +3,7 @@
 
     <!--ロゴ領域-->
       <% if admin_signed_in? %>
-        <div class='row d-flex justify-content-around align-items-center col-md-3 ms-5'>
+        <div class='row justify-content-around align-items-center col-md-3 ms-5'>
           <div class='navbar navbar-brand'>
             <%= link_to about_path do %>
               <%= image_tag 'logo.jpg', alt: "ロゴ", size: '80x80' %>
@@ -46,7 +46,7 @@
               救世神
             <% end %>
           </li>
-          <li class="nav-item dropdown">
+          <li class="nav-item dropright">
             <!--プルダウンを反映させるために以下「a」で記述-->
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               <i class="fa-solid fa-head-side-virus fa-beat-fade fa-lg"></i>
@@ -58,7 +58,7 @@
               <li><%= link_to "共感したお悩み", user_post_likes_path(current_user), class: 'dropdown-item' %></li>
             </ul>
           </li>
-          <li class="nav-item dropdown">
+          <li class="nav-item dropright">
             <!--プルダウンを反映させるために以下「a」で記述-->
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               <i class="fa-solid fa-comments fa-flip fa-lg"></i>

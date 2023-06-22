@@ -16,7 +16,7 @@
       <%= link_to "お悩みを投稿して救世神達を刺激してあげましょう", new_post_path, class: 'btn btn-info' %>
     </div>
   <% else %>
-    <div class="mb-3">
+    <div class="mb-5">
       <% @posts.each do |post| %>
         <div class='row justify-content-center p-3 mt-3'>
           <div class='col-md-4 text-center bg-dark p-3'>
@@ -36,7 +36,7 @@
     </div>
   <% end %>
 
-  <div class='row justify-content-center'>
+  <div class='row justify-content-center mb-5'>
     <%= paginate @posts %>
   </div>
 

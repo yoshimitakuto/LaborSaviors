@@ -18,7 +18,7 @@
       <%= link_to "救世神になる", posts_path, class: 'btn btn-info' %>
     </div>
   <% else %>
-    <div class="mb-3">
+    <div class="mb-5">
       <% @post_comments.each do |post_comment| %>
         <div class='row justify-content-center p-3 mt-3'>
           <div class='col-md-4 text-center bg-dark p-3'>
@@ -51,7 +51,7 @@
     </div>
   <% end %>
 
-  <div class='row justify-content-center'>
+  <div class='row justify-content-center mb-5'>
     <%= paginate @post_comments %>
   </div>
 

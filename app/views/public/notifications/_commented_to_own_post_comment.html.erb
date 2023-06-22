@@ -1,7 +1,8 @@
 <div>
-  <%= link_to notification.subject.user.nickname, user_show_path(notification.subject.user) %>
+  <%= image_tag notification.subject.user.get_profile_image(30,30), class: 'profile_image' %>
+  <strong><%= link_to notification.subject.user.nickname, user_show_path(notification.subject.user), class: 'link' %></strong>
   さんがあなたの
-  <%= link_to "救世コメント", post_path(notification.subject.post_comment.post) %>
-  を評価しました。
+  <strong><%= link_to "救世コメントを評価", post_path(notification.subject.post_comment.post), class: 'link' %></strong>
+  しました。
   <i class="far fa-clock clock-icon"></i><%= time_ago_in_words(notification.created_at) %>前
 </div>
