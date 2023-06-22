@@ -1,29 +1,36 @@
 <div class="container mt-5">
 
   <!--ページタイトル-->
-  <div class="mx-auto mb-3 text-center">
+  <div class="row justify-content-center mb-5">
     <h4><strong><%= @user.nickname %>さんの投稿一覧</strong></h4>
   </div>
 
   <!--一覧表示-->
-  <div class="mb-3">
-    <% @posts.each do |post| %>
-      <div class='row p-3 mt-3'>
-        <div class='col-md-4 text-center bg-dark p-3'>
-          <%= link_to user_show_path(current_user) do %>
-            <%= image_tag post.user.get_profile_image(200,200), class: 'profile_image' %>
-          <% end %>
+  <% if @posts.empty? %>
+    <div class='row justify-content-center'>
+      <h5 class='mb-5'>あなたの投稿はまだありません。</h5>
+      <%= link_to "お悩みを投稿して救世神達を刺激してあげましょう", new_post_path, class: 'btn btn-info' %>
+    </div>
+  <% else %>
+    <div class="mb-3">
+      <% @posts.each do |post| %>
+        <div class='row p-3 mt-3'>
+          <div class='col-md-4 text-center bg-dark p-3'>
+            <%= link_to user_show_path(current_user) do %>
+              <%= image_tag post.user.get_profile_image(200,200), class: 'profile_image' %>
+            <% end %>
+          </div>
+          <div class='col-md-8 bg-light p-3'>
+            <div class='row mb-2'>ニックネーム：<strong><%= post.user.nickname %></strong></div>
+            <div class='row mb-3'>この投稿は<strong><%= post.resolution_status %></strong>です。</div>
+            <div class='row'>お悩み内容</div>
+            <div class='row p-3 bg-white mb-4'><%= post.content %></div>
+            <div class='row'>お悩み投稿日：「<%= post.created_at.strftime('%Y/%m/%d') %>」</div>
+            <div class='row'><%= link_to "詳細",post_path(post), class: 'btn btn-info btn-sm' %></div>
+          </div>
         </div>
-        <div class='col-md-8 bg-light p-3'>
-          <div class='row mb-2'>ニックネーム：<strong><%= post.user.nickname %></strong></div>
-          <div class='row mb-3'>この投稿は<strong><%= post.resolution_status %></strong>です。</div>
-          <div class='row'>お悩み内容</div>
-          <div class='row p-3 bg-white mb-4'><%= post.content %></div>
-          <div class='row'>お悩み投稿日：「<%= post.created_at.strftime('%Y/%m/%d') %>」</div>
-          <div class='row'><%= link_to "詳細",post_path(post), class: 'btn btn-info btn-sm' %></div>
-        </div>
-      </div>
-    <% end %>
-  </div>
+      <% end %>
+    </div>
+  <% end %>
 
 </div>

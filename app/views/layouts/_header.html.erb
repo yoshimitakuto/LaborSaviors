@@ -65,8 +65,8 @@
               神がかりコメント<span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-              <li><%= link_to "高評価したコメント", user_comment_likes_path(current_user), class: 'dropdown-item' %></li>
               <li><%= link_to "あなたのコメント", user_my_post_comments_path(current_user), class: 'dropdown-item' %></li>
+              <li><%= link_to "高評価したコメント", user_comment_likes_path(current_user), class: 'dropdown-item' %></li>
             </ul>
           </li>
           <li class='nav-item'>

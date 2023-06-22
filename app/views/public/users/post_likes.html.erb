@@ -14,7 +14,7 @@
             <%= image_tag post_like.user.get_profile_image(200,200), class: 'profile_image' %>
           <% end %>
         </div>
-        <div class='col-md-6 p-3 post_body'>
+        <div class='col-md-6 p-3 post-body'>
           <div class='mb-2 text-center'><strong><%= post_like.user.nickname %>（<%= post_like.resolution_status %>）</strong></div>
           <div class='mb-2'>「お悩み内容」</div>
           <div class='p-3 bg-dark mb-4'><%= post_like.content.truncate(30) %></div>

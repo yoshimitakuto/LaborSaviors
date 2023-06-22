@@ -19,16 +19,18 @@
     <main>
       <%= flash[:notice] %>
       <%= yield %>
-      <span id='back'>
-        <%= link_to '#' do %>
-         <i class="fa-solid fa-circle-up fa-lg" style="color: #ffffff;"></i>
-        <% end %>
-      </span>
     </main>
 
     <footer>
       <%= render 'layouts/footer' %>
     </footer>
+
+    <span id='back'>
+      <%= link_to '#' do %>
+       <i class="fa-solid fa-circle-up fa-2xl" style="color: #ffffff;"></i>
+      <% end %>
+    </span>
+
   </body>
 </html>
 
