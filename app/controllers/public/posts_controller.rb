@@ -5,7 +5,7 @@ class Public::PostsController < ApplicationController
   def index
      # ransackでの検索機能
     @q = Post.ransack(params[:q])
-    @posts = @q.result.page(params[:page]).per(6).order(created_at: :DESC)
+    @posts = @q.result.page(params[:page]).per(6).order(created_at: :desc)
     # @counts = @posts.total_count
 
     # 「is_resoulution」のステータスを簡単に記述するための記述
@@ -39,7 +39,7 @@ class Public::PostsController < ApplicationController
   def category_search
     @categories = Category.all
     @category = Category.find(params[:id])
-    @posts = @category.posts.page(params[:page]).per(6).order(created_at: :DESC)
+    @posts = @category.posts.page(params[:page]).per(6).order(created_at: :desc)
   end
 
   def show

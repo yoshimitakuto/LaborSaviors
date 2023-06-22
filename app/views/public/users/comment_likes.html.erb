@@ -5,6 +5,10 @@
     <h4><strong>高評価した神がかりコメント一覧</strong></h4>
   </div>
 
+  <div class='row justify-content-center mb-3'>
+    全<%= @comment_likes_comments.total_count %>件
+  </div>
+
   <!--一覧表示-->
   <% if @comment_likes_comments.empty? %>
     <div class='row justify-content-center mb-5'>
@@ -26,13 +30,16 @@
               <div class='mb-2 text-center'><strong><%= comment_like.user.nickname %></strong></div>
               <div class='mb-2'>「救世コメント内容」</div>
               <div class='p-3 bg-dark mb-4'><%= comment_like.comment.truncate(30) %></div>
-              <div class='mb-2'>いいねした日：「<%= l comment_like.created_at %>」</div>
-              <div class='mb-3'>高評価獲得数：「<strong><%= comment_like.comment_likes.count %></strong>」 <%= link_to "お悩み詳細",post_path(comment_like.post), class: 'btn btn-info btn-sm' %></div>
+              <div class='mb-2'>高評価：「<strong><%= comment_like.comment_likes.count %></strong>」</div>
+              <div class='mb-3'>救世コメント投稿日：「<%= l comment_like.created_at %>」 <%= link_to "お悩み詳細",post_path(comment_like.post), class: 'btn btn-info btn-sm' %></div>
             </div>
           </div>
         <% end %>
       </div>
   <% end %>
 
+ <div class='row justify-content-center'>
+   <%= paginate @comment_likes_comments %>
+ </div>
 
 </div>

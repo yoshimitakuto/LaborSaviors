@@ -2,25 +2,25 @@ class Public::UsersController < ApplicationController
   before_action :find_id, except: [:index]
 
   def index
-    @users = User.page(params[:page]).per(20)
+    @users = User.page(params[:page]).per(12)
   end
 
   def post_likes
     post_likes = PostLike.where(user_id: @user.id).pluck(:post_id)
-    @post_likes_posts = Post.where(id: post_likes).page(params[:page]).per(8)
+    @post_likes_posts = Post.where(id: post_likes).page(params[:page]).per(8).order(created_at: :desc)
   end
 
   def comment_likes
     comment_likes = CommentLike.where(user_id: @user.id).pluck(:post_comment_id)
-    @comment_likes_comments = PostComment.where(id: comment_likes).page(params[:page]).per(8)
+    @comment_likes_comments = PostComment.where(id: comment_likes).page(params[:page]).per(8).order(created_at: :desc)
   end
 
   def my_posts
-    @posts = Post.where(user_id: @user.id)
+    @posts = Post.where(user_id: @user.id).page(params[:page]).per(8).order(created_at: :desc)
   end
 
   def my_post_comments
-    @post_comments = PostComment.where(user_id: @user.id)
+    @post_comments = PostComment.where(user_id: @user.id).page(params[:page]).per(8).order(created_at: :desc)
   end
 
   def show

@@ -16,7 +16,7 @@
     </div>
 
     <div class='form_group mb-3 text-center'>
-      <label class='form-label'>「欲しい回答の強度を選んでね」</label>
+      <label class='form-label'>「今のあなたのメンタル状態は？」</label>
       <div>
         <%= f.select :mental_status, Post.mental_statuses_i18n.invert, {}, class: 'form-select' %>
       </div>

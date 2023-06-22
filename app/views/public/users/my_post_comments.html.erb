@@ -5,6 +5,10 @@
     <h4><strong><%= @user.nickname %>さんの神がかりコメント一覧</strong></h4>
   </div>
 
+  <div class='row justify-content-center mb-3'>
+    全<%= @post_comments.total_count %>件
+  </div>
+
   <!--一覧表示-->
   <% if @post_comments.empty? %>
     <div class='row justify-content-center mb-5'>
@@ -46,5 +50,9 @@
       <% end %>
     </div>
   <% end %>
+
+  <div class='row justify-content-center'>
+    <%= paginate @post_comments %>
+  </div>
 
 </div>
