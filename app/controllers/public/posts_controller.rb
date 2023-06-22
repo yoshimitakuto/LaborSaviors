@@ -1,6 +1,6 @@
 class Public::PostsController < ApplicationController
   before_action :find_id, only: [:show, :edit, :update]
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :category_search]
 
   def index
      # ransackでの検索機能
@@ -44,8 +44,11 @@ class Public::PostsController < ApplicationController
 
   def show
     @post_comment = PostComment.new
-    unless ViewCount.find_by(user_id: current_user.id, post_id: @post.id)
-      current_user.view_counts.create(post_id: @post.id)
+    # ログイン中のユーザーの閲覧数のみしかカウントしないようし、ログインしていないユーザーが閲覧できるようにするため。
+    if user_signed_in?
+      unless ViewCount.find_by(user_id: current_user.id, post_id: @post.id)
+        current_user.view_counts.create(post_id: @post.id)
+      end
     end
   end
 

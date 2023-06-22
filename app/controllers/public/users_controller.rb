@@ -1,5 +1,7 @@
 class Public::UsersController < ApplicationController
   before_action :find_id, except: [:index]
+  before_action :authenticate_user!, except: [:index, :show]
+
 
   def index
     @users = User.page(params[:page]).per(12)

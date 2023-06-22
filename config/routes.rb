@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'comment_replies/index'
-  end
 # =========deviceルーティング=========
 # ユーザー用
 devise_for :users,skip: [:passwords], controllers: {

@@ -6,17 +6,16 @@
   </div>
 
   <div class="mx-auto mb-5 text-center">
-    <p>コメント総数：<%= @posts.count %>件</p>
+    <p>コメント総数：<%= @posts.total_count %>件</p>
   </div>
 
   <!--一覧表示-->
-  <table class='table table-bordered border-dark table-hover align-middle'>
-    <thead>
+  <table class='table table-bordered border-dark table-hover align-middle mb-5'>
+    <thead class='thead-light'>
       <tr align='center'>
-        <th>プロフィール画像</th>
-        <th>ニックネーム</th>
-        <th>投稿内容（カテゴリー・メンタルステータス含む）</th>
-        <th></th>
+        <th scope='col' style='width: 20%;'>ユーザー</th>
+        <th scope='col' style='width: 70%;'>投稿内容（カテゴリー・メンタルステータス含む）</th>
+        <th scope='col' style='width: 10%;'></th>
       </tr>
     </thead>
     <tbody>
@@ -26,8 +25,8 @@
           <%= link_to admin_user_path(post.user.id) do %>
             <%= image_tag post.user.get_profile_image(50,50), class: 'profile_image' %>
           <% end %>
+          <%= post.user.nickname %>
         </td>
-        <td align='center'><%= post.user.nickname %></td>
         <td>
           <div>メンタルステータス：<%= post.mental %></div>
           <div class='mb-3'>カテゴリ：<%= post.category.name %></div>
@@ -36,7 +35,7 @@
             <div><%= post.content %></div>
           </div>
         </td>
-        <td>
+        <td align='center'>
           <%= link_to admin_post_path(post), method: :delete do %>
             <i class="fa-solid fa-trash-can fa-lg" style="color: #f90101;"></i>
           <% end %>
@@ -45,5 +44,9 @@
       <% end %>
     </tbody>
   </table>
+
+  <div class='row justify-content-center mb-5'>
+    <%= paginate @posts %>
+  </div>
 
 </div>

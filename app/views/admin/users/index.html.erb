@@ -6,12 +6,12 @@
   </div>
 
   <div class="mx-auto mb-5 text-center">
-    <p>会員総数：<%= @users.count %>件</p>
+    <p>会員総数：<%= @users.total_count %>名</p>
   </div>
 
   <!--一覧表示-->
-  <table class='table table-bordered border-dark table-hover align-middle'>
-    <thead>
+  <table class='table table-bordered border-dark table-hover align-middle mb-5'>
+    <thead class='thead-light'>
       <tr align='center'>
         <th>会員ID</th>
         <th>プロフィール画像</th>
@@ -36,5 +36,9 @@
       <% end %>
     </tbody>
   </table>
+
+  <div class='row justify-content-center mb-5'>
+    <%= paginate @users %>
+  </div>
 
 </div>

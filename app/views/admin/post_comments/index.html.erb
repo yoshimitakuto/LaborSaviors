@@ -6,30 +6,31 @@
   </div>
 
   <div class="mx-auto mb-5 text-center">
-    <p>コメント総数：<%= @post_comments.count %>件</p>
+    <p>コメント総数：<%= @post_comments.total_count %>件</p>
   </div>
 
   <!--一覧表示-->
   <table class='table table-bordered border-dark table-hover align-middle'>
-    <thead>
+    <thead class='thead-light'>
       <tr align='center'>
-        <th>プロフィール画像</th>
-        <th>ニックネーム</th>
-        <th>コメント内容</th>
-        <th></th>
+        <th scope='col' style='width: 20%;'>ユーザー</th>
+        <th scope='col' style='width: 70%;'>コメント内容</th>
+        <th scope='col' style='width: 10%;'></th>
       </tr>
     </thead>
     <tbody>
       <% @post_comments.each do |post_comment| %>
       <tr>
         <td align='center'>
-          <%= link_to admin_user_path(post_comment.user.id) do %>
-            <%= image_tag post_comment.user.get_profile_image(50,50), class: 'profile_image' %>
-          <% end %>
+          <div>
+            <%= link_to admin_user_path(post_comment.user.id) do %>
+              <%= image_tag post_comment.user.get_profile_image(50,50), class: 'profile_image' %>
+            <% end %>
+            <%= post_comment.user.nickname %>
+          </div>
         </td>
-        <td align='center'><%= post_comment.user.nickname %></td>
         <td><%= post_comment.comment %></td>
-        <td>
+        <td align='center'>
           <%= link_to admin_post_comment_path(post_comment), method: :delete do %>
             <i class="fa-solid fa-trash-can fa-lg" style="color: #f90101;"></i>
           <% end %>
@@ -38,5 +39,9 @@
       <% end %>
     </tbody>
   </table>
+
+  <div class='row justify-content-center mb-5'>
+    <%= paginate @post_comments %>
+  </div>
 
 </div>
