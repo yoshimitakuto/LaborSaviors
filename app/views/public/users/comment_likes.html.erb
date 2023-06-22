@@ -7,8 +7,11 @@
 
   <!--一覧表示-->
   <% if @comment_likes_comments.empty? %>
-    <div class='row justify-content-center'>
+    <div class='row justify-content-center mb-5'>
       <h5>あなたが高評価したコメントはまだありません。</h5>
+    </div>
+    <div class='row justify-content-center'>
+      <%= link_to "みんなのお悩みから救世コメントを見に行く", posts_path, class: 'btn btn-info' %>
     </div>
   <% else %>
     <div class="mb-3">

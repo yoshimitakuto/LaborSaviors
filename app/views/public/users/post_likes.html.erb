@@ -2,27 +2,36 @@
 
   <!--ページタイトル-->
   <div class="row justify-content-center mb-5">
-    <h4><strong>いいねしたお悩み投稿一覧</strong></h4>
+    <h4><strong>共感したお悩み一覧</strong></h4>
   </div>
 
   <!--一覧表示-->
-  <div class="mb-3">
-    <% @post_likes_posts.each do |post_like| %>
-      <div class='row justify-content-center p-3 mt-3'>
-        <div class='col-md-4 text-center bg-dark p-3'>
-          <%= link_to user_show_path(post_like.user.id) do %>
-            <%= image_tag post_like.user.get_profile_image(200,200), class: 'profile_image' %>
-          <% end %>
+  <% if @post_likes_posts.empty? %>
+    <div class='row justify-content-center mb-5'>
+      <h5>あなたが共感したお悩みはまだありません。</h5>
+    </div>
+    <div class='row justify-content-center'>
+      <%= link_to "みんなのお悩みを見に行く", posts_path, class: 'btn btn-info' %>
+    </div>
+  <% else %>
+    <div class="mb-3">
+      <% @post_likes_posts.each do |post_like| %>
+        <div class='row justify-content-center p-3 mt-3'>
+          <div class='col-md-4 text-center bg-dark p-3'>
+            <%= link_to user_show_path(post_like.user.id) do %>
+              <%= image_tag post_like.user.get_profile_image(200,200), class: 'profile_image' %>
+            <% end %>
+          </div>
+          <div class='col-md-6 p-3 post-body'>
+            <div class='mb-2 text-center'><strong><%= post_like.user.nickname %>（<%= post_like.resolution_status %>）</strong></div>
+            <div class='mb-2'>「お悩み内容」</div>
+            <div class='p-3 bg-dark mb-4'><%= post_like.content.truncate(30) %></div>
+            <div class='mb-2'>お悩み投稿日：「<%= l post_like.created_at %>」<%= link_to "詳細",post_path(post_like), class: 'btn btn-info btn-sm' %></div>
+          </div>
         </div>
-        <div class='col-md-6 p-3 post-body'>
-          <div class='mb-2 text-center'><strong><%= post_like.user.nickname %>（<%= post_like.resolution_status %>）</strong></div>
-          <div class='mb-2'>「お悩み内容」</div>
-          <div class='p-3 bg-dark mb-4'><%= post_like.content.truncate(30) %></div>
-          <div class='mb-2'>お悩み投稿日：「<%= l post_like.created_at %>」<%= link_to "詳細",post_path(post_like), class: 'btn btn-info btn-sm' %></div>
-        </div>
-      </div>
-    <% end %>
-  </div>
+      <% end %>
+    </div>
+  <% end %>
 
   <div class='row justify-content-center'>
     <%= paginate @post_likes_posts %>

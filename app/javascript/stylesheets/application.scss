@@ -42,10 +42,10 @@ main {
 
 .link {
   color: white;
-}
 
-.link:hover {
-  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 .post-link {
@@ -54,14 +54,14 @@ main {
   border-radius: 50px;
   transition:transform 0.3s;
   @extend %background_color;
-}
 
-.post-link:hover {
-  text-decoration: none;
-  border: none;
-  color: black;
-  background-color: gray;
-  transform:scale(1.1);
+  &:hover {
+    text-decoration: none;
+    border: none;
+    color: black;
+    background-color: gray;
+    transform:scale(1.1);
+  }
 }
 
 .page-title {
@@ -89,10 +89,10 @@ main {
 .pagination>.active>a {
   background: #93c9ff;
   border-radius: 15px;
-}
 
-.pagination>li>a:hover {
-  border-radius: 15px;
+  &:hover {
+     border-radius: 15px;
+  }
 }
 
 .introduction-text {
