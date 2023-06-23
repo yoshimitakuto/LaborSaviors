@@ -22,11 +22,13 @@ class Admin::SessionsController < Devise::SessionsController
 
   # ログイン後はトップ画面へ遷移
   def after_sign_in_path_for(resource)
+    flash[:success] = "管理者としてログインしました。"
     admin_users_path
   end
 
   # サインアウト後はログイン画面へ遷移
   def after_sign_out_path_for(resource)
+    flash[:success] = "管理者アカウントをログアウトしました。"
     new_admin_session_path
   end
 

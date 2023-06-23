@@ -8,10 +8,9 @@ class Admin::CommentRepliesController < ApplicationController
   def destroy
     @comment_reply = CommentReply.find(params[:id])
     if @comment_reply.destroy
-      flash[:notice] = "返信コメントを削除しました"
-      redirect_to request.referer
+      redirect_to request.referer, success: "返信コメントを削除しました。"
     else
-      flash[:notice] = "返信コメント削除が失敗しました"
+      flash.now[:danger] = "返信コメント削除が失敗しました。"
       render :index
     end
   end

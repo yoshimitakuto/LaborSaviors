@@ -12,10 +12,9 @@ class Admin::UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      flash[:notice] = "会員情報を更新しました"
-      redirect_to admin_users_path
+      redirect_to admin_users_path, warning: "会員情報を更新しました。"
     else
-      flash[:notice] = "会員情報の更新に失敗しました"
+      flash.now[:danger] = "会員情報の更新に失敗しました。"
       render :show
     end
 

@@ -41,6 +41,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # protected
 
   def after_sign_up_path_for(resource)
+    flash[:success] = "ようこそ「#{@user.nickname}」さん！　さぁ救世神になる旅を始めましょう！"
     about_path
   end
 

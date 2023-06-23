@@ -10,20 +10,18 @@ class Admin::CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     if @category.save
-      flash[:notice] = "カテゴリーの追加に成功しました。"
-      redirect_to admin_categories_path
+      redirect_to admin_categories_path, success: "カテゴリーの追加に成功しました。"
     else
-      flash[:notice] = "カテゴリーの追加に失敗しました。"
+      flash.now[:danger] = "カテゴリーの追加に失敗しました。"
       render :new
     end
   end
 
   def destroy
     if Category.find(params[:id]).destroy
-      flash[:notice] = "削除しました。"
-      redirect_to request.referer
+      redirect_to request.referer, danger: "カテゴリーを削除しました。"
     else
-      flash[:notice] = "削除に失敗しました。"
+      flash.now[:danger] = "削除に失敗しました。"
       render :index
     end
   end

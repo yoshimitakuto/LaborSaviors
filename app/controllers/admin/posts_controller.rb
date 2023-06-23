@@ -8,10 +8,9 @@ class Admin::PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     if @post.destroy
-      flash[:notice] = "コメントを削除しました"
-      redirect_to request.referer
+      redirect_to request.referer, success: "投稿を削除しました。"
     else
-      flash[:notice] = "コメント削除が失敗しました"
+      flash.now[:danger] = "投稿削除に失敗しました。"
       render :index
     end
   end
