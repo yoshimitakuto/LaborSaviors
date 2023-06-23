@@ -43,8 +43,16 @@
   </div>
 
   <div class='row justify-content-center mb-5'>
-    <div class='col-md-4 text-center'><%= link_to "悩みを聞いてもらう", new_post_path, class: 'btn btn-danger' %></div>
-    <div class='col-md-4 text-center'><%= link_to "救世する", posts_path, class: 'btn btn-info' %></div>
+    <div class='col-md-4 text-center'>
+      <%= link_to new_post_path, class: 'btn' do %>
+        悩みを聞いてもらう。。。<%= image_tag '考える人.jpg', :size => '200x200' %>
+      <% end %>
+    </div>
+    <div class='col-md-4 text-center'>
+      <%= link_to posts_path, class: 'btn' do %>
+        救世神となり皆を救いに行く！<%= image_tag '救世.jpg', :size => '200x200' %>
+      <% end %>
+    </div>
   </div>
 
 </div>

@@ -23,9 +23,7 @@
 
           <!--z-indexにより初期状態は非表示-->
           <div class='user-info'>
-            <p>投稿数：<%= user.posts.count %></p>
-            <p>救世数：<%= user.post_comments.count %></p>
-            <p>評価値：<%= user.post_comments.average(:evaluation) || 0 %></p>
+            <p>評価値：<%= user.post_comments.average(:evaluation) || 0 %> / 5.0</p>
           </div>
 
           <div>
