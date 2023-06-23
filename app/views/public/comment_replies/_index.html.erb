@@ -8,7 +8,7 @@
     </div>
 
     <div class='content-area mb-2'>
-      <%= comment_reply.reply_comment %>
+      <%= safe_join(comment_reply.reply_comment.split("\n"),tag(:br)) %>
     </div>
 
     <div>

@@ -10,17 +10,15 @@ class Public::CommentRepliesController < ApplicationController
     if comment_reply.save
       # updateを用いて、post_commentテーブルの「evaluation」カラムへcomment_replyのformからデータを送信
       post_comment.update(evaluation: params[:evaluation])
-      redirect_to request.referer
+      redirect_to request.referer, success: "救世神があなたの返信コメントを見て喜びます。"
     else
-      flash[:notice] = "コメント返信が正常に動作しませんでした。"
-      redirect_to request.referer
+      redirect_to request.referer, danger: "コメント返信が正常に動作しませんでした。"
     end
   end
 
   def destroy
     CommentReply.find(params[:id]).destroy
-    flash[:notice] = "コメント返信を削除しました。"
-    redirect_to request.referer
+    redirect_to request.referer, danger: "コメント返信を削除しました。"
   end
 
   private

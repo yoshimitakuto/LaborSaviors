@@ -1,3 +1,4 @@
 $("#comment_area .comment_counts").html("コメント件数<%= @post.post_comments.count %>");
 $("#comment_index").html("<%= j(render 'public/post_comments/index', post: @post) %>");
+$("#flash-area").html("<%= j(render 'layouts/flash') %>");
 $("textarea").val('');

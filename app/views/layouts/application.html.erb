@@ -13,12 +13,15 @@
   </head>
 
   <body>
+    <span id='flash-area'>
+      <%= render 'layouts/flash' %>
+    </span>
+
     <header>
       <%= render 'layouts/header' %>
     </header>
 
     <main>
-      <%= flash[:notice] %>
       <%= yield %>
     </main>
 

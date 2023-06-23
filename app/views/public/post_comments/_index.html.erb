@@ -30,7 +30,7 @@
 
     <div class='row mb-4'>
       <div class='col-md-10 content-area'>
-        <%= post_comment.comment %>
+        <%= safe_join(post_comment.comment.split("\n"),tag(:br)) %>
         <div class='selects'>
           <% if post_comment.user == current_user %>
             <%= link_to edit_post_post_comment_path(post_comment.post, post_comment), class: 'btn' do %>

@@ -29,7 +29,7 @@
           <div class='col-md-6 p-3 post-body'>
             <div class='mb-2 text-center'><strong><%= post_comment.post.user.nickname %>（<%= post_comment.post.resolution_status %>）</strong></div>
             <div class='mb-2'>「お悩み内容」</div>
-            <div class='p-3 bg-dark mb-4'><%= post_comment.post.content %></div>
+            <div class='p-3 bg-dark mb-4'><%= post_comment.post.content.truncate(30) %></div>
             <div class='mb-2'>お悩み投稿日：「<%= l post_comment.post.created_at %>」 <%= link_to "詳細",post_path(post_comment.post), class: 'btn btn-info btn-sm' %></div>
           </div>
         </div>
@@ -42,7 +42,7 @@
             <div>「この投稿に対するあなたコメント内容」</div>
           </div>
           <div class='content-area'>
-            <%= post_comment.comment %>
+            <%= safe_join(post_comment.comment.split("\n"),tag(:br)) %>
           </div>
 
         </div>

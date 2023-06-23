@@ -72,8 +72,8 @@
    </div>
   </div>
 
-  <!--ログインユーザーの場合で条件分岐-->
-  <% if @user == current_user %>
+  <!--ゲストユーザーの編集をしてしまうとゲストユーザーでログインできなくなってしまうため表示方法を条件分岐-->
+  <% if @user == current_user && @user.email != "guest@example.com" %>
     <div class='row'>
       <div class='col-md-6 mx-auto mb-5 text-center'>
         <%= link_to "情報編集", information_path(@user.id), class: 'btn btn-info btn-sm mr-2' %>

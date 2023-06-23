@@ -17,6 +17,8 @@ body {
   background: linear-gradient(to right, #928DAB, #00d2ff);
   text-decoration: none;
   color : white;
+  z-index: 0;
+  // position: relative;　flashメッセージのjsで設定したfadeOutmが反応しなくなるためコメントアウト
 }
 
 .profile_image {
@@ -159,4 +161,11 @@ main {
 
 .post-body {
   @extend %background_color;
+}
+
+#flash-area {
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }

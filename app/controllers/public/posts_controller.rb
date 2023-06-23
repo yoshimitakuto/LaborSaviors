@@ -28,11 +28,9 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-      flash[:notice] = "投稿に成功しました。救世コメントを待ちましょう！"
-      redirect_to posts_path
+      redirect_to posts_path, success: "投稿に成功しました。救世コメントを待ちましょう！"
     else
-      flash[:notice] = "申し訳ございません。投稿に失敗しました。"
-      redirect_to request.referer
+      redirect_to request.referer, danger: "投稿に失敗しました。もう一度お試しください。"
     end
   end
 
@@ -57,20 +55,18 @@ class Public::PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      flash[:notice] = "編集が完了しました"
-      redirect_to posts_path
+      redirect_to posts_path, warning: "編集が完了しました。"
     else
-      flash[:notice] = "申し訳ございません。編集に失敗しました"
+      flash.now[:danger] = "編集に失敗しました。もう一度お試しください。"
       render :edit
     end
   end
 
   def destroy
     if Post.find(params[:id]).destroy
-      flash[:notice] = "削除しました"
-      redirect_to posts_path
+      redirect_to posts_path, danger: "投稿を削除しました。"
     else
-      flash[:notice] = "削除に失敗しました"
+      flash.now[:danger] = "削除に失敗しました。もう一度お試しください。"
       render :edit
     end
   end
