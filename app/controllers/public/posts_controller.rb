@@ -57,8 +57,8 @@ class Public::PostsController < ApplicationController
     if @post.update(post_params)
       redirect_to posts_path, warning: "編集が完了しました。"
     else
-      flash.now[:danger] = "編集に失敗しました。もう一度お試しください。"
-      render :edit
+      flash[:danger] = "編集に失敗しました。項目を全て入力してからもう一度お試しください。"
+      redirect_to request.referer
     end
   end
 

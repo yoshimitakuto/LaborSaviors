@@ -1,13 +1,13 @@
 <div class='container mt-5'>
 
   <!--ページタイトル-->
-  <div class='mx-auto mb-3 text-center'>
+  <div class='mx-auto mb-5 text-center'>
     <h4><strong>お悩み編集</strong></h4>
   </div>
 
   <!--投稿フォーム-->
   <%= form_with model: @post, url: post_path(@post.id), method: :patch do |f| %>
-    <div class='form_group mb-3 text-center'>
+    <div class='form_group mb-5 text-center'>
       <div>
         <%= f.radio_button :is_resolution, :true,class: 'form-check-input' %>
         <%= f.label :is_resolution, "解決済み",class: 'form-check-label' %>
