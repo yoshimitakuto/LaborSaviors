@@ -8,7 +8,7 @@
   <!--ログイン情報入力フォーム（名前・パスワードのみ）-->
   <div class='row mx-auto'>
     <div class='col-md-8 mx-auto text-center'>
-      <%= form_with model: @user, url: information_path(@user.id), method: :patch do |f| %>
+      <%= form_with model: @user, url: information_path(@user), method: :patch do |f| %>
 
         <div class='row form-field mb-5'>
           <div class='col'><label>ニックネーム</label></div>
@@ -42,7 +42,7 @@
       <% end %>
 
       <div class=" text-center mt-5">
-        <h6><%= link_to "詳細画面へ戻る", user_show_path(@user.id), class: 'link' %></h6>
+        <h6><%= link_to "詳細画面へ戻る", user_show_path(@user), class: 'link' %></h6>
       </div>
 
 

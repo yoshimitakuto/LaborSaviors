@@ -1,9 +1,24 @@
 <div class="container mt-5">
 
   <!--ページタイトル-->
-  <div class="row justify-content-center text-center mb-3">
+  <div class="row justify-content-center text-center mb-5">
     <!--解決ステータスにより表示を条件分岐-->
-    <h4><strong><%= @post.is_resolution == false ? "救世神求む！" : "解決しました！" %></strong></h4>
+    <h4>
+      <strong><%= @post.is_resolution == false ? "救世神求む！" : "解決しました！" %></strong>
+      <% if @post.user == current_user %>
+        <span id='show-info'><i class="fa-solid fa-circle-info fa-bounce fa-xl" style="color: #f5f901;"></i></span>
+      <% end %>
+    </h4>
+  </div>
+
+  <div class='row justify-content-center mb-5 text-center show-info-area'>
+    <h5>
+      お悩みが解決したら
+      <%= link_to edit_post_path(@post), class: 'btn btn-info btn-sm mr-2' do %>
+        <i class="fa-solid fa-pen-nib fa-lg"></i>
+      <% end %>
+      から解決済みに変更しましょう！！
+    </h5>
   </div>
 
   <div class='row justify-content-center mb-5'>
@@ -58,10 +73,10 @@
   <% if @post.user == current_user %>
     <div class='row'>
       <div class='col-md-6 mx-auto text-center'>
-        <%= link_to edit_post_path(@post.id), class: 'btn btn-info btn-sm mr-2' do %>
+        <%= link_to edit_post_path(@post), class: 'btn btn-info btn-sm mr-2' do %>
           <i class="fa-solid fa-pen-nib fa-lg"></i>
         <% end %>
-        <%= link_to post_path(@post.id), method: :delete, class: 'btn btn-danger btn-sm' do %>
+        <%= link_to post_path(@post), method: :delete, class: 'btn btn-danger btn-sm' do %>
           <i class="fa-solid fa-trash-can fa-lg"></i>
         <% end %>
       </div>
@@ -79,3 +94,11 @@
     </div>
 
 </div>
+
+<script>
+  $(function(){
+    $('#show-info').on('click', function(){
+      $('.show-info-area').slideToggle();
+    })
+  })
+</script>
