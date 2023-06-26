@@ -13,10 +13,8 @@ Admin.create!(
   password: 'adminadmin'
 )
 
-
 # User Data
-users = User.create! (
-  [
+users_attributes = [
     {email: 'oliva@example.com', nickname: "オリバ", password: 'password', is_deleted: false, profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user1.jpg"), filename: "sample-user1.jpg")},
     {email: 'mecanick@example.com', nickname: "メカニック", password: 'password', is_deleted: false, profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user2.jpg"), filename: "sample-user2.jpg")},
     {email: 'yosshi@example.com', nickname: "ヨッシ", password: 'password', is_deleted: false, profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user3.jpg"), filename: "sample-user3.jpg")},
@@ -33,10 +31,50 @@ users = User.create! (
     {email: 'samurai@example.com', nickname: "サムライ", password: 'password', is_deleted: false,  profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user14.png"), filename: "sample-user14.jpg")},
     {email: 'hosto@example.com', nickname: "ホスト", password: 'password', is_deleted: false,  profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user15.jpg"), filename: "sample-user15.jpg")}
   ]
-)
+
 
 # Category Data
-Category.create!(name: '労働環境')
-Category.create!(name: '仕事内容')
-Category.create!(name: '人間関係')
-Category.create!(name: 'その他')
+category_names = %w(
+    労働環境
+    仕事内容
+    人間関係
+    その他
+  )
+
+categories = category_names.map do |name|
+  Category.create!(name: name)
+end
+
+tag_list = %w(
+    tag1
+    tag2
+    tag3
+    tag4
+    tag5
+  )
+
+users_attributes.each do |attributes|
+  user = User.create!(attributes)
+  rand(1..3).times do
+    post = user.posts.build(
+      category_id: categories.sample.id,
+      content: "text " * rand(5..20)
+    )
+    post.tag_list = tag_list.sample(rand(0..tag_list.size))
+    post.save!
+  end
+end
+
+users = User.all.sample(10)
+posts = Post.where(id: (1..10))
+
+users.each do |user|
+  reject_current_user_posts = posts.select{ |o| o.id != user.id }
+  post = reject_current_user_posts.sample
+  comment = user.post_comments.create!(post_id: post.id,
+                             comment: "text " * rand(2..20),
+                             evaluation: [nil, 3, 4, 5].sample)
+  comment.comment_replies.create!(user_id: post.user_id,
+                                  reply_comment: "text " * rand(2..20)
+                                  ) if comment.evaluation 
+end
