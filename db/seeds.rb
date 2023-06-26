@@ -15,21 +15,21 @@ Admin.create!(
 
 # User Data
 users_attributes = [
-    {email: 'oliva@example.com', nickname: "オリバ", password: 'password', is_deleted: false, profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user1.jpg"), filename: "sample-user1.jpg")},
-    {email: 'mecanick@example.com', nickname: "メカニック", password: 'password', is_deleted: false, profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user2.jpg"), filename: "sample-user2.jpg")},
-    {email: 'yosshi@example.com', nickname: "ヨッシ", password: 'password', is_deleted: false, profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user3.jpg"), filename: "sample-user3.jpg")},
-    {email: 'yopata@example.com', nickname: "よぱた", password: 'password', is_deleted: false, profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user4.jpg"), filename: "sample-user4.jpg")},
-    {email: 'butaro@example.com', nickname: "ブー太郎", password: 'password', is_deleted: false, profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user5.jpg"), filename: "sample-user5.jpg")},
-    {email: 'kitecchan@example.com', nickname: "きてっちゃん", password: 'password', is_deleted: false, profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user6.jpg"), filename: "sample-user6.jpg")},
-    {email: 'sciencemaster@example.com', nickname: "サイエンスマスター", password: 'password', is_deleted: false, profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user7.jpg"), filename: "sample-user7.jpg")},
-    {email: 'kotecchan@example.com', nickname: "こてっちゃん", password: 'password', is_deleted: true, profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user8.jpg"), filename: "sample-user8.jpg")},
-    {email: 'sacchan@example.com', nickname: "さっちゃん", password: 'password', is_deleted: false, profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user9.jpg"), filename: "sample-user9.jpg")},
-    {email: 'pisuke@example.com', nickname: "ピー助", password: 'password', is_deleted: true, profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user10.jpg"), filename: "sample-user10.jpg")},
-    {email: 'nodejs@example.com', nickname: "ノードジェイエス", password: 'password', is_deleted: false,  profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user11.jpg"), filename: "sample-user11.jpg")},
-    {email: 'hatimitu@example.com', nickname: "蜂蜜", password: 'password', is_deleted: false,  profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user12.jpg"), filename: "sample-user12.jpg")},
-    {email: 'luca@example.com', nickname: "Luca", password: 'password', is_deleted: false,  profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user13.jpg"), filename: "sample-user13.jpg")},
-    {email: 'samurai@example.com', nickname: "サムライ", password: 'password', is_deleted: false,  profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user14.png"), filename: "sample-user14.jpg")},
-    {email: 'hosto@example.com', nickname: "ホスト", password: 'password', is_deleted: false,  profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user15.jpg"), filename: "sample-user15.jpg")}
+    {email: 'oliva@example.com', nickname: "オリバ", password: 'password', is_deleted: false, profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user1.jpg"), filename: "sample-user1.jpg"), level: 1},
+    {email: 'mecanick@example.com', nickname: "メカニック", password: 'password', is_deleted: false, profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user2.jpg"), filename: "sample-user2.jpg"), level: 1},
+    {email: 'yosshi@example.com', nickname: "ヨッシ", password: 'password', is_deleted: false, profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user3.jpg"), filename: "sample-user3.jpg"), level: 1},
+    {email: 'yopata@example.com', nickname: "よぱた", password: 'password', is_deleted: false, profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user4.jpg"), filename: "sample-user4.jpg"), level: 1},
+    {email: 'butaro@example.com', nickname: "ブー太郎", password: 'password', is_deleted: false, profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user5.jpg"), filename: "sample-user5.jpg"), level: 1},
+    {email: 'kitecchan@example.com', nickname: "きてっちゃん", password: 'password', is_deleted: false, profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user6.jpg"), filename: "sample-user6.jpg"), level: 1},
+    {email: 'sciencemaster@example.com', nickname: "サイエンスマスター", password: 'password', is_deleted: false, profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user7.jpg"), filename: "sample-user7.jpg"), level: 1},
+    {email: 'kotecchan@example.com', nickname: "こてっちゃん", password: 'password', is_deleted: true, profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user8.jpg"), filename: "sample-user8.jpg"), level: 1},
+    {email: 'sacchan@example.com', nickname: "さっちゃん", password: 'password', is_deleted: false, profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user9.jpg"), filename: "sample-user9.jpg"), level: 1},
+    {email: 'pisuke@example.com', nickname: "ピー助", password: 'password', is_deleted: true, profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user10.jpg"), filename: "sample-user10.jpg"), level: 1},
+    {email: 'nodejs@example.com', nickname: "ノードジェイエス", password: 'password', is_deleted: false,  profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user11.jpg"), filename: "sample-user11.jpg"), level: 1},
+    {email: 'hatimitu@example.com', nickname: "蜂蜜", password: 'password', is_deleted: false,  profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user12.jpg"), filename: "sample-user12.jpg"), level: 1},
+    {email: 'luca@example.com', nickname: "Luca", password: 'password', is_deleted: false,  profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user13.jpg"), filename: "sample-user13.jpg"), level: 1},
+    {email: 'samurai@example.com', nickname: "サムライ", password: 'password', is_deleted: false,  profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user14.png"), filename: "sample-user14.jpg"), level: 1},
+    {email: 'hosto@example.com', nickname: "ホスト", password: 'password', is_deleted: false,  profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user15.jpg"), filename: "sample-user15.jpg"), level: 1}
   ]
 
 
@@ -76,5 +76,10 @@ users.each do |user|
                              evaluation: [nil, 3, 4, 5].sample)
   comment.comment_replies.create!(user_id: post.user_id,
                                   reply_comment: "text " * rand(2..20)
-                                  ) if comment.evaluation 
+                                  ) if comment.evaluation
+  comment_count = user.post_comments.count
+  if comment_count >= 1
+    user.level += 1
+    user.save!
+  end
 end
