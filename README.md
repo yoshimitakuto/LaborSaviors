@@ -63,6 +63,7 @@
 - [UI flow](https://app.diagrams.net/#G1u5JPVW_BSXhB0chB2IWtI3bZA22hhTP-#%7B%22pageId%22%3A%22gj3RF_NmIvnPMkH7TpEE%22%7D)
 - [ER図](https://app.diagrams.net/#G1u5JPVW_BSXhB0chB2IWtI3bZA22hhTP-#%7B%22pageId%22%3A%22gj3RF_NmIvnPMkH7TpEE%22%7D)
 - [テーブル定義書](https://docs.google.com/spreadsheets/d/1bHLQWqPFdJPL9DuqvhCXFJAFQs3Zmbby2dUUl-B8mMk/edit#gid=356433990)
+- [テスト仕様書](https://docs.google.com/spreadsheets/d/14sTrirgrZ8FXzXUfytcHd6YsbW_IVMkp/edit#gid=2072448154)
 
 ## 開発環境
 - OS：Linux(CentOS)
