@@ -58,11 +58,11 @@
 - 情報収集　など
 
 ## 設計書
-- 実装機能リスト
 - 開発環境構築
-- UI flow
-- ER図
-- テーブル定義書
+- [実装機能リスト](https://docs.google.com/spreadsheets/d/1aWNL4h66D_9JVtvX8AbuN6oNDTt-lFAlRvQxxiAAJps/edit#gid=885378170)
+- [UI flow](https://app.diagrams.net/#G1u5JPVW_BSXhB0chB2IWtI3bZA22hhTP-#%7B%22pageId%22%3A%22gj3RF_NmIvnPMkH7TpEE%22%7D)
+- [ER図](https://app.diagrams.net/#G1u5JPVW_BSXhB0chB2IWtI3bZA22hhTP-#%7B%22pageId%22%3A%22gj3RF_NmIvnPMkH7TpEE%22%7D)
+- [テーブル定義書](https://docs.google.com/spreadsheets/d/1bHLQWqPFdJPL9DuqvhCXFJAFQs3Zmbby2dUUl-B8mMk/edit#gid=356433990)
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -71,5 +71,7 @@
 - JSライブラリ：jQuery
 - IDE：Cloud9
 
-## 使用素材
-- 現在検討中
+## 使用素材(主に画像として使用)
+- [Canva](https://www.canva.com/)
+- [ヒューマンピクトグラム2.0](https://pictogram2.com/)
+- [Flat Icon Design](http://flat-icon-design.com/)
