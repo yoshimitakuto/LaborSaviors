@@ -1,26 +1,25 @@
-  <!--ページタイトル-->
-  <div class="mx-auto mb-5 mt-5 text-center">
-    <h4><strong>管理者ログイン</strong></h4>
-  </div>
+  <div class='container mt-5'>
 
-  <!--ログイン情報入力フォーム（email・パスワードのみ）-->
-  <div class='row mx-auto'>
-    <div class='col-md-4 mx-auto text-center'>
-      <%= form_with model: @admin, url: admin_session_path do |f| %>
-
-        <div class='row form-field mb-3'>
-          <div class='col'><%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control', placeholder: "メールアドレス", required: true %></div>
-        </div>
-
-        <div class='row form-field mb-3'>
-          <div class='col'><%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワード", class: 'form-control', required: true %></div>
-        </div>
-
-        <div class="actions text-center mt-5">
-          <%= f.submit "ログイン", class: 'form-control btn btn-info' %>
-        </div>
-      <% end %>
-
+    <!--ページタイトル-->
+    <div class='row justify-content-center mb-5 mt-5'>
+      <h4><strong>管理者ログイン</strong></h4>
     </div>
+
+    <!--ログイン情報入力フォーム（email・パスワードのみ）-->
+    <div class='row justify-content-center'>
+      <div class='col-md-4 mx-auto text-center'>
+        <%= form_with model: @admin, url: admin_session_path do |f| %>
+          <div class='row form-field mb-3'>
+            <div class='col'><%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control', placeholder: "メールアドレス", required: true %></div>
+          </div>
+          <div class='row form-field mb-3'>
+            <div class='col'><%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワード", class: 'form-control', required: true %></div>
+          </div>
+          <div class="actions text-center mt-5">
+            <%= f.submit "ログイン", class: 'form-control btn btn-info' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
   </div>
-</div>
