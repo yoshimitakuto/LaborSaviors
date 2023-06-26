@@ -45,9 +45,9 @@ class Public::RegistrationsController < Devise::RegistrationsController
     about_path
   end
 
-  # サインアップ時のニックネーム使用を許可
+  # サインアップ時にニックネームとプロフィール画像の設定を許可
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :profile_image])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :email, :profile_image])
   end
 
   # If you have extra params to permit, append them to the sanitizer.

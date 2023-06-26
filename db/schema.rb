@@ -61,7 +61,6 @@ ActiveRecord::Schema.define(version: 2023_06_21_062222) do
   create_table "comment_likes", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "post_comment_id", null: false
-    t.decimal "evaluation", precision: 2, scale: 1
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["post_comment_id"], name: "index_comment_likes_on_post_comment_id"

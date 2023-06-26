@@ -21,7 +21,7 @@ devise_for :admin, skip: [:registrations, :passwords] , controllers: {
 
 
 # =========一般ルーティング=========
-# ユーザー側
+# 【ユーザー側】
 scope module: :public do
   # homes
   root to: 'homes#top'
@@ -55,7 +55,7 @@ end
 
 
 
-# 管理者側
+# 【管理者側】
 namespace :admin do
   # posts,
   resources :posts, only: [:index, :destroy]
