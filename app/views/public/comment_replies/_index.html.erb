@@ -1,6 +1,7 @@
 <% comment_replies.each do |comment_reply| %>
   <div class='reply_comment'>
     <div>
+      <!--未然に思わぬエラーを防ぐために「user.id」と詳細に記述-->
       <%= link_to user_show_path(comment_reply.user.id) do %>
         <%= image_tag comment_reply.user.get_profile_image(50,50), class: 'profile_image mb-2' %>
       <% end %>
@@ -20,6 +21,5 @@
         <% end %>
       <% end %>
     </div>
-
   </div>
 <% end %>

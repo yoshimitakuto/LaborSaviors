@@ -1,7 +1,7 @@
-<div class="container mt-5">
+<div class='container mt-5'>
 
   <!--ページタイトル-->
-  <div class="row justify-content-center mb-5">
+  <div class='row justify-content-center mb-5'>
     <h4><strong>共感したお悩み一覧</strong></h4>
   </div>
 
@@ -18,7 +18,7 @@
       <%= link_to "みんなのお悩みを見に行く", posts_path, class: 'btn btn-info' %>
     </div>
   <% else %>
-    <div class="mb-5">
+    <div class='mb-5'>
       <% @post_likes_posts.each do |post_like| %>
         <div class='row justify-content-center p-3 mt-3'>
           <div class='col-md-4 text-center bg-dark p-3'>

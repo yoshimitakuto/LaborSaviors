@@ -13,6 +13,7 @@
   </head>
 
   <body>
+    <!--フラッシュメッセージ専用-->
     <span id='flash-area'>
       <%= render 'layouts/flash' %>
     </span>
@@ -29,6 +30,7 @@
       <%= render 'layouts/footer' %>
     </footer>
 
+    <!--画面上部へ自動スクロールためのボタンをユーザーが使いやすくするために設置-->
     <span id='back'>
       <%= link_to  do %>
        <i class="fa-solid fa-circle-up fa-2xl" style="color: #ffffff;"></i>
@@ -37,7 +39,7 @@
   </body>
 </html>
 
-<!--画面上部へスクロール-->
+<!--画面上部へ自動スクロール-->
 <script>
   $(function(){
     $('#back a').on('click', function(event){

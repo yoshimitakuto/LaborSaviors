@@ -2,28 +2,28 @@
   <div class='collapse navbar-collapse'>
 
     <!--ロゴ領域-->
-      <% if admin_signed_in? %>
-        <div class='row justify-content-around align-items-center col-md-3 ms-5'>
-          <div class='navbar navbar-brand'>
-            <%= link_to about_path do %>
-              <%= image_tag 'logo.jpg', alt: "ロゴ", size: '80x80' %>
-            <% end %>
-            <h5 class='mt-2'>【管理者ログイン中】</h5>
-          </div>
-        </div>
-      <% else %>
-        <div class='navber navber-brand col-md-3'>
+    <% if admin_signed_in? %>
+      <div class='row justify-content-around align-items-center col-md-3 ms-5'>
+        <div class='navbar navbar-brand'>
           <%= link_to about_path do %>
             <%= image_tag 'logo.jpg', alt: "ロゴ", size: '80x80' %>
           <% end %>
+          <h5 class='mt-2'>【管理者ログイン中】</h5>
         </div>
-      <% end %>
+      </div>
+    <% else %>
+      <div class='navber navber-brand col-md-3'>
+        <%= link_to about_path do %>
+          <%= image_tag 'logo.jpg', alt: "ロゴ", size: '80x80' %>
+        <% end %>
+      </div>
+    <% end %>
 
-
-    <!--ナビリスト領域（ユーザーサインイン時・管理者ログイン時・それ以外）-->
+    <!--ナビリスト領域（ユーザーログイン時・管理者ログイン時・それ以外）-->
     <div class='col-md-9'>
       <ul class="navbar-nav mx-auto justify-content-around">
-        <!--ログイン時-->
+
+        <!--ユーザーログイン時-->
         <% if user_signed_in? %>
           <li class='nav-item'>
             <%= link_to root_path ,class: 'nav-link' do %>
@@ -156,6 +156,7 @@
             <% end %>
           </li>
         <% end %>
+
       </ul>
     </div>
 

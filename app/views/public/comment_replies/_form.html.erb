@@ -3,7 +3,6 @@
     <%= f.text_area :reply_comment, :size => '50x2', placeholder: "救世神へ感謝の言葉を送りましょう！", class: 'form-control mb-2', required: true %>
   </div>
 
-
   <!--post_commentのevaluationカラムへ評価データを送信（最終的にユーザーのランキングを付ける際に使用する評価値）-->
   <div id='raty_comment_<%= post_comment.id %>', class='row justify-content-end mr-1 mb-2'></div>
   <script>

@@ -66,8 +66,8 @@
     <%= render 'link_categories', categories: @categories %>
   </div>
 
-  <div class='row justify-content-center mb-5'>
   <!--投稿一覧-->
+  <div class='row justify-content-center mb-5'>
     <%= render 'posts', posts: @posts %>
   </div>
 
@@ -79,15 +79,13 @@
 
 
 <script>
-  $(function(){
-    $('.introduction-title').on('click', function(){
-      $('.introduction-text').slideToggle();
-    });
-  })
-
-  $(function(){
-    $('.other-search-title').on('click', function(){
-      $('.other-search-body').slideToggle();
+ $(function(){
+    $('.introduction-title, .other-search-title').on('click', function(){
+      if ($(this).hasClass('introduction-title')) {
+        $('.introduction-text').slideToggle();
+      } else if ($(this).hasClass('other-search-title')) {
+        $('.other-search-body').slideToggle();
+      }
     });
   })
 </script>

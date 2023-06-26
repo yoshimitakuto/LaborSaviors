@@ -10,7 +10,7 @@ class Public::CommentRepliesController < ApplicationController
     if comment_reply.save
       # updateを用いて、post_commentテーブルの「evaluation」カラムへcomment_replyのformからデータを送信
       post_comment.update(evaluation: params[:evaluation])
-      redirect_to request.referer, success: "救世神があなたの返信コメントを見て喜びます。"
+      redirect_to request.referer, success: "あなたの返信コメントで救世神が喜びます。"
     else
       redirect_to request.referer, danger: "コメント返信が正常に動作しませんでした。"
     end

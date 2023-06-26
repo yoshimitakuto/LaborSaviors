@@ -1,7 +1,7 @@
-<div class="container mt-5">
+<div class='container mt-5'>
 
   <!--ページタイトル-->
-  <div class="row justify-content-center mb-5">
+  <div class='row justify-content-center mb-5'>
     <h4><strong><%= @user.nickname %>さんの神がかりコメント一覧</strong></h4>
   </div>
 
@@ -20,7 +20,7 @@
   <% else %>
     <div class="mb-5">
       <% @post_comments.each do |post_comment| %>
-        <div class='row justify-content-center p-3 mt-3'>
+        <div class='row justify-content-center p-3 mt-5'>
           <div class='col-md-4 text-center bg-dark p-3'>
             <%= link_to user_show_path(post_comment.post.user.id) do %>
               <%= image_tag post_comment.post.user.get_profile_image(200,200), class: 'profile_image  post_link' %>
@@ -35,18 +35,12 @@
         </div>
 
         <div class='row justify-content-first'>
-          <div>
-            <%= link_to user_show_path(current_user) do %>
-              <%= image_tag post_comment.user.get_profile_image(100,100), class: 'profile_image' %>
-            <% end %>
-            <div>「この投稿に対するあなたコメント内容」</div>
-          </div>
-          <div class='content-area'>
-            <%= safe_join(post_comment.comment.split("\n"),tag(:br)) %>
-          </div>
-
+          「この投稿に対するあなたコメント内容」
         </div>
 
+        <div class='row justify-content-first content-area'>
+          <%= safe_join(post_comment.comment.split("\n"),tag(:br)) %>
+        </div>
       <% end %>
     </div>
   <% end %>

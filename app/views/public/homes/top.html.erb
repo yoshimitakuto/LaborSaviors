@@ -11,7 +11,7 @@
           <%= render 'public/searches/serach_post', q: @q, url: root_path %>
         </div>
       </div>
-      <div class='row mt-5'>
+      <div class='row mt-5 mb-5'>
         <h4 class="col-md-6">新着のお悩み</h4>
         <table class='table'>
           <tbody>
@@ -38,26 +38,25 @@
           </tbody>
         </table>
       </div>
+
+      <div class='row justify-content-center mb-5'>
+        <div class='col text-center'>
+          <%= link_to new_post_path, class: 'btn link' do %>
+            <h5>
+              悩みを聞いてもらう。。。
+            </h5><%= image_tag '考える人.jpg', :size => '200x200' %>
+          <% end %>
+        </div>
+        <div class='col text-center'>
+          <%= link_to posts_path, class: 'btn link' do %>
+            <h5>
+              救世神となり皆を救いに行く！
+            </h5><%= image_tag '救世.jpg', :size => '200x200' %>
+          <% end %>
+        </div>
+      </div>
     </div>
 
   </div>
-
-  <div class='row justify-content-center mb-5'>
-    <div class='col-md-4 text-center'>
-      <%= link_to new_post_path, class: 'btn link' do %>
-        <h5>
-          悩みを聞いてもらう。。。
-        </h5><%= image_tag '考える人.jpg', :size => '200x200' %>
-      <% end %>
-    </div>
-    <div class='col-md-4 text-center'>
-      <%= link_to posts_path, class: 'btn link' do %>
-        <h5>
-          救世神となり皆を救いに行く！
-        </h5><%= image_tag '救世.jpg', :size => '200x200' %>
-      <% end %>
-    </div>
-  </div>
-
 </div>
 

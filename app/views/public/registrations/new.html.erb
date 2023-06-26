@@ -1,16 +1,15 @@
 <div class='container mt-5'>
 
   <!--ページタイトル-->
-  <div class="mx-auto mb-5 text-center">
-    <h2 class='page-title'><strong>Signup</strong></h2>
+  <div class='row justify-content-center mb-5'>
+    <h2><strong>Signup</strong></h2>
   </div>
 
   <!--新規登録入力フォーム-->
-  <div class='row mx-auto'>
-    <div class='col-md-8 mx-auto text-center'>
+  <div class='row justify-content-center mb-5'>
+    <div class='col-md-8 text-center'>
       <%= form_with model: @user, url: user_registration_path do |f| %>
-        <%= render "public/shared/error_messages", resource: @user %>
-
+        <%= render 'public/shared/error_messages', resource: @user %>
         <div class='row form-field mb-3 was-validated'>
           <div class='col'><label>ニックネーム</label></div>
           <div class='col'><%= f.text_field :nickname, autofocus: true, autocomplete: "nickname", class: 'form-control', placeholder: "nickname", required: true %></div>
@@ -52,18 +51,17 @@
           </script>
         </div>
 
-        <div class="actions text-center mt-5 col-4 mx-auto">
+        <div class='actions text-center mb-5 col-md-4 mx-auto'>
           <%= f.submit "登録", class: 'form-control btn btn-info' %>
         </div>
-
       <% end %>
-
-      <div class=" text-center mt-5">
-        <h5><%= link_to "Login", new_session_path(resource_name), class: 'link' %> 👋</h5>
-      </div>
-
     </div>
   </div>
+
+  <div class='row justify-content-center mb-5'>
+    <h5><%= link_to "Login", new_session_path(resource_name), class: 'link' %> 👋</h5>
+  </div>
+
 </div>
 
 

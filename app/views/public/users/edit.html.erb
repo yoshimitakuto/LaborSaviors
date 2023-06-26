@@ -1,23 +1,23 @@
 <div class='container mt-5'>
 
   <!--ページタイトル-->
-  <div class="mx-auto mb-5 text-center">
+  <div class='row justify-content-center mb-5'>
     <h4><strong>会員情報編集</strong></h4>
   </div>
 
   <!--ログイン情報入力フォーム（名前・パスワードのみ）-->
-  <div class='row mx-auto'>
-    <div class='col-md-8 mx-auto text-center'>
+  <div class='row justify-content-center mb-5'>
+    <div class='col-md-8 text-center'>
       <%= form_with model: @user, url: information_path(@user), method: :patch do |f| %>
-
         <div class='row form-field mb-5'>
           <div class='col'><label>ニックネーム</label></div>
-          <div class='col'><%= f.text_field :nickname, autofocus: true, required: true %></div>
+          <div class='col'><%= f.text_field :nickname, autofocus: true, required: true, class: 'form-control' %></div>
         </div>
 
         <div class='row form-field mb-3'>
           <div class='col'>
             <label>プロフィール画像（任意）</label><br>
+            </br>
             <%= f.file_field :profile_image %>
           </div>
         </div>
@@ -36,16 +36,19 @@
           </script>
         </div>
 
-        <div class="actions text-center mt-5">
+        <div class="actions text-center">
           <%= f.submit "編集完了", class: 'btn btn-info' %>
         </div>
       <% end %>
-
-      <div class=" text-center mt-5">
-        <h6><%= link_to "詳細画面へ戻る", user_show_path(@user), class: 'link' %></h6>
-      </div>
-
-
     </div>
   </div>
+
+  <div class=" text-center mt-5">
+    <h6>
+      <%= link_to user_show_path(@user), class: 'link' do %>
+        詳細画面へ戻る <i class="fa-solid fa-rotate-left"></i>
+      <% end %>
+    </h6>
+  </div>
+
 </div>

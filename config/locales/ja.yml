@@ -4,9 +4,9 @@ ja:
    is_resolution:
 
    mental_status:
-    tofu_mental: "豆腐メンタルです。優しめにお願いします。"
-    konnyaku_mental: "こんにゃくメンタルです。柔軟にお願いします。"
-    hagane_mental: "鋼メンタルです。強めでお願いします。"
+    tofu_mental: "豆腐メンタルです。優しめにご回答お願いします。"
+    konnyaku_mental: "こんにゃくメンタルです。どんな回答でも受け止めます。"
+    hagane_mental: "鋼メンタルです。強めの回答でも大丈夫です。（ドMではありません）"
 
  views:
     pagination:
