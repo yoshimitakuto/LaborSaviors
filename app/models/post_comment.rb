@@ -11,7 +11,7 @@ class PostComment < ApplicationRecord
   has_many :comment_likes, dependent: :destroy
 
   # コメント返信機能
-  has_many :comment_replies
+  has_many :comment_replies, dependent: :destroy
 
   # 通知機能間（subjectがPostCommentモデルとなる）
   # 一つの事柄に対応した一つの通知を取り出すのみのため「has_one」で設定

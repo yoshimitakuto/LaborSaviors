@@ -13,7 +13,6 @@ class CommentLike < ApplicationRecord
   # ========アソシエーション設定========
 
 
-
   # アクション後に通知を受け取るため、モデルのインスタンスが作成された後に実行
   after_create_commit :create_notifications
 
