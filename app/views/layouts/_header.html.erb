@@ -162,3 +162,150 @@
 
   </div>
 </nav>
+
+<!--ハンバーガーメニューアイコン-->
+<div id='hm-icon'>
+  <a class='menu-trigger'>
+    <span></span>
+    <span></span>
+    <span></span>
+  </a>
+</div>
+
+<!--ハンバーガーメニュー用ヘッダー-->
+<div id="sp-menu">
+  <h2>MENU</h2>
+    <ul class="navbar-nav mx-auto justify-content-around">
+
+      <!--ユーザーログイン時-->
+      <% if user_signed_in? %>
+        <li class='nav-item'>
+          <%= link_to user_show_path(current_user.id) do %>
+             <%= image_tag current_user.get_profile_image(100,100), class: 'profile_image' %>
+          <% end %>
+        </li>
+        <li class='nav-item'>
+          <%= link_to root_path ,class: 'nav-link' do %>
+            Top
+          <% end %>
+        </li>
+        <li class='nav-item'>
+          <%= link_to notifications_path, class: 'nav-link' do %>
+            <% if current_user.notifications.where(checked: false).exists? %>
+              <i class="fa-solid fa-bell fa-shake fa-lg" style="color: #f0dc00;"></i>
+            <% else %>
+              <i class="fa-regular fa-bell fa-lg"></i>
+            <% end %>
+           通知
+          <% end %>
+        </li>
+        <li class='nav-item'>
+          <%= link_to users_path ,class: 'nav-link' do %>
+            <i class="fa-solid fa-people-group fa-bounce fa-lg"></i>
+            救世神
+          <% end %>
+        </li>
+        <li class='nav-item'>
+          <%= link_to "みんなのお悩み", posts_path, class: 'nav-link' %>
+        </li>
+        <li class='nav-item'>
+          <%= link_to "あなたのお悩み", user_my_posts_path(current_user), class: 'nav-link' %>
+        </li>
+        <li class='nav-item'>
+          <%= link_to "共感したお悩み", user_post_likes_path(current_user), class: 'nav-link' %>
+        </li>
+        <li class='nav-item'>
+          <%= link_to "あなたのコメント", user_my_post_comments_path(current_user), class: 'nav-link' %>
+        </li>
+        <li class='nav-item'>
+          <%= link_to "高評価したコメント", user_comment_likes_path(current_user), class: 'nav-link' %>
+        </li>
+        <li class='nav-item'>
+          <%= link_to  destroy_user_session_path, method: :delete, class: 'nav-link' do %>
+            <i class="fa-solid fa-right-from-bracket fa-lg"></i>
+            ログアウト
+          <% end %>
+        </li>
+
+      <!--管理者ログイン時-->
+      <% elsif admin_signed_in? %>
+        <li class='nav-item'>
+          <%= link_to  admin_users_path, class: 'nav-link' do %>
+            <i class="fa-solid fa-people-group fa-lg"></i>
+            会員一覧
+          <% end %>
+        </li>
+        <li class='nav-item'>
+          <%= link_to admin_posts_path, class: 'nav-link' do %>
+            <i class="fa-solid fa-head-side-virus fa-lg"></i>
+            投稿一覧
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <li><%= link_to "投稿へのコメント一覧", admin_post_comments_path, class: 'nav-link' %></li>
+          <li><%= link_to "コメントへの返信コメント", admin_comment_replies_path, class: 'nav-link' %></li>
+        </li>
+        <li class='nav-item'>
+          <%= link_to admin_categories_path, class: 'nav-link' do %>
+            <i class="fa-regular fa-rectangle-list fa-lg"></i>
+            カテゴリ一覧
+          <% end %>
+        </li>
+        <li class='nav-item'>
+          <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link' do %>
+            <i class="fa-solid fa-right-from-bracket fa-lg"></i>
+            ログアウト
+          <% end %>
+        </li>
+
+       <!--ログアウト時-->
+      <% else %>
+        <li class='nav-item'>
+          <%= link_to root_path ,class: 'nav-link' do %>
+            Top
+          <% end %>
+        </li>
+        <li class='nav-item'>
+          <%= link_to users_path ,class: 'nav-link' do %>
+            <i class="fa-solid fa-people-group fa-bounce fa-lg"></i>
+            救世神
+          <% end %>
+        </li>
+        <li class='nav-item'>
+          <%= link_to posts_path ,class: 'nav-link' do %>
+            <i class="fa-solid fa-head-side-virus fa-beat-fade fa-lg"></i>
+            みんなのお悩み
+          <% end %>
+        </li>
+        <li class='nav-item'>
+          <%= link_to new_user_registration_path ,class: 'nav-link' do %>
+            <i class="fa-solid fa-user-plus fa-lg"></i>
+            新規登録
+          <% end %>
+        </li>
+        <li class='nav-item'>
+          <%= link_to new_user_session_path, class: 'nav-link' do %>
+            <i class="fa-solid fa-right-to-bracket fa-lg"></i>
+            ログイン
+          <% end %>
+        </li>
+        <li class='nav-item'>
+          <%= link_to users_guest_sign_in_path,method: :post, class: 'nav-link' do %>
+            <i class="fa-solid fa-face-smile fa-lg"></i>
+            ゲストログイン
+          <% end %>
+        </li>
+      <% end %>
+
+    </ul>
+</div>
+
+<script>
+  $(function() {
+    $('.menu-trigger').on('click', function(event) {
+      $(this).toggleClass('active');
+      $('#sp-menu').fadeToggle();
+      event.preventDefault();
+    });
+  });
+</script>
