@@ -27,10 +27,18 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    if @post.save
-      redirect_to posts_path, success: "投稿に成功しました。救世コメントを待ちましょう！"
+    if params[:post]
+      if @post.save(context: :publicize)
+        redirect_to posts_path, success: "投稿に成功しました。救世コメントを待ちましょう！"
+      else
+        redirect_to request.referer, danger: "投稿に失敗しました。もう一度お試しください。"
+      end
     else
-      redirect_to request.referer, danger: "投稿に失敗しました。もう一度お試しください。"
+      if @post.update(is_draft: true)
+        redirect_to user_path(current_user), warning: "お悩みを下書き保存しました。"
+      else
+        redirect_to request.referer, danger: "下書き保存に失敗しました。お手数ですがもう一度お試しください。"
+      end
     end
   end
 
