@@ -27,17 +27,17 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    if params[:post]
+    if params[:draft].present?
+      if @post.update(is_draft: true)
+        redirect_to posts_path, warning: "お悩みを下書き保存しました。"
+      else
+        redirect_to request.referer, danger: "下書き保存に失敗しました。お手数ですがもう一度お試しください。"
+      end
+    else
       if @post.save(context: :publicize)
         redirect_to posts_path, success: "投稿に成功しました。救世コメントを待ちましょう！"
       else
-        redirect_to request.referer, danger: "投稿に失敗しました。もう一度お試しください。"
-      end
-    else
-      if @post.update(is_draft: true)
-        redirect_to user_path(current_user), warning: "お悩みを下書き保存しました。"
-      else
-        redirect_to request.referer, danger: "下書き保存に失敗しました。お手数ですがもう一度お試しください。"
+        redirect_to request.referer, danger: "投稿に失敗しました。タグ以外の項目を入力しもう一度お試しください。"
       end
     end
   end
@@ -62,11 +62,30 @@ class Public::PostsController < ApplicationController
   end
 
   def update
-    if @post.update(post_params)
-      redirect_to posts_path, warning: "編集が完了しました。"
+    # 下書きしたお悩み投稿内容を公開（投稿）する場合
+    if params[:publicize_draft]
+      @post.attributes = post_params.merge(is_draft: false)
+      if @post.save(context: :publicize)
+        redirect_to posts_path, warning: "下書きしたお悩みの投稿が完了しました。"
+      else
+        @post.is_draft = true
+        redirect_to request.referer, danger: "下書きを投稿できませんでした。お手数ですが再度お試しください。"
+      end
+    # 公開済みのお悩み投稿を更新する場合
+    elsif params[:update_post]
+      @post.attributes = post_params
+      if @post.save(context: :publicize)
+        redirect_to posts_path, warning: "編集が完了しました。"
+      else
+        redirect_to request.referer, danger: "編集に失敗しました。項目を全て入力してからもう一度お試しください。"
+      end
+    下書きお悩み投稿の更新（非公開）の場合
     else
-      flash[:danger] = "編集に失敗しました。項目を全て入力してからもう一度お試しください。"
-      redirect_to request.referer
+      if @post.update(post_params)
+        redirect_to post_path(@post), warning: "下書き内容を更新しました。"
+      else
+        redirect_to request.referer, danger: "下書き内容の更新に失敗しました。お手数ですがもう一度お試しください。"
+      end
     end
   end
 
@@ -82,7 +101,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:category_id, :mental_status, :is_resolution, :content, :tag_list)
+    params.require(:post).permit(:category_id, :mental_status, :is_resolution, :content, :tag_list, :is_draft)
   end
 
   def find_id

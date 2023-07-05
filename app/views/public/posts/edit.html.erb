@@ -45,7 +45,12 @@
     </div>
 
     <div class='form_group mb-5 text-center'>
-      <%= f.submit "編集完了", class: 'btn btn-success' %>
+      <% if @post.is_draft == true %>
+        <%= f.submit "お悩みを公開", :name => 'publicize_draft', class: 'btn btn-success' %>
+        <%= f.submit "下書きを保存", :name => 'update_post', class: 'btn btn-success' %>
+      <% else %>
+        <%= f.submit "編集完了", class: 'btn btn-success' %>
+      <% end %>
     </div>
   <% end %>
 
