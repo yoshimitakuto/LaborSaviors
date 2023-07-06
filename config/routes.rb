@@ -42,6 +42,7 @@ scope module: :public do
 
   # users
   get '/users'  => 'users#index'
+  get '/users/:id/draft_posts' => 'users#draft_posts', as: 'user_draft_posts'
   get '/users/:id/my_posts' => 'users#my_posts', as: 'user_my_posts'
   get '/users/:id/post_likes' => 'users#post_likes', as: 'user_post_likes'
   get '/users/:id/my_post_comments' => 'users#my_post_comments', as: 'user_my_post_comments'

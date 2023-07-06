@@ -8,8 +8,8 @@
   <!--新規登録入力フォーム-->
   <div class='row justify-content-center mb-5'>
     <div class='col-md-8 text-center'>
+      <%= render 'public/shared/error_messages', resource: @user %>
       <%= form_with model: @user, url: user_registration_path do |f| %>
-        <%= render 'public/shared/error_messages', resource: @user %>
         <div class='row form-field mb-3 was-validated'>
           <div class='col'><label>ニックネーム</label></div>
           <div class='col'><%= f.text_field :nickname, autofocus: true, autocomplete: "nickname", class: 'form-control', placeholder: "nickname", required: true %></div>

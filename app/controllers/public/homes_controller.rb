@@ -12,7 +12,7 @@ class Public::HomesController < ApplicationController
 
     # 全投稿の投稿内容検索機能
     @q = Post.ransack(params[:q])
-    @new_posts = @q.result.includes(:user).limit(5).order(created_at: :DESC)
+    @new_posts = @q.result.where.not(is_draft: true).includes(:user).limit(5).order(created_at: :DESC)
   end
 
   def about

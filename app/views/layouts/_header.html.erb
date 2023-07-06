@@ -56,6 +56,7 @@
               <li><%= link_to "みんなのお悩み", posts_path, class: 'dropdown-item' %></li>
               <li><%= link_to "あなたのお悩み", user_my_posts_path(current_user), class: 'dropdown-item' %></li>
               <li><%= link_to "共感したお悩み", user_post_likes_path(current_user), class: 'dropdown-item' %></li>
+              <li><%= link_to "下書き保存", user_draft_posts_path(current_user), class: 'dropdown-item' %></li>
             </ul>
           </li>
           <li class="nav-item dropright">
@@ -213,6 +214,9 @@
         </li>
         <li class='nav-item'>
           <%= link_to "共感したお悩み", user_post_likes_path(current_user), class: 'nav-link' %>
+        </li>
+        <li class='nav-item'>
+          <%= link_to "下書き保存のお悩み", user_draft_posts_path(current_user), class: 'nav-link' %>
         </li>
         <li class='nav-item'>
           <%= link_to "あなたのコメント", user_my_post_comments_path(current_user), class: 'nav-link' %>
