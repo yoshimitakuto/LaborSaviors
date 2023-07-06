@@ -7,6 +7,10 @@ class Public::UsersController < ApplicationController
     @users = User.page(params[:page]).per(12)
   end
 
+  def draft_posts
+    @posts = Post.where("user_id=? and is_draft=?", @user.id, true).page(params[:page]).per(8).order(created_at: :desc)
+  end
+
   def post_likes
     post_likes = PostLike.where(user_id: @user.id).pluck(:post_id)
     @post_likes_posts = Post.where(id: post_likes).page(params[:page]).per(8).order(created_at: :desc)
@@ -40,12 +44,12 @@ class Public::UsersController < ApplicationController
       @comment_likes_count += post_comment.comment_likes.count
     end
 
-    # chartkickで現在から1週間前の記録を表示
-    post_data = @user.posts.group_by_day(:created_at, range: 1.week.ago.midnight..Time.now.end_of_day).count
+    # chartkickで現在から1週間前の記録を表示(下書き投稿は数値反映させないよう記述)
+    post_data = @user.posts.where.not(is_draft: true).group_by_day(:created_at, range: 1.week.ago.midnight..Time.now.end_of_day).count
     post_comment_data = @user.post_comments.group_by_day(:created_at, range: 1.week.ago.midnight..Time.now.end_of_day).count
     comment_reply_data = @user.comment_replies.group_by_day(:created_at, range: 1.week.ago.midnight..Time.now.end_of_day).count
     @chart = [ { name: "お悩み投稿数", data: post_data }, { name: "救世コメント数", data: post_comment_data }, { name: "評価コメント数", data: comment_reply_data }, ]
-    @post_count = @user.posts.count
+    @post_count = @user.posts.where.not(is_draft: true).count
     @post_comment_count = @user.post_comments.count
     @comment_reply_count = @user.comment_replies.count
   end

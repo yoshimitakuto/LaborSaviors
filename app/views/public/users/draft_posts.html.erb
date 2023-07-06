@@ -1,0 +1,40 @@
+<div class="container mt-5">
+
+  <!--ページタイトル-->
+  <div class="row justify-content-center mb-5">
+    <h4><strong>下書き投稿一覧（未公開）</strong></h4>
+  </div>
+
+  <div class='row justify-content-center mb-3'>
+    全<%= @posts.total_count %>件
+  </div>
+
+  <!--一覧表示-->
+  <% if @posts.empty? %>
+    <div class='row justify-content-center mb-5'>
+      <h5>下書きした投稿はありません。</h5>
+      <%= link_to "お悩みを投稿して救世神達を刺激してあげましょう", new_post_path, class: 'btn btn-info' %>
+    </div>
+  <% else %>
+    <div class="mb-5">
+      <% @posts.each do |post| %>
+        <div class='row justify-content-center p-3 mt-3'>
+          <div class='col-md-8 p-3 post-body'>
+            <div class='mb-2 text-center'><strong>下書き保存中</strong></div>
+            <div class='mb-2'>カテゴリー：「<%= post.category_id.present? ? post.category.name : "値がからです" %>」</div>
+            <div class='mb-2'>メンタル：「<%= post.mental %>」</div>
+            <div class='mb-2'>タグ：<%= post.tag_list.present? ? "「#{post.tag_list}」" : " ※ 公開時入力は任意です。" %></div>
+            <div class='mb-2'>お悩み内容：<%= post.content.present? ? "「#{post.content.truncate(30)}」"  : " ※ 公開時入力必須項目です。" %></div>
+            <div class='mb-3'>下書き保存日：「<%= l post.created_at %>」</div>
+            <div class='text-center'><%= link_to "詳細",post_path(post), class: 'btn btn-info btn-sm' %></div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class='row justify-content-center mb-5'>
+    <%= paginate @posts %>
+  </div>
+
+</div>

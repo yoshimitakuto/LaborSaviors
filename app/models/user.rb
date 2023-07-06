@@ -32,8 +32,8 @@ class User < ApplicationRecord
 
 
   # ========バリデーション設定========
-  #一意性をアプリ側で持たせ、同時に同じ名前で新規登録された時に同じニックネームを登録させないようにするために、userモデル側でも一意性設定。
-  validates :nickname, presence: true
+  #一意性をアプリ側で持たせ、同時に同じ名前で新規登録された時に同じニックネームを登録させないようにするために、モデル・データベース両方で一意性設定。
+  validates :nickname, presence: true, uniqueness: true
   validates :is_deleted, inclusion: { in: [true, false] }
   # ========バリデーション設定========
 
