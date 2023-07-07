@@ -182,7 +182,7 @@
       <% if user_signed_in? %>
         <li class='nav-item'>
           <%= link_to user_show_path(current_user.id) do %>
-             <%= image_tag current_user.get_profile_image(100,100), class: 'profile_image' %>
+             <%= image_tag current_user.get_profile_image(50,50), class: 'profile_image' %>
           <% end %>
         </li>
         <li class='nav-item'>
@@ -205,23 +205,11 @@
             <i class="fa-solid fa-people-group fa-bounce fa-lg"></i>
             救世神
           <% end %>
-        </li>
-        <li class='nav-item'>
           <%= link_to "みんなのお悩み", posts_path, class: 'nav-link' %>
-        </li>
-        <li class='nav-item'>
           <%= link_to "あなたのお悩み", user_my_posts_path(current_user), class: 'nav-link' %>
-        </li>
-        <li class='nav-item'>
           <%= link_to "共感したお悩み", user_post_likes_path(current_user), class: 'nav-link' %>
-        </li>
-        <li class='nav-item'>
           <%= link_to "下書き保存のお悩み", user_draft_posts_path(current_user), class: 'nav-link' %>
-        </li>
-        <li class='nav-item'>
           <%= link_to "あなたのコメント", user_my_post_comments_path(current_user), class: 'nav-link' %>
-        </li>
-        <li class='nav-item'>
           <%= link_to "高評価したコメント", user_comment_likes_path(current_user), class: 'nav-link' %>
         </li>
         <li class='nav-item'>
@@ -246,8 +234,10 @@
           <% end %>
         </li>
         <li class="nav-item">
-          <li><%= link_to "投稿へのコメント一覧", admin_post_comments_path, class: 'nav-link' %></li>
-          <li><%= link_to "コメントへの返信コメント", admin_comment_replies_path, class: 'nav-link' %></li>
+          <%= link_to "投稿へのコメント一覧", admin_post_comments_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "コメントへの返信コメント", admin_comment_replies_path, class: 'nav-link' %>
         </li>
         <li class='nav-item'>
           <%= link_to admin_categories_path, class: 'nav-link' do %>

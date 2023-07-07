@@ -1,11 +1,8 @@
 <%= search_form_for q, url: url do |f| %>
   <div class='row'>
-    <%= f.search_field :content_cont, class: 'form-control col-md-10', placeholder: "お悩み内容フリーワード検索" %>
-    <%= f.button type: 'submit', class: 'btn btn-primary col-md-2' do %>
+    <%= f.search_field :content_cont, class: 'form-control col-md-10 col-sm-10 col-10', placeholder: "お悩み内容フリーワード検索" %>
+    <%= f.button type: 'submit', class: 'btn btn-primary col-md-2 col-sm-2 col-2' do %>
       <i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i>
     <% end %>
   </div>
 <% end %>
-<div class='row'>
-  
-</div>
