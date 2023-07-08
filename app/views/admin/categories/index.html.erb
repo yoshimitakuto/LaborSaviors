@@ -6,40 +6,44 @@
   </div>
 
   <div class='row justify-content-center mb-5'>
-    <p>コメント総数：<%= @categories.count %>件</p>
+    <p>総数：<%= @categories.count %>個</p>
   </div>
 
   <div class='row justify-content-first mb-5'>
-    <%= form_with model: @category, url: admin_categories_path, method: :post do |f| %>
-      <%= f.text_field :name, :size =>"50", placeholder: "カテゴリーを追加する場合はこちらへ入力してください" %>
-      <%= f.submit "追加", class: 'btn btn-info btn-sm'%>
-    <% end %>
+    <div class='col-md-4'>
+      <%= form_with model: @category, url: admin_categories_path, method: :post do |f| %>
+        <%= f.text_field :name, :size =>"50", placeholder: "カテゴリー追加はこちらへ", class: 'form-control' %>
+        <%= f.submit "追加", class: 'btn btn-info btn-sm'%>
+      <% end %>
+    </div>
   </div>
 
   <!--一覧表示-->
   <div class='row justify-content-center mb-5'>
-    <table class='table table-bordered border-dark table-hover align-middle'>
-      <thead class='thead-light'>
-        <tr align='center'>
-          <th>カテゴリ名</th>
-          <th>使用回数</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @categories.each do |category| %>
-        <tr align='center'>
-          <td><%= category.name %></td>
-          <td><%= category.posts.count %></td>
-          <td>
-            <%= link_to admin_category_path(category), method: :delete do %>
-              <i class="fa-solid fa-trash-can fa-lg" style="color: #f90101;"></i>
-            <% end %>
-          </td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
+    <div class='col table-responsive-sm'>
+      <table class='table table-bordered border-dark table-hover align-middle'>
+        <thead class='thead-light'>
+          <tr align='center'>
+            <th>カテゴリ名</th>
+            <th>使用回数</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @categories.each do |category| %>
+          <tr align='center'>
+            <td><%= category.name %></td>
+            <td><%= category.posts.count %></td>
+            <td>
+              <%= link_to admin_category_path(category), method: :delete do %>
+                <i class="fa-solid fa-trash-can fa-lg" style="color: #f90101;"></i>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
 
 </div>

@@ -53,13 +53,6 @@ main {
   min-height: 100vh;
 }
 
-.backimage {
-  background-image: url("../images/logo.jpg");
-  height: 800px;
-  background-size: cover;
-  background-position: center;
-}
-
 .link {
   color: white;
 
@@ -157,7 +150,6 @@ main {
 
 .ranking-card {
   @extend %background_color;
-  width: 20rem;
 }
 
 .post-body {
@@ -196,7 +188,7 @@ main {
    position: fixed;
    right: 20px;
    top: 20px;
-   z-index: 10;
+   z-index: 20;
  }
 
  .menu-trigger,
@@ -258,7 +250,7 @@ main {
    width: 100%;
    min-height: 100%;
    display: none;
-   z-index: 9;
+   z-index: 11;
  }
 
  #sp-menu li {

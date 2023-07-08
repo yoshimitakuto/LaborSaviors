@@ -8,8 +8,8 @@
   <!--新規登録入力フォーム-->
   <div class='row justify-content-center mb-5'>
     <div class='col-md-8 text-center'>
+      <%= render 'public/shared/error_messages', resource: @user %>
       <%= form_with model: @user, url: user_registration_path do |f| %>
-        <%= render 'public/shared/error_messages', resource: @user %>
         <div class='row form-field mb-3 was-validated'>
           <div class='col'><label>ニックネーム</label></div>
           <div class='col'><%= f.text_field :nickname, autofocus: true, autocomplete: "nickname", class: 'form-control', placeholder: "nickname", required: true %></div>
@@ -32,7 +32,7 @@
 
         <div class='row form-field justify-content-center mb-3'>
           <div class='col mb-3'>
-            <label>プロフィール画像（任意）</label><br>
+            <label>プロフィール画像（任意）<br><small>※jpeg/jpg形式で画像を選択してください。</small></label><br>
             <%= f.file_field :profile_image, id: 'input-file', autocomplete: "profile_image" %>
           </div>
         </div>

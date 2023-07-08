@@ -21,14 +21,14 @@
   </div>
 
   <div class='row justify-content-center mt-5 mb-3'>
-    <div class='col-md-5'>
+    <div class='col-md-5 col-sm-5 col-10'>
       <%= render 'public/searches/serach_post', q: @q, url: posts_path %>
     </div>
-    <div class='col-md-2 ml-3 btn btn-info btn-other other-search-title'>他の検索を試す</div>
+    <div class='col-md-2 col-sm-2 col-6 ml-3 btn btn-info btn-other other-search-title'>他の検索を試す</div>
   </div>
 
   <div class='row justify-content-center mb-3'>
-    全<%= @posts.total_count %>件
+    全<%= @total_counts %>件
   </div>
 
   <div class='row justify-content-center mb-3'>
