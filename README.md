@@ -59,9 +59,10 @@
 
 ## 設計書
 - 開発環境構築
+- [AWS構成図](https://app.diagrams.net/#G1emt1fer39DE0d-TO-Xm_2eI7rOMbxCpO)（作成ツール：drawio）
 - [実装機能リスト](https://docs.google.com/spreadsheets/d/1aWNL4h66D_9JVtvX8AbuN6oNDTt-lFAlRvQxxiAAJps/edit#gid=885378170)
-- [UI flow](https://app.diagrams.net/#G1u5JPVW_BSXhB0chB2IWtI3bZA22hhTP-#%7B%22pageId%22%3A%22gj3RF_NmIvnPMkH7TpEE%22%7D)
-- [ER図](https://app.diagrams.net/#G1u5JPVW_BSXhB0chB2IWtI3bZA22hhTP-#%7B%22pageId%22%3A%22gj3RF_NmIvnPMkH7TpEE%22%7D)
+- [UI flow](https://app.diagrams.net/?client=1#G1KEgbu4reFMK0EtL-umVmbhsD5LllClLw)（作成ツール：drawio）
+- [ER図](https://app.diagrams.net/?client=1#G1TJhNUmMFe6aaNBqjnIIUyPG-qt9WHNSI)（作成ツール：drawio）
 - [テーブル定義書](https://docs.google.com/spreadsheets/d/1bHLQWqPFdJPL9DuqvhCXFJAFQs3Zmbby2dUUl-B8mMk/edit#gid=356433990)
 - [テスト仕様書](https://docs.google.com/spreadsheets/d/14sTrirgrZ8FXzXUfytcHd6YsbW_IVMkp/edit#gid=2072448154)
 
