@@ -66,7 +66,7 @@
 - [テスト仕様書](https://docs.google.com/spreadsheets/d/14sTrirgrZ8FXzXUfytcHd6YsbW_IVMkp/edit#gid=2072448154)
 
 ## 開発環境
-- OS：Linux(CentOS)
+- OS：Amazon Linux release 2 (Karoo)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails,Bootstrap
 - JSライブラリ：jQuery
