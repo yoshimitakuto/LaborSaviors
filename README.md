@@ -71,7 +71,7 @@
 
 ## 開発環境
 - OS：Amazon Linux release 2 (Karoo)
-- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- 言語：HTML,CSS,JavaScript,Ruby,python,SQL
 - フレームワーク：Ruby on Rails,Bootstrap
 - JSライブラリ：jQuery
 - IDE：Cloud9
@@ -80,3 +80,7 @@
 - [Canva](https://www.canva.com/)
 - [ヒューマンピクトグラム2.0](https://pictogram2.com/)
 - [Flat Icon Design](http://flat-icon-design.com/)
+
+
+## 不適切ワードについて
+- 不適切な単語を含む投稿は、自動的に削除されます。(PythonのseleniumとBeautifulsoup4を外部ファイルで使用)
