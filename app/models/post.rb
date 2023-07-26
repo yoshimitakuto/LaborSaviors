@@ -29,7 +29,7 @@ class Post < ApplicationRecord
 
 
   # ========バリデーション設定========
-  validates :category_id, :content, presence: true, on: :publicize
+  validates :content, presence: true, on: :publicize
   validates :is_resolution, inclusion: { in: [true, false] }, on: :publicize
   # ========バリデーション設定========
 

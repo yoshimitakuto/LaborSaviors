@@ -11,8 +11,10 @@
           <p><strong><%= post.user.nickname %></strong></p>
           <p>カテゴリー<strong>「<%= post.category.name %>」</strong></p>
           <p><strong><%= post.resolution_status %></strong></p>
-          <p><strong><%= post.mental %></strong>(救世コメント数：<%= post.post_comments.count %>)</p>
+          <p><strong><%= post.mental %></strong></p>
+          <p>(救世コメント数：<%= post.post_comments.count %>)</p>
           <p><%= render 'public/posts/tag_list', tag_list: post.tag_list %></p>
+          <p>投稿日時：<%= l post.created_at %></p>
         </div>
       </div>
     <% end %>

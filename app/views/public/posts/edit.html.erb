@@ -10,10 +10,10 @@
     <div class='form_group mb-5 text-center'>
       <div>
         <% if @post.is_draft == false %>
-          <%= f.radio_button :is_resolution, :true,class: 'form-check-input' %>
-          <%= f.label :is_resolution, "解決済み",class: 'form-check-label' %></br>
-          <%= f.radio_button :is_resolution, :false,class: 'form-check-input' %>
-          <%= f.label :is_resolution, "未解決",class: 'form-check-label' %>
+          <%= f.radio_button :is_resolution, :true, class: 'form-check-input' %>
+          <%= f.label :is_resolution, "解決済み", class: 'form-check-label' %></br>
+          <%= f.radio_button :is_resolution, :false, class: 'form-check-input' %>
+          <%= f.label :is_resolution, "未解決", class: 'form-check-label' %>
         <% end %>
       </div>
     </div>

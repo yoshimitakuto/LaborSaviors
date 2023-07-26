@@ -1,5 +1,9 @@
 <div class='container mt-5'>
 
+  <div class='row justify-content-center error_message'>
+    <%= render 'layouts/error_messages', model: @post_comment %>
+  </div>
+
   <!--ページタイトル-->
   <div class='row justify-content-center mb-5'>
     <!--解決ステータスにより表示を条件分岐-->
@@ -65,6 +69,9 @@
   <div class='row justify-content-center mb-3'>
     <div class="col-md-10 mx-auto">
       <p>「お悩み内容」<%= @post.mental %></p>
+      <div class='row justify-content-end'>
+        <p>投稿日時：<%= l @post.created_at %></p>
+      </div>
       <div class='content-area'>
         <%= safe_join(@post.content.split("\n"),tag(:br)) %>
       </div>
@@ -78,6 +85,7 @@
     </div>
   </div>
 
+
   <!--ログインユーザーの場合で条件分岐-->
   <% if @post.user == current_user %>
     <div class='row justify-content-center'>
@@ -85,7 +93,7 @@
         <%= link_to edit_post_path(@post), class: 'btn btn-info btn-sm mr-2' do %>
           <i class="fa-solid fa-pen-nib fa-lg"></i>
         <% end %>
-        <%= link_to post_path(@post), method: :delete, class: 'btn btn-danger btn-sm' do %>
+        <%= link_to post_path(@post), method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: "本当に削除してよろしいですか？" } do %>
           <i class="fa-solid fa-trash-can fa-lg"></i>
         <% end %>
       </div>

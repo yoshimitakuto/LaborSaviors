@@ -1,4 +1,11 @@
 ja:
+ activerecord:
+  attributes:
+   post:
+    content: "本文"
+    category: "カテゴリー"
+
+
  enums:
   post:
    is_resolution:
@@ -8,6 +15,7 @@ ja:
     konnyaku_mental: "こんにゃくメンタルです。どんな回答でも受け止めます。"
     hagane_mental: "鋼メンタルです。強めの回答でも大丈夫です。（ドMではありません）"
 
+
  views:
     pagination:
       first: <i class="fas fa-angle-double-left"></i>
@@ -15,6 +23,7 @@ ja:
       previous: <i class="fas fa-angle-left"></i>
       next: <i class="fas fa-angle-right"></i>
       truncate: "..."
+
 
  time:
    formats:

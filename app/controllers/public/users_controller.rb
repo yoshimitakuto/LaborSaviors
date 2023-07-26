@@ -1,5 +1,5 @@
 class Public::UsersController < ApplicationController
-  before_action :find_id, except: [:index]
+  before_action :correct_user, except: [:index, :show]
   before_action :authenticate_user!, except: [:index, :show]
 
 
@@ -30,6 +30,7 @@ class Public::UsersController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:id])
     # 投稿に対していいねを獲得した総数
     @user_posts = @user.posts
     @post_likes_count = 0
@@ -81,8 +82,11 @@ class Public::UsersController < ApplicationController
     params.require(:user).permit(:nickname, :profile_image, :is_deleted, :level)
   end
 
-  def find_id
+  def correct_user
     @user = User.find(params[:id])
+    unless @user.id == current_user.id
+      redirect_to users_path
+    end
   end
 
 end

@@ -1,6 +1,6 @@
 class Public::PostsController < ApplicationController
-  before_action :find_id, only: [:show, :edit, :update]
   before_action :authenticate_user!, except: [:index, :show, :category_search]
+  before_action :correct_post, only: [:edit, :update]
 
   def index
      # ransackでの検索機能
@@ -31,13 +31,15 @@ class Public::PostsController < ApplicationController
       if @post.update(is_draft: true)
         redirect_to user_draft_posts_path(current_user), warning: "お悩みを下書き保存しました。"
       else
-        redirect_to request.referer, danger: "下書き保存に失敗しました。お手数ですがカテゴリのみ選択してもう一度お試しください。"
+        flash.now[:danger] = "下書き保存に失敗しました。お手数ですがカテゴリのみ選択してもう一度お試しください。"
+        render 'new'
       end
     else
       if @post.save(context: :publicize)
         redirect_to posts_path, success: "投稿に成功しました。救世コメントを待ちましょう！"
       else
-        redirect_to request.referer, danger: "投稿に失敗しました。タグ以外の項目を入力しもう一度お試しください。"
+        # flash.now[:danger] = "投稿に失敗しました。タグ以外の項目を入力しもう一度お試しください。"
+        render 'new'
       end
     end
   end
@@ -49,6 +51,7 @@ class Public::PostsController < ApplicationController
   end
 
   def show
+    @post = Post.find(params[:id])
     @post_comment = PostComment.new
     # ログイン中のユーザーの閲覧数のみしかカウントしないようし、ログインしていないユーザーが閲覧できるようにするため。
     if user_signed_in?
@@ -104,8 +107,11 @@ class Public::PostsController < ApplicationController
     params.require(:post).permit(:category_id, :mental_status, :is_resolution, :content, :tag_list, :is_draft)
   end
 
-  def find_id
+  def correct_post
     @post = Post.find(params[:id])
+    unless @post.user_id == current_user.id
+      redirect_to posts_path
+    end
   end
 
 end

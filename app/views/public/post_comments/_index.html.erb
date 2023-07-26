@@ -37,7 +37,7 @@
             <%= link_to edit_post_post_comment_path(post_comment.post, post_comment), class: 'btn' do %>
               <i class="fa-solid fa-pen-nib"></i>
             <% end %>
-            <%= link_to post_post_comment_path(post_comment.post, post_comment), method: :delete, remote: true, class: 'link' do %>
+            <%= link_to post_post_comment_path(post_comment.post, post_comment), method: :delete, remote: true, class: 'link', data: { confirm: "本当に削除してよろしいですか？" } do %>
               <i class="fa-solid fa-trash-can" style="color: #fb0909;"></i>
             <% end %>
           <% end %>
