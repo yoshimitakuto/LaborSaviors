@@ -16,7 +16,7 @@ class Public::PostsController < ApplicationController
 
     # タグリンク検索のための記述
     if params[:tag_name]
-      @posts = Post.tagged_with("#{params[:tag_name]}").page(params[:page]).per(6)
+      @posts = Post.tagged_with("#{params[:tag_name]}").where.not(is_draft: true).page(params[:page]).per(6)
     end
   end
 
@@ -52,6 +52,10 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    # 下書き投稿にURLから遷移できないように設定
+    if @post.is_draft == true && @post.user_id != current_user.id
+      redirect_to posts_path
+    end
     @post_comment = PostComment.new
     # ログイン中のユーザーの閲覧数のみしかカウントしないようし、ログインしていないユーザーが閲覧できるようにするため。
     if user_signed_in?

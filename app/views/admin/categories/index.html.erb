@@ -6,7 +6,7 @@
   </div>
 
   <div class='row justify-content-center mb-5'>
-    <p>総数：<%= @categories.count %>個</p>
+    <p>総数：<%= @categories.total_count %>個</p>
   </div>
 
   <div class='row justify-content-first mb-5'>
@@ -35,7 +35,7 @@
             <td><%= category.name %></td>
             <td><%= category.posts.count %></td>
             <td>
-              <%= link_to admin_category_path(category), method: :delete do %>
+              <%= link_to admin_category_path(category), method: :delete, data: { confirm: "本当に削除しますか？" } do %>
                 <i class="fa-solid fa-trash-can fa-lg" style="color: #f90101;"></i>
               <% end %>
             </td>

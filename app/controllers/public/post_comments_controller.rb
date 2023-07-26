@@ -10,7 +10,7 @@ class Public::PostCommentsController < ApplicationController
       flash.now[:success] = "コメント成功！お悩み投稿者があなたのおかげで救わることでしょう。"
       current_user.check_level_up
     else
-      flash.now[:danger] = "コメントできませんでした。"
+      flash.now[:danger] = "コメントを入力してください"
     end
     # userモデルに記述のあるレベルアップメソッドを利用
     current_user.check_level_up
