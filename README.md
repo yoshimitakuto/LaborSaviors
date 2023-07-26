@@ -58,16 +58,20 @@
 - 情報収集　など
 
 ## 設計書
-- 開発環境構築
+- AWSインフラ設計書（プライバシーの観点からリンク指定なし）
+#### 「drawio使用（以下4つ）」
+- [AWS構成図](https://app.diagrams.net/#G1emt1fer39DE0d-TO-Xm_2eI7rOMbxCpO)
+- [UI flow](https://app.diagrams.net/?client=1#G1KEgbu4reFMK0EtL-umVmbhsD5LllClLw)
+- [ER図](https://app.diagrams.net/?client=1#G1TJhNUmMFe6aaNBqjnIIUyPG-qt9WHNSI)
+- [ワイヤーフレーム](https://app.diagrams.net/#G1u5JPVW_BSXhB0chB2IWtI3bZA22hhTP-)
+#### 「Googleスプレットシート使用（以下３つ）」
 - [実装機能リスト](https://docs.google.com/spreadsheets/d/1aWNL4h66D_9JVtvX8AbuN6oNDTt-lFAlRvQxxiAAJps/edit#gid=885378170)
-- [UI flow](https://app.diagrams.net/#G1u5JPVW_BSXhB0chB2IWtI3bZA22hhTP-#%7B%22pageId%22%3A%22gj3RF_NmIvnPMkH7TpEE%22%7D)
-- [ER図](https://app.diagrams.net/#G1u5JPVW_BSXhB0chB2IWtI3bZA22hhTP-#%7B%22pageId%22%3A%22gj3RF_NmIvnPMkH7TpEE%22%7D)
 - [テーブル定義書](https://docs.google.com/spreadsheets/d/1bHLQWqPFdJPL9DuqvhCXFJAFQs3Zmbby2dUUl-B8mMk/edit#gid=356433990)
 - [テスト仕様書](https://docs.google.com/spreadsheets/d/14sTrirgrZ8FXzXUfytcHd6YsbW_IVMkp/edit#gid=2072448154)
 
 ## 開発環境
-- OS：Linux(CentOS)
-- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- OS：Amazon Linux release 2 (Karoo)
+- 言語：HTML,CSS,JavaScript,Ruby,python,SQL
 - フレームワーク：Ruby on Rails,Bootstrap
 - JSライブラリ：jQuery
 - IDE：Cloud9
@@ -76,3 +80,7 @@
 - [Canva](https://www.canva.com/)
 - [ヒューマンピクトグラム2.0](https://pictogram2.com/)
 - [Flat Icon Design](http://flat-icon-design.com/)
+
+
+## 不適切ワードについて
+- 不適切な単語を含む投稿は、自動的に削除されます。(PythonのseleniumとBeautifulsoup4を外部ファイルで使用)
