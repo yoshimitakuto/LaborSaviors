@@ -2,7 +2,7 @@ class Admin::PostCommentsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @post_comments = PostComment.page(params[:page]).per(20)
+    @post_comments = PostComment.includes(:user).page(params[:page]).per(20)
   end
 
   def destroy

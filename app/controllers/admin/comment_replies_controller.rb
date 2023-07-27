@@ -2,7 +2,7 @@ class Admin::CommentRepliesController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @comment_replies = CommentReply.page(params[:page]).per(20)
+    @comment_replies = CommentReply.includes(:user).page(params[:page]).per(20)
   end
 
   def destroy

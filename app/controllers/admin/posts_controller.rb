@@ -3,7 +3,7 @@ class Admin::PostsController < ApplicationController
 
   def index
     # 下書き中の投稿以外を表示
-    @posts = Post.where.not(is_draft: true).page(params[:page]).per(10).order(created_at: :desc)
+    @posts = Post.where.not(is_draft: true).includes(:user).page(params[:page]).per(10).order(created_at: :desc)
   end
 
   def destroy

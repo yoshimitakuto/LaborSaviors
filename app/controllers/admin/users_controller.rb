@@ -4,7 +4,7 @@ class Admin::UsersController < ApplicationController
 
   def index
     # ゲストユーザーを謝って退会処理しないための処理
-    @users = User.where.not(email: 'guest@example.com').page(params[:page]).per(20)
+    @users = User.with_attached_profile_image.where.not(email: 'guest@example.com').page(params[:page]).per(20)
   end
 
   def show
