@@ -51,10 +51,23 @@
         <%= f.submit "お悩みを公開", :name => 'publicize_draft', class: 'mr-3 btn btn-success' %>
         <%= f.submit "下書きを保存", :name => 'update_post', class: 'btn btn-outline-secondary' %>
       <% else %>
-        <%= f.submit "編集完了", class: 'btn btn-success' %>
+        <!--ユーザーが誤って操作をしてしまった時の補助として記述-->
+        <%= f.submit "編集完了", class: 'btn btn-success', data: { confirm: "更新してよろしいですか？" } %>
       <% end %>
     </div>
   <% end %>
 
 </div>
+
+
+<script>
+  $(function() {
+    $('input[name="post[is_resolution]"]').change(function() {
+      // valueを取得
+      let val = $(this).val();
+      // ユーザーがステータス変更を楽にするために自動発火実装
+      $('input[name="commit"]').trigger("click");
+    });
+  });
+</script>
 
