@@ -37,7 +37,7 @@
             </div>
           </td>
           <td align='center'>
-            <%= link_to admin_post_path(post), method: :delete do %>
+            <%= link_to admin_post_path(post), method: :delete, data: { confirm: "本当に削除しますか？" } do %>
               <i class="fa-solid fa-trash-can fa-lg" style="color: #f90101;"></i>
             <% end %>
           </td>

@@ -32,7 +32,7 @@
           </td>
           <td><%= post_comment.comment %></td>
           <td align='center'>
-            <%= link_to admin_post_comment_path(post_comment), method: :delete do %>
+            <%= link_to admin_post_comment_path(post_comment), method: :delete, data: { confirm: "本当に削除しますか？" } do %>
               <i class="fa-solid fa-trash-can fa-lg" style="color: #f90101;"></i>
             <% end %>
           </td>
