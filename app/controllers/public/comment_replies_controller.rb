@@ -1,4 +1,5 @@
 class Public::CommentRepliesController < ApplicationController
+  before_action :authenticate_user!
 
   def create
     # viewで変数を使用する場面がないためローカル変数で記述

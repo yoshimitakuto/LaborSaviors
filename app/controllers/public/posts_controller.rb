@@ -5,7 +5,7 @@ class Public::PostsController < ApplicationController
   def index
      # ransackでの検索機能
     @q = Post.ransack(params[:q])
-    @posts = @q.result.where.not(is_draft: true).page(params[:page]).per(6).order(created_at: :desc)
+    @posts = @q.result.where.not(is_draft: true).includes(:user).page(params[:page]).per(6).order(created_at: :desc)
     @total_counts = @posts.total_count
 
     # 「is_resoulution」のステータスをview側で簡単に記述するための記述(下書き内容も反映)

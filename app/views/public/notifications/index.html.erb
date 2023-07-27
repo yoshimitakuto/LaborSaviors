@@ -8,7 +8,7 @@
   <!--データ表示-->
   <% if @notifications.present? %>
     <div class='row mb-3'>
-      <%= link_to "全削除", notification_path(@notifications), method: :delete, class: 'btn btn-light btn-sm' %>
+      <%= link_to "全削除", notification_path(@notifications), method: :delete, data: { confirm: "全て削除します。よろしいですか？" }, class: 'btn btn-light btn-sm' %>
     </div>
     <div class='row justify-content-center'>
       <% @notifications.each do |notification| %>
@@ -19,11 +19,11 @@
             </tr>
           </tbody>
         </table>
-
       <% end %>
     </div>
   <% else %>
     <h5>通知はありません</h5>
   <% end %>
+
 </div>
 

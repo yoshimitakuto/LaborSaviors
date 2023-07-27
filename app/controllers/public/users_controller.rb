@@ -4,7 +4,7 @@ class Public::UsersController < ApplicationController
 
 
   def index
-    @users = User.page(params[:page]).per(12)
+    @users = User.with_attached_profile_image.includes(:post_comments).page(params[:page]).per(12)
   end
 
   def draft_posts
